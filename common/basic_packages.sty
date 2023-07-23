@@ -1,0 +1,116 @@
+\ProvidesPackage{basic_packages}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%    General 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{xspace}
+\xspaceaddexceptions{-}
+\usepackage{glossaries}
+\usepackage{color}
+\usepackage[hidelinks]{hyperref}
+
+% Enable Copy-Pasting for Reply to reviewers
+\usepackage{clipboard}
+
+% Enable loren ipsum text
+\usepackage{lipsum}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Figures
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{graphicx}        % standard LaTeX graphics tool
+                             % when including figure files
+\graphicspath{{./figures/}}
+\usepackage{subfigure}
+%\usepackage{wrapfig} % Wraps text round images
+%\usepackage[font={scriptsize}]{caption}
+%\usepackage[font=normal]{caption}
+
+% Control figure/table captions
+% \usepackage{caption}
+	% Change spacing between captions and figure
+ %	\captionsetup{skip=1pt}
+	% Change caption Font
+	%\captionsetup{font={small,it}}
+	
+	%\captionsetup{belowskip=0pt}
+	%\captionsetup{aboveskip=0pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Bibliography
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{cite}
+
+%\usepackage{etoolbox}
+%\patchcmd{\thebibliography}{\section*{\refname}}{}{}{}
+\let\OLDthebibliography\thebibliography
+\renewcommand\thebibliography[1]{
+	\OLDthebibliography{#1}
+	\setlength{\parskip}{0pt}
+	\setlength{\itemsep}{0pt}
+}
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+    
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Math and symbols
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amsmath,amssymb,latexsym}
+\usepackage{amsfonts}
+\usepackage{upgreek}
+\usepackage{mathtools}
+\usepackage{nicefrac}
+\usepackage[detect-weight=true, binary-units=true]{siunitx}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Tables
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{adjustbox}
+\usepackage{multirow}
+\usepackage{array}
+   % This defines "P" for centering a sized column
+   \newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+% this adds some spacing between table rows
+%\renewcommand{\arraystretch}{1.2} 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Algorithms
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{algorithm}
+\usepackage{algorithmicx}
+%\usepackage{algcompatible}
+%\usepackage[noend]{algpseudocode}
+
+
+
+%============== ORCID ===============%
+% Usage: \orcidicon{YOUR_ORCID}
+%
+    % OPTION 1: (Not working) ._.
+% \definecolor{orcidlogocol}{HTML}{A6CE39}
+% \usepackage{academicons} % EG
+%     \newcommand{\orcid}[1]{\href{https://orcid.org/#1}{\textcolor{orcidlogocol}{\aiOrcid}}} % EG
+% \usepackage{hyperref} %<--- Load after everything else    
+% %Usage: orcid{YOUR_ORCID}
+
+    % OPTION 2: OK :)
+\usepackage{scalerel}
+\usepackage{tikz}
+\usetikzlibrary{svg.path}
+\definecolor{orcidlogocol}{HTML}{A6CE39}
+\tikzset{
+  orcidlogo/.pic={
+    \fill[orcidlogocol] svg{M256,128c0,70.7-57.3,128-128,128C57.3,256,0,198.7,0,128C0,57.3,57.3,0,128,0C198.7,0,256,57.3,256,128z};
+    \fill[white] svg{M86.3,186.2H70.9V79.1h15.4v48.4V186.2z}
+                 svg{M108.9,79.1h41.6c39.6,0,57,28.3,57,53.6c0,27.5-21.5,53.6-56.8,53.6h-41.8V79.1z M124.3,172.4h24.5c34.9,0,42.9-26.5,42.9-39.7c0-21.5-13.7-39.7-43.7-39.7h-23.7V172.4z}
+                 svg{M88.7,56.8c0,5.5-4.5,10.1-10.1,10.1c-5.6,0-10.1-4.6-10.1-10.1c0-5.6,4.5-10.1,10.1-10.1C84.2,46.7,88.7,51.3,88.7,56.8z};
+  }
+}
+
+\newcommand\orcidicon[1]{\href{https://orcid.org/#1}{\mbox{\scalerel*{
+\begin{tikzpicture}[yscale=-1,transform shape]
+\pic{orcidlogo};
+\end{tikzpicture}
+}{|}}}}
+%============== ORCID END ===============%

@@ -1,0 +1,292 @@
+%----------------------------------------------
+%              General Chip Design
+%----------------------------------------------
+\newacronym{itrs}{ITRS}{International Technology Roadmap for Semiconductors}
+\newacronym{vlsi}{VLSI}{very large scale integration}
+\newacronym{asic}{ASIC}{application specific integrated circuit}
+\newacronym{pcb}{PCB}{printed circuit board}
+\newacronym{cmos}{CMOS}{complementary-metal-oxide-semiconductor}
+\newacronym{dff}{DFF}{Data Flip-Flop}
+\newacronym{ptm}{PTM}{predictive technology model}
+    \newcommand{\ptm}{\gls{ptm}\xspace} 
+    \newcommand{\Ptm}{\Gls{ptm}\xspace} 
+\newacronym{pdk}{PDK}{process design kit}
+    \newcommand{\pdk}{\gls{pdk}\xspace} 
+    \newcommand{\Pdk}{\Gls{pdk}\xspace}  
+    \newcommand{\pdks}{\glspl{pdk}\xspace} 
+    \newcommand{\Pdks}{\Glspl{pdk}\xspace} 
+\newacronym[longplural={systems-on-chip}]{soc}{SoC}{system-on-chip}
+    \newcommand{\soc}{\gls{soc}\xspace} 
+    \newcommand{\Soc}{\Gls{soc}\xspace} 
+    \newcommand{\socs}{\glspl{soc}\xspace}
+    \newcommand{\Socs}{\Glspl{soc}\xspace}
+\newacronym[longplural={integrated circuits}]{ic}{IC}{integrated circuit}
+    \newcommand{\ic}{\gls{ic}\xspace} 
+    \newcommand{\Ic}{\Gls{ic}\xspace} 
+    \newcommand{\ics}{\glspl{ic}\xspace}
+    \newcommand{\Ics}{\Glspl{ic}\xspace}  
+\newacronym{mc}{MC}{Monte Carlo}
+    \newcommand{\mc}{\gls{mc}\xspace} 
+\newacronym{mep}{MEP}{minimum energy point}
+    \newcommand{\mep}{\gls{mep}\xspace} 
+    \newcommand{\Mep}{\Gls{mep}\xspace}
+\newacronym[longplural={graphic processing units}]{gpu}{GPU}{graphic processing unit}
+    \newcommand{\gpu}{\gls{gpu}\xspace} 
+    \newcommand{\Gpu}{\Gls{gpu}\xspace} 
+    \newcommand{\gpus}{\glspl{gpu}\xspace}
+    \newcommand{\Gpus}{\Glspl{gpu}\xspace}
+\newacronym[longplural={central processing units}]{cpu}{CPU}{central processing unit}
+    \newcommand{\cpu}{\gls{cpu}\xspace} 
+    \newcommand{\Cpu}{\Gls{cpu}\xspace} 
+    \newcommand{\cpus}{\glspl{cpu}\xspace}
+    \newcommand{\Cpus}{\Glspl{cpu}\xspace}
+\newacronym[longplural={non-volatile memories}]{nvm}{NVM}{non-volatile memory}
+    \newcommand{\nvm}{\gls{nvm}\xspace}    
+    \newcommand{\nvms}{\glspl{nvm}\xspace}         
+\newacronym{sc}{SC}{standard cell}
+\newacronym{vtc}{VTC}{voltage transfer characteristic}
+\newacronym{pvt}{PVT}{Process-Voltage-Temperature}
+\newacronym{dcvsl}{DCVSL}{differential cascade voltage switch logic}
+
+
+%----------------------------------------------
+%        EDA/CAD
+%----------------------------------------------
+\newacronym{dif}{DIF}{digital implementation flow}
+\newacronym{hdl}{HDL}{hardware description language}
+\newacronym{rtl}{RTL}{register transfer level}
+\newacronym{eda}{EDA}{electronic design automation}
+\newacronym{cad}{CAD}{computer-aided design}
+\newacronym{pr}{P\&R}{place and route}
+\newacronym{cts}{CTS}{clock-tree synthesis}
+\newacronym{sta}{STA}{static timing analysis}
+\newacronym{edi}{EDI}{Cadence Encounter Design Implementation}
+\newacronym{s_dc}{DC}{Synopsys Design Compiler}
+\newacronym{sdc}{SDC}{Synopsys Design Constraints}
+\newacronym{vcd}{VCD}{value change dump}
+
+
+\newacronym{scm}{SCM}{standard cell memory}
+    
+%----------------------------------------------
+%      Computer Architecture and SoC
+%----------------------------------------------
+\newacronym{ips}{IPS}{instructions per second}
+    \newcommand{\ips}{\gls{ips}\xspace} 
+    \newcommand{\Ips}{\Gls{ips}\xspace}  
+\newacronym{eflash}{eFlash}{embedded Flash}
+    \newcommand{\eflash}{\gls{eflash}\xspace}
+    \newcommand{\Eflash}{\Gls{eflash}\xspace}
+\newacronym[longplural={Storage Class Memories}]{scm}{SCM}{Storage Class Memory}
+    \newcommand{\scm}{\gls{scm}\xspace}
+    \newcommand{\scms}{\glsp{scm}\xspace}
+\newacronym{ddr}{DDR}{dual-data rate}
+    \newcommand{\ddr}{\gls{ddr}\xspace}
+    \newcommand{\Ddr}{\Gls{ddr}\xspace}
+\newacronym{sata}{SATA}{Serial Advanced Technology Attachment}
+    \newcommand{\sata}{\gls{sata}\xspace}
+\newacronym{nvme}{NVMe}{Non-Volatile Memory Express}
+    \newcommand{\nvme}{\gls{nvme}\xspace}
+\newacronym{pcie}{PCIe}{Peripheral Component Interconnect Express}
+    \newcommand{\pcie}{\gls{pcie}\xspace} 
+\newacronym[longplural={hard-Disk drives}]{hdd}{HDD}{hard-Disk drive}
+    \newcommand{\hdd}{\gls{hdd}\xspace} 
+    \newcommand{\Hdd}{\Gls{hdd}\xspace} 
+    \newcommand{\hdds}{\glspl{hdd}\xspace}
+    \newcommand{\Hdds}{\Glspl{hdd}\xspace}
+\newacronym[longplural={solid-State drives}]{ssd}{SSD}{solid-State drive}
+    \newcommand{\ssd}{\gls{ssd}\xspace} 
+    \newcommand{\Ssd}{\Gls{ssd}\xspace} 
+    \newcommand{\ssds}{\glspl{ssd}\xspace}
+    \newcommand{\Ssds}{\Glspl{ssd}\xspace}
+\newacronym[longplural={high-bandwidth memories}]{hbm}{HBM}{high-bandwidth memory}
+    \newcommand{\hbm}{\gls{hbm}\xspace} 
+    \newcommand{\Hbm}{\Gls{hbm}\xspace} 
+    \newcommand{\hbms}{\glspl{hbm}\xspace}
+    \newcommand{\Hbms}{\Glspl{hbm}\xspace}
+\newacronym[longplural={dual-inline memory modules}]{dimm}{DIMM}{dual-inline memory module}
+    \newcommand{\dimm}{\gls{dimm}\xspace} 
+    \newcommand{\Dimm}{\Gls{dimm}\xspace} 
+    \newcommand{\dimms}{\glspl{dimm}\xspace}
+    \newcommand{\Dimms}{\Glspl{dimm}\xspace}
+\newacronym[longplural={dynamic random-access memories}]{dram}{DRAM}{dynamic random-access memory}
+    \newcommand{\dram}{\gls{dram}\xspace} 
+    \newcommand{\Dram}{\Gls{dram}\xspace} 
+    \newcommand{\drams}{\glspl{dram}\xspace}
+    \newcommand{\Drams}{\Glspl{dram}\xspace}    
+\newacronym{fifo}{FIFO}{first-in first-out}
+\newacronym{lifo}{LIFO}{last-in first-out}
+\newacronym[longplural={content addressable memories}]{cam}{CAM}{content addressable memory}
+    \newcommand{\cam}{\gls{cam}\xspace}
+\newacronym{L1}{L1}{level-1}
+\newacronym{L2}{L2}{level-2}
+\newacronym{L3}{L3}{level-3}
+\newacronym{L4}{L4}{level-4}
+\newacronym{simd}{SIMD}{single-instruction multiple-data}
+
+
+%----------------------------------------------
+%              Memory Design
+%----------------------------------------------
+\newacronym{bc}{BC}{bitcell}
+    \newcommand{\bc}{\gls{bc}\xspace} 
+    \newcommand{\Bc}{\Gls{bc}\xspace} 
+    \newcommand{\bcs}{\glspl{bc}\xspace}
+    \newcommand{\Bcs}{\Glspl{bc}\xspace} 
+\newacronym{bl}{BL}{bitline}
+    \newcommand{\bl}{\gls{bl}\xspace} 
+    \newcommand{\Bl}{\Gls{bl}\xspace} 
+    \newcommand{\bls}{\glspl{bl}\xspace}
+    \newcommand{\Bls}{\Glspl{bl}\xspace}      
+\newacronym{sln}{SL}{sourceline}
+    \newcommand{\sln}{\gls{sln}\xspace} 
+    \newcommand{\Sln}{\Gls{sln}\xspace} 
+    \newcommand{\slns}{\glspl{sln}\xspace}
+    \newcommand{\Slns}{\Glspl{sln}\xspace}  
+\newacronym{wl}{WL}{wordline}
+    \newcommand{\wl}{\gls{wl}\xspace} 
+    \newcommand{\Wl}{\Gls{wl}\xspace} 
+    \newcommand{\wls}{\glspl{wl}\xspace}
+    \newcommand{\Wls}{\Glspl{wl}\xspace}     
+\newacronym[longplural={Gain-Cell embedded DRAMs}]{gcedram}{GC-eDRAM}{Gain-Cell embedded DRAM}
+    \newcommand{\gcedram}{\gls{gcedram}\xspace} 
+    \newcommand{\gcedrams}{\glspl{gcedram}\xspace}
+\newacronym{sixt}{6T}{6-transistor}
+    \newcommand{\sixt}{\gls{sixt}\xspace}
+\newacronym[longplural={static random-access memories}]{sram}{SRAM}{static random-access memory}
+    \newcommand{\sram}{\gls{sram}\xspace} 
+    \newcommand{\Sram}{\Gls{sram}\xspace} 
+    \newcommand{\srams}{\glspl{sram}\xspace}
+    \newcommand{\Srams}{\Glspl{sram}\xspace}
+\newacronym[longplural={six-transistor static random access memories}]{sixtsram}{6T-SRAM}{six-transistor static random access memory}
+    \newcommand{\sixtsram}{\gls{sixtsram}\xspace} 
+    \newcommand{\Sixtsram}{\Gls{sixtsram}\xspace} 
+    \newcommand{\sixtsrams}{\glspl{sixtsram}\xspace}
+    \newcommand{\Sixtrams}{\Glspl{sixtsram}\xspace}
+\newacronym[longplural={embedded DRAMs}]{edram}{eDRAM}{embedded DRAM}
+    \newcommand{\edram}{\gls{edram}\xspace} 
+    \newcommand{\Edram}{\Gls{edram}\xspace} 
+    \newcommand{\edrams}{\glspl{edram}\xspace}
+    \newcommand{\Edrams}{\Glspl{edram}\xspace}    
+\newacronym[longplural={multi-level cells}]{mlc}{MLC}{multi-level cell}
+    \newcommand{\mlc}{\gls{mlc}\xspace} 
+    \newcommand{\Mlc}{\Gls{mlc}\xspace} 
+    \newcommand{\mlcs}{\glspl{mlc}\xspace}
+    \newcommand{\Mlcs}{\Glspl{mlc}\xspace}
+\newacronym{mw}{MW}{write transistor}
+\newacronym{mr}{MR}{read transistor}
+\newacronym{sn}{SN}{storage node}
+\newcommand{\sn}{\gls{sn}\xspace}
+\newacronym{wwl}{WWL}{write word line}
+\newcommand{\wwl}{\gls{wwl}\xspace}
+\newacronym{rwl}{RWL}{read word line}
+\newcommand{\rwl}{\gls{rwl}\xspace}
+\newacronym{sa}{SA}{sense amplifier}
+\newacronym{drv}{DRV}{data retention voltage}
+\newacronym{nwl}{NWL}{negative word line}
+\newacronym{bist}{BIST}{built-in self-test}
+\newacronym{bisr}{BISR}{built-in self-repair}
+\newacronym{ecc}{ECC}{error correction code}
+\newacronym{snm}{SNM}{static noise margin}
+\newacronym{rsnm}{RSNM}{read static noise margin}
+\newacronym{wsnm}{WSNM}{write static noise margin}
+\newacronym{dnm}{DNM}{dynamic noise margin}
+\newacronym{drt}{DRT}{data retention time}
+\newcommand{\drt}{\gls{drt}\xspace}
+\newcommand{\csn}{$C_{\text{SN}}$\xspace}
+
+%----------------------------------------------
+%      Emerging Memories
+%----------------------------------------------
+\newacronym{lrs}{LRS}{low resistance state}
+    \newcommand{\lrs}{\gls{lrs}\xspace} 
+    \newcommand{\Lrs}{\Gls{lrs}\xspace} 
+\newacronym{hrs}{HRS}{high resistance state}
+    \newcommand{\hrs}{\gls{hrs}\xspace} 
+    \newcommand{\Hrs}{\Gls{hrs}\xspace} 
+
+\newacronym[longplural={phase-change memories}]{pcm}{PCM}{phase-change memory}
+    \newcommand{\pcm}{\gls{pcm}\xspace} 
+    \newcommand{\Pcm}{\Gls{pcm}\xspace} 
+    \newcommand{\pcms}{\glspl{pcm}\xspace}
+    \newcommand{\Pcms}{\Glspl{pcm}\xspace}
+\newacronym[longplural={resistive RAMs}]{rram}{RRAM}{resistive RAM}
+    \newcommand{\rram}{\gls{rram}\xspace} 
+    \newcommand{\Rram}{\Gls{rram}\xspace} 
+    \newcommand{\rrams}{\glspl{rram}\xspace}
+    \newcommand{\Rrams}{\Glspl{rram}\xspace}
+\newacronym{stt}{STT}{spin-transfer torque}
+    \newcommand{\stt}{\gls{stt}\xspace} 
+    \newcommand{\Stt}{\Gls{stt}\xspace} 
+\newacronym[longplural={spin-transfer torque magnetic random-access memories}]{sttmram}{STT-MRAM}{spin-transfer torque magnetic random-access memory}
+    \newcommand{\sttmram}{\gls{sttmram}\xspace} 
+    \newcommand{\Sttmram}{\Gls{sttmram}\xspace} 
+    \newcommand{\sttmrams}{\glspl{sttmram}\xspace}
+    \newcommand{\Sttmrams}{\Glspl{sttmram}\xspace}     
+\newacronym[longplural={magnetic random-access memories}]{mram}{MRAM}{magnetic random-access memory}
+    \newcommand{\mram}{\gls{mram}\xspace} 
+    \newcommand{\Mram}{\Gls{mram}\xspace} 
+    \newcommand{\mrams}{\glspl{mram}\xspace}
+    \newcommand{\Mrams}{\Glspl{mram}\xspace}
+\newacronym{mtj}{MTJ}{magnetic tunnel junction}
+    \newcommand{\mtj}{\gls{mtj}\xspace} 
+    \newcommand{\Mtj}{\Gls{mtj}\xspace} 
+    \newcommand{\mtjs}{\glspl{mtj}\xspace}
+    \newcommand{\Mtjs}{\Glspl{mtj}\xspace}
+\newacronym{smtj}{SMTJ}{single-barrier MTJ}
+    \newcommand{\smtj}{\gls{smtj}\xspace} 
+    \newcommand{\Smtj}{\Gls{smtj}\xspace} 
+    \newcommand{\smtjs}{\glspl{smtj}\xspace}
+    \newcommand{\Smtjs}{\Glspl{smtj}\xspace}
+\newacronym{dmtj}{DMTJ}{double-barrier MTJ}
+    \newcommand{\dmtj}{\gls{dmtj}\xspace} 
+    \newcommand{\Dmtj}{\Gls{dmtj}\xspace} 
+    \newcommand{\dmtjs}{\glspl{dmtj}\xspace}
+    \newcommand{\Dmtjs}{\Glspl{dmtj}\xspace}    
+%----------------------------------------------
+%      Analog
+%----------------------------------------------
+\newacronym{mim}{MIM}{metal-insulator-metal}
+    \newcommand{\mim}{\gls{mim}\xspace} 
+    \newcommand{\Mim}{\Gls{mim}\xspace} 
+    
+%----------------------------------------------
+%      Fabrication Process
+%----------------------------------------------
+\newacronym{euv}{EUV}{extreme ultra-violet}
+    \newcommand{\euv}{\gls{euv}\xspace} 
+\newacronym{soi}{SOI}{silicon-on-insulator}
+\newacronym{fdsoi}{FD-SOI}{fully-depleted silicon-on-insulator}
+    \newcommand{\fdsoi}{\gls{fdsoi}\xspace}
+\newacronym{rdf}{RDF}{random dopant fluctuations}
+\newacronym{ocv}{OCV}{on-chip variation}
+
+
+%----------------------------------------------
+%      Hardware Security
+%----------------------------------------------
+\newacronym{lpa}{LPA}{Leakage Power Analysis}
+\newacronym{dpa}{DPA}{Differential Power Analysis}
+\newacronym{puf}{PUF}{Physical Unclonable Function}
+
+%----------------------------------------------
+%      Space/High Radiation
+%----------------------------------------------
+\newacronym{ser}{SER}{soft errors}
+    \newcommand{\ser}{\gls{ser}\xspace} 
+\newacronym{seu}{SEU}{single-event upset}
+    \newcommand{\seu}{\gls{seu}\xspace} 
+\newacronym{qcrit}{$Q_\text{crit}$}{critical charge}
+\newacronym{tmr}{TMR}{triple modular redundancy}
+\newacronym{dmr}{DMR}{dual modular redundancy}
+\newacronym{edac}{EDAC}{error detection and correction}
+\newacronym{secded}{SECDED}{single error correction~-- double error detection}
+\newacronym{dected}{DECTED}{double error correction~-- triple error detection}
+
+
+%----------------------------------------------
+%      Measurement Equipment
+%----------------------------------------------
+ 
+\newacronym{smu}{SMU}{source/measure unit}
+\newacronym{dmm}{DMM}{digital multimeter}

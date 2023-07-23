@@ -1,0 +1,132 @@
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+% The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
+
+
+\usepackage{common/basic_packages} % Required for inserting images
+\input{common/macros}
+\input{common/units}
+\input{common/general_glossary}
+\input{EnICS/enics_glossary}
+
+
+%\newclipboard{output-ReplyToReviewers} % Clipboard name must start with "output-" for Overleaf
+
+
+\title{EnICS IEEE Conference Template}
+
+
+% Option 1: up to three authors --> Authors names in separate columns
+% ------------------------------------------------------------------- %
+\author{
+    \IEEEauthorblockN{
+        Author~1\orcidicon{0000-0000-0000-0000}, \Mieee \\
+        \IEEEauthorblockA{EnICS Labs, Faculty of Engineering, \\ Bar Ilan University, \\ Ramat Gan 5290002, Israel \\
+        Email: author1@biu.ac.il}
+    }
+    \and
+    \IEEEauthorblockN{
+        Author~2\orcidicon{0000-0000-0000-0000}, \Mieee \\
+        \IEEEauthorblockA{EnICS Labs, Faculty of Engineering, \\ Bar Ilan University, \\ Ramat Gan 5290002, Israel \\
+        Email: author2@biu.ac.il}
+    }
+    
+}
+
+% Option 2: more than three authors --> Authors names in a single row 
+% ------------------------------------------------------------------- %
+% \author{
+%     \IEEEauthorblockN{
+%         Author~1\IEEEauthorrefmark{1}\orcidicon{0000-0000-0000-0000}, \Mieee
+%         Author~2 \IEEEauthorrefmark{2},
+%         Author~3 \IEEEauthorrefmark{3},
+%         and Author~4 \IEEEauthorrefmark{3}
+%     }
+%     \IEEEauthorblockA{\IEEEauthorrefmark{1}\enicsAffiliation}
+%     \IEEEauthorblockA{\IEEEauthorrefmark{2}Affiliation 2}
+%     \IEEEauthorblockA{\IEEEauthorrefmark{3}Affiliation 3}
+%     Email: author1@biu.ac.il
+% }
+
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This is a template for IEEE conferences.
+It includes a brief description of some input files useful to write articles for conferences or journals.
+\end{abstract}
+
+\begin{IEEEkeywords}
+Keyword 1, Keyword 2, \dots, Keyword N.
+\end{IEEEkeywords}
+
+
+
+\section{Introduction}
+\label{sec_introduction}
+Start with a scope down. General sentence with basic (often old) citation, such as Moore's Law~\cite{moores_law}.
+Continue your first paragraph, focusing down on a more narrow field, such as the motivation for low power digital design.
+
+With your second paragraph, you need to funnel down a bit more, starting to point the reader to the specific problem you're trying to solve.
+Don't forget to cite some of the seminal works in the field and most important references that prove your point.
+
+By the third paragraph, you have to specifically state the problem that your work will try to solve. 
+Describe the problem and why it is hard and/or important to fix it.
+
+You may want to now go into the \sota. 
+Make sure to briefly describe each of the important works in the field, usually followed by some insight as to what is not solved by this work or what it focuses on that is different than what your solution will focus on.
+Be careful not to criticize the prior-art too harshly -- one of the authors may be your reviewer!
+But make sure to state or at least hint what is different and/or worse than what you are going to present.
+
+Next paragraph should start with ``\textit{In this work,}''. 
+Now you need to describe what you are about to present/propose. 
+In a few sentence, state the most important features of your work and how it improves upon the \sota.
+Finish with some important results!
+
+\paragraph*{ Contributions} 
+\blue{The specific contributions of this work can be summarized as follows:
+\begin{enumerate}
+    \item The first major contribution. Sorry that this has already been clearly written out in the Introduction, but many reviewers are too lazy to actually read it and want to see it listed here as well.
+    \item The second major contribution.
+    \item The third major contribution.
+\end{enumerate}
+}    
+
+\blue{
+The rest of this paper is structured as follows:
+\secref{sec_background} provides the background for the proposed work.
+The proposed solution is presented and described in \secref{sec_proposed_solution}.
+Results are presented in \secref{sec_results}.
+And \secref{sec_conclusions} concludes the paper.
+}
+
+
+\section{Background}
+\label{sec_background}
+
+\lipsum[1-2]
+
+\section{Proposed Solution}
+\label{sec_proposed_solution}
+
+\lipsum[1-2]
+
+\section{Results}
+\label{sec_results}
+
+\lipsum[1-2]
+
+\section{Conclusions}
+\label{sec_conclusions}
+\lipsum[1]
+
+\section*{Acknowledgements}
+This work was kindly supported by...
+
+%\section*{References}
+\bibliographystyle{IEEEtran}
+\bibliography{bibliography/general_biblography}
+
+\end{document}
