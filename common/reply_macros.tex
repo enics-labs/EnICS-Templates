@@ -1,0 +1,104 @@
+% Extra packages:
+\usepackage{clipboard} % To use \Copy \Paste commands
+\usepackage{subfiles} % To call the "answers to reviewers" letter at the end
+\usepackage{soul} % To highligth text
+%\sethlcolor{white} %--> to get rid of the yellow hl, un-comment this
+
+% Definition of counters for reviewers and their point-by-point concerns:
+\newcounter{reviewer}
+\setcounter{reviewer}{0}
+\newcounter{point}[reviewer]
+\setcounter{point}{0}
+
+% Environment and Commands:
+% This refines the format of how the reviewer/point reference will appear.
+\renewcommand{\thepoint}{P\,\thereviewer.\arabic{point}} 
+
+% command declarations for reviewer points and our responses
+\newcommand{\reviewersection}{\stepcounter{reviewer} \bigskip \hrule
+                  \section*{\large\textbf{Reviewer} \thereviewer}}
+
+\newenvironment{point}
+   {\refstepcounter{point} \bigskip \noindent {\textbf{\underline{Reviewer~Point~\thepoint}} } ---\ }
+   {\par }
+
+\newcommand{\shortpoint}[1]{\refstepcounter{point}  \bigskip \noindent 
+	{\textbf{Reviewer~Point~\thepoint} } ---~#1\par }
+
+% \newenvironment{reply}
+%    {\medskip \noindent \begin{sf}\textbf{Reply}:\  }
+%    {\medskip \end{sf}}
+\newenvironment{reply}
+   {\medskip \textbf{Reply}:\  }
+   {\medskip }
+
+\newcommand{\shortreply}[2][]{\medskip \noindent \begin{sf}\textbf{Reply}:\  #2
+	\ifthenelse{\equal{#1}{}}{}{ \hfill \footnotesize (#1)}%
+	\medskip \end{sf}}
+
+ % \newenvironment{changes}
+ %   {\medskip \noindent \begin{sf}\textbf{Authors' Action}:\  }
+ %   {\medskip \end{sf}}
+ \newenvironment{changes}
+   {\medskip \textbf{Authors' Action}:\  }
+   {\medskip }   
+
+
+% Commands
+\newcommand{\replyFull}[2]{%
+
+    \begin{reply}
+        {\color{blue}
+        #1
+        }
+    \end{reply}
+    
+    \begin{changes}
+        {\color{blue}
+        #2
+        }
+    \end{changes}
+}
+
+\newcommand{\replySingle}[1]{%
+
+    \begin{reply}
+        {\color{blue}
+        #1
+        }
+    \end{reply}
+}
+
+%======= Counting words
+%% You can pass in your own texcount params, e.g. -chinese to turn on Chinese mode, or -char to do a character count instead (which does NOT include spaces!)
+%%% http://app.uio.no/ifi/texcount/documentation.html
+
+%% To include references. DO NOT USE WITH BIBLATEX 
+%TC:incbib
+
+%% To include tabulars in main text count.
+%TC:group table 0 1
+%TC:group tabular 1 1
+
+\newcommand{\detailtexcount}[1]{%
+  \immediate\write18{texcount -merge -sum -q #1.tex output.bbl > #1.wcdetail }%
+  \verbatiminput{#1.wcdetail}%
+}
+
+\newcommand{\quickwordcount}[1]{%
+  \immediate\write18{texcount -1 -sum -merge -q #1.tex output.bbl > #1-words.sum }%
+  \input{#1-words.sum} words%
+}
+
+%   -sum, -sum=   Make sum of all word and equation counts. May also use
+%              -sum=#[,#] with up to 7 numbers to indicate how each of the
+%              counts (text words, header words, caption words, #headers,
+%              #floats, #inlined formulae, #displayed formulae) are summed.
+%              The default sum (if only -sum is used) is the same as
+%              -sum=1,1,1,0,0,1,1.
+
+
+\newcommand{\quickcharcount}[1]{%
+  \immediate\write18{texcount -1 -sum -merge -char -q #1.tex output.bbl > #1-chars.sum }%
+  \input{#1-chars.sum} characters (not including spaces)%
+}

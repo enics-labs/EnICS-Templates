@@ -105,7 +105,10 @@ And \secref{sec_conclusions} concludes the paper.
 
 \section{Background}
 \label{sec_background}
-\lipsum[1-2]
+%\lipsum[1-2]
+The second section could optionally be a background or \sota section. 
+It can go deeper into the existing solutions, citing the most important papers in the field.
+This section may also present some of the theoretical background, basic equations, basic phenomena, etc.
 
 \section{Proposed Solution}
 \label{sec_proposed_solution}
@@ -114,6 +117,41 @@ And \secref{sec_conclusions} concludes the paper.
 
 \section{Results}
 \label{sec_results}
+
+\subsection{Figures}
+We use the graphicx package for inserting figures. Here are some guidelines:
+\begin{itemize}
+    \item Figures should all be vectorized (e.g., pdf).
+    \item You can crop the figures with the trip commands.
+    \item If you cannot pass \texttt{pdf\_express}, use the ``\texttt{latexmkrc}'' file, which will embed all the fonts.
+    For more, refer to: \href{https://www.overleaf.com/learn/latex/Articles/How_to_use_latexmkrc_with_Overleaf}{\blue{How to use latexmkrc with Overleaf}}
+\end{itemize}
+
+\begin{figure}[t] % [b]-> bottom, [t]->top, [H]->Here! ([h!] should do a better job), {figure*}->float
+     \centering
+     \includegraphics[width=0.9\columnwidth]{example_plot}
+     \caption{My caption}
+     \label{fig:MyLabel}
+  \end{figure}
+
+\subsection{Making figures in MATLAB}
+\label{sec_matlab_figures}
+To make quality plots in \textbf{Matlab}, use the template below (provided in \texttt{Figures/matlab\_figure.m}):
+
+\inputminted[frame=lines, framesep=2mm, baselinestretch=1.0,
+                bgcolor=white, fontsize=\scriptsize]
+                {matlab}{Figures/matlab_figure.m}
+
+\subsection{Making figures in Python}
+\label{sec_python_figures}
+To make quality plots in \textbf{Python}, use the template below (provided in \texttt{Figures/python\_figure.py}):
+
+\inputminted[frame=lines, framesep=2mm, baselinestretch=1.0,
+                bgcolor=white, fontsize=\scriptsize]
+                {python}{Figures/python_figure.py}
+
+
+
 
 \lipsum[1-2]
 

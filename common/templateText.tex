@@ -1,0 +1,113 @@
+% This file contains text to be pasted inside the templates
+
+% This tells you what to write in the Introduction
+%<*intro>
+\color{teal}
+    \indent Start with a scope down. General sentence with basic (often old) citation, such as Moore's Law~\cite{moores_law}. Continue your first paragraph, focusing down on a more narrow field, such as the motivation for low power digital design. \\
+    \indent With your second paragraph, you need to funnel down a bit more, starting to point the reader to the specific problem you're trying to solve. Don't forget to cite some of the seminal works in the field and most important references that prove your point. \\
+    \indent By the third paragraph, you have to specifically state the problem that your work will try to solve. Describe the problem and why it is hard and/or important to fix it. \\
+    \indent You may want to now go into the \sota. Make sure to briefly describe each of the important works in the field, usually followed by some insight as to what is not solved by this work or what it focuses on that is different than what your solution will focus on. Be careful not to criticize the prior-art too harshly -- one of the authors may be your reviewer! But make sure to state or at least hint what is different and/or worse than what you are going to present. \\
+    \indent Next paragraph should start with ``\textit{In this work,}''. Now you need to describe what you are about to present/propose. In a few sentence, state the most important features of your work and how it improves upon the \sota. Finish with some important results! \\
+\color{black}
+%</intro>
+
+
+% This tells you what to write in the Contributions
+%<*contributions>
+    \item \blue{The first major contribution. Sorry that this has already been clearly written out in the Introduction, but many reviewers are too lazy to actually read it and want to see it listed here as well.}
+    \item \blue{The second major contribution.}
+    \item \blue{The third major contribution.}
+%</contributions>
+
+
+% This tells you what to write in the Sections paragraph
+%<*sections>
+\blue{
+    \secref{sec_background} provides the background for the proposed work. The proposed solution is presented and described in \secref{sec_proposed_solution}. Results are presented in \secref{sec_results}.
+} \\
+%</sections>
+
+
+% This tells you what to write in the Background section
+%<*background>
+\color{teal}
+    The second section could optionally be a background or \sota section. It can go deeper into the existing solutions, citing the most important papers in the field. This section may also present some of the theoretical background, basic equations, basic phenomena, etc. \\
+\color{black}
+%</background>
+
+
+
+% This tells you what to write in the Proposed Solution section
+%<*proposed>
+\color{teal}
+    This could be the proposed solution section. It should introduce the concept, the design, some basic proof that it works. \\
+\color{black}
+%</proposed>
+
+
+
+% This tells you what to write in the Results section
+%<*results>
+\color{teal}
+    Present your results in this section. Use figures to prove your point. Refer to the \figref{sec_figures} section for how to include figures. Compare your results with other \sota work. Preferably add a comparison table with several works.
+\color{black}
+%</results>
+
+
+% This tells you what to write in the Conclusions section
+%<*conclusions>
+\color{teal}
+    This section concludes the article. It is usually pretty similar to the abstract, though looking at the content ``in the past'' rather than ``what is presented below''. Wait until you are finished writing the paper before writing this section. Make sure to repeat your major results and conclusions. Optionally, add a few sentences about future work.
+\color{black}
+%</conclusions>
+
+
+% This is info about how to create figures and include them
+%<*figures>
+\color{teal}
+    We use the \texttt{graphicx} package for inserting figures. Here are some guidelines:
+    \begin{itemize}
+        \item Figures should all be vectorized (e.g., pdf), such as the figure provided in \figref{fig_MyLabel}.
+        \item You can crop the figures with the trip commands.
+        \item If you cannot pass \texttt{pdf\_express}, use the ``\texttt{latexmkrc}'' file, which will embed all the fonts.
+        For more, refer to: \href{https://www.overleaf.com/learn/latex/Articles/How_to_use_latexmkrc_with_Overleaf}{\blue{How to use latexmkrc with Overleaf}}
+    \end{itemize}
+
+    \subsubsection{\red{Making pretty figures in MATLAB}} \label{sec_matlab_figures}
+    To make quality plots in \textbf{Matlab}, use the guidelines on the EnICS Wiki at \url{http://enicskb/wiki/index.php/Matlab_-_Making_Article-Quality_Plots}. A template (included in the file \texttt{Figures/matlab\_figure.m}) is as follows:
+
+    \inputminted[frame=lines, framesep=2mm, baselinestretch=1.0,
+                bgcolor=white, fontsize=\scriptsize]
+                {matlab}{Figures/matlab_figure.m}
+
+    \subsection{\red{Making pretty figures in Python}}   \label{sec_python_figures}
+    To make quality plots in \textbf{Python}, use the guidelines at \url{http://enicskb/wiki/index.php/Python_-_Making_Article-Quality_Plots} and the template below (provided in \texttt{Figures/python\_figure.py}):
+
+    \inputminted[frame=lines, framesep=2mm, baselinestretch=1.0,
+                bgcolor=white, fontsize=\scriptsize]
+                {python}{Figures/python_figure.py}
+
+\color{black}
+%</figures>
+
+
+% These are instructions for the Reply to Reviewers doc
+%<*reply>
+\color{teal}
+    \Copy{SecIPar1}{\hl{
+    This is some revised text that will be copied to the response to reviewers. 
+    }}
+    
+    
+    \Copy{Conclusions}{\hl{
+    This is another change.
+    }}
+\color{black}
+%</reply>
+
+
+% This tells you what to write in the 
+%<*>
+\color{teal}
+\color{black}
+%</>

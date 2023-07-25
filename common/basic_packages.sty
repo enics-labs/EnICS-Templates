@@ -5,12 +5,16 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{xspace}
 \xspaceaddexceptions{-}
+\xspaceaddexceptions{$\times$}
 \usepackage{glossaries}
 \usepackage{color}
 \usepackage[hidelinks]{hyperref}
 
 % Enable Copy-Pasting for Reply to reviewers
 \usepackage{clipboard}
+
+% Lets me copy a tagged section from an external file
+\usepackage{catchfilebetweentags}
 
 % Enable loren ipsum text
 \usepackage{lipsum}
@@ -20,7 +24,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{graphicx}        % standard LaTeX graphics tool
                              % when including figure files
-\graphicspath{{./figures/}}
+\graphicspath{{./Figures/}}
 \usepackage{subfigure}
 %\usepackage{wrapfig} % Wraps text round images
 %\usepackage[font={scriptsize}]{caption}
@@ -82,7 +86,12 @@
 %\usepackage{algcompatible}
 %\usepackage[noend]{algpseudocode}
 
+% For formatting code
+\usepackage{minted}
+\setminted[python]{breaklines, framesep=2mm, fontsize=\footnotesize, numbersep=5pt}
+\setminted[matlab]{breaklines, framesep=2mm, fontsize=\footnotesize, numbersep=5pt}
 
+\usepackage{listings}
 
 %============== ORCID ===============%
 % Usage: \orcidicon{YOUR_ORCID}

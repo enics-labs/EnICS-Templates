@@ -1,0 +1,133 @@
+\documentclass[./IEEE_Journal.tex]{subfiles}
+
+\begin{document}
+\pagenumbering{gobble} % Hide the page numbering of the subfile
+\onecolumn
+%================== HEADER =========================%
+\vspace{2mm}
+\noindent \textbf{Original Manuscript ID:} TCAS-II-YYYYY-2023  \\  
+\textbf{Original Article Title:} \Paste{PaperTitle}  \\
+\vspace{2mm}
+\\\textbf{To:} IEEE TCAS-II Editor and Reviewers \\
+\textbf{Re:} Response to reviewers \\
+%====================================================%
+
+% General intro text goes here
+We are grateful to the Editor for having managed the review of our manuscript. We also want to thank the reviewers for their critical assessment of our work, and for the useful comments that help us to improve the quality of the manuscript.
+In the following we address their concerns point by point. 
+We are uploading (a) our point-by-point response to the comments (below) (response to reviewers), (b) an updated manuscript with \hl{yellow highlighting} indicating changes, and (c) a clean updated manuscript without highlights (Main Manuscript).
+
+%===========================================
+\reviewersection 
+Paste the general comments of the handling editor here (if given)
+
+\replySingle{
+We thank the editor for the time spent in reviewing our work and for its general appreciation...
+}
+
+% === Concern
+\begin{point}
+     Here Reviewer concern... 
+\end{point}
+
+\replyFull{
+We thank the Reviewer for this comment...
+}{
+\begin{itemize}
+    \item \secref{sec:Sec2}, Par. 1: \Paste{SecIPar1}
+\end{itemize}
+}
+
+% === Concern
+\begin{point}
+     Here Reviewer concern...
+\end{point}
+
+\replyFull{
+We thank the Reviewer for this comment...
+}{
+\begin{itemize}
+    \item \secref{sec:conclusion}: \Paste{Conclusions}
+\end{itemize}
+}
+
+%===========================================
+\reviewersection 
+Here Reviewer general comment (if given) 
+
+
+
+\newpage
+%TC:ignore
+Words and characters in the response letter is detailed below. 
+The text (as the text in this new page) placed within the comment flags ``TC:ignore'' and ``TC:endignore'' are not counter.
+Note that this word/character count does not include the text copied from the main manuscript.
+
+\begin{itemize}
+    \item Response letter word count: \quickwordcount{A2R}
+    \item Response letter character count: \quickcharcount{A2R}
+\end{itemize}
+
+\par{Detail count follows:}
+% \detailtexcount{Reply_To_Reviewers}
+% \detailtexcount{IEEE_Journal}
+%TC:endignore
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Response Letter Overview}\label{sec:overview}
+The response letter is named ``Answer to Reviewers'' or ``A2R''.
+It uses two input files, which must be loaded in the main manuscript in order to set the correct formatting of the response letter that is called as ``\textbackslash subfile\{A2R\}'' before the ``\textbackslash end\{document\}''.
+A brief description of the two input files follows:
+\begin{itemize}
+    \item \textbf{A2R\_environment.tex}: it includes all the extra packages, definition of counters for reviewers and their point-by-point concerns, environment (letter format), and commands, related to the A2R response letter.
+    \item \textbf{A2R\_inputs.tex}: all the details of the submitted paper have to be written in this file. 
+\end{itemize}
+
+\subsection{Commands}
+\begin{enumerate}
+    \item \textbackslash reviewersection: It generates a Reviewer block/section
+    \item \textbackslash replySingle\{\#1\}: This command receives one input (\#1). This input is the reply to the reviewer. By default the answer is written in blue. 
+    \item \textbackslash replyFull\{\#1\}\{\#2\}: This command receives two inputs (\#1 and \#2). The former input is the reply to the reviewer, while the latter is the changes that we did to the manuscript. By default the answers are written in blue.
+\end{enumerate}
+An example of this commands are presented in the A2R.tex file.
+
+
+\subsection{Use of highlighting}
+Use the ``\textbackslash hl\{\}'' to highlight some text. 
+It may be problematic if you highlight a text that presents some commands within it. To address this, it is suggested to close the command between ``\{\}'' or ``\textbackslash mbox\{\}'' 
+
+\subsection{Use of Copy-Paste commands}
+Within the A2R\_environment.tex file is loaded a package that allows to ``copy'' and ``paste'' pieces of text from one document to another.
+\textbf{It is suggested to use ``copy'' command within the main manuscript and ``paste'' such a text in the changes block of the A2R letter.}
+In this way, it will save time and avoid possible human errors.
+A brief description of the Copy-Paste commands follows:
+\begin{itemize}
+    \item \textbackslash Copy\{\#1\}\{\#2\}: It receives two inputs (\#1 and \#2). The former input is the name of the copied text. The latter is the text we want to copy.
+    \item \textbackslash Paste\{\#1\}: It receives one input (\#1). It is the name of the text we want to paste. The name has to match the name used with the ``Copy'' command.
+\end{itemize}
+
+\section{Section 2: Example of Copy-Paste}\label{sec:Sec2}
+In the paragraph bellow is an example of the ``copy'' command. The ``paste'' command is used in A2R.tex file.
+
+\subsection{Automatic generation of A2R file}
+To ease some work, \href{https://github.com/EstebanJGC/Latex_Templates_Macros.git}{\red{here}}  you can find a python script (named \textit{generateA2R.py}) that partially generates the A2R file for $n$ reviewers, each one with a given number of concerns. 
+
+\lipsum[50].
+
+
+ 
+\section{Conclusion}\label{sec:conclusion} 
+
+
+
+\end{document}
