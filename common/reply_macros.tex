@@ -29,19 +29,19 @@
 %    {\medskip \noindent \begin{sf}\textbf{Reply}:\  }
 %    {\medskip \end{sf}}
 \newenvironment{reply}
-   {\medskip \textbf{Reply}:\  }
-   {\medskip }
+   {\color{blue} \medskip \textbf{Reply}:\  }
+   {\color{black} \medskip }
 
-\newcommand{\shortreply}[2][]{\medskip \noindent \begin{sf}\textbf{Reply}:\  #2
+\newcommand{\shortreply}[2][]{\color{blue} \medskip \noindent \begin{sf}\textbf{Reply}:\  #2
 	\ifthenelse{\equal{#1}{}}{}{ \hfill \footnotesize (#1)}%
-	\medskip \end{sf}}
+	\color{black} \medskip \end{sf}}
 
  % \newenvironment{changes}
  %   {\medskip \noindent \begin{sf}\textbf{Authors' Action}:\  }
  %   {\medskip \end{sf}}
  \newenvironment{changes}
-   {\medskip \textbf{Authors' Action}:\  }
-   {\medskip }   
+   {\color{blue} \medskip \textbf{Authors' Action}:\  }
+   {\color{black} \medskip }   
 
 
 % Commands
