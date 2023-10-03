@@ -99,8 +99,8 @@ And \secref{sec_conclusions} concludes the paper.
 
 \begin{figure}[t] % [b]-> bottom, [t]->top, [H]->Here! ([h!] should do a better job), {figure*}->float
      \centering
-     \includegraphics[width=0.9\columnwidth]{example_plot}
-     \caption{This is the caption of the vectorized figure}
+     \includegraphics[width=0.9\columnwidth, trim = 0.5cm 0.2cm 0.3cm 0.3cm, clip]{example_plot}
+     \caption{This is the caption of the vectorized figure. To crop an image, use the ``trim'' command inside ``includegraphics''. The order is [left bottom right top]}
      \label{fig_MyLabel}
   \end{figure}
 
