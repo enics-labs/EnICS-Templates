@@ -53,10 +53,12 @@
 
 \maketitle
 
-\begin{abstract}
-This is a template for IEEE conferences.
-It includes a brief description of some input files useful to write articles for conferences or journals.
-\end{abstract}
+%\begin{abstract}
+\begin{countenv}{abstract}
+        \ExecuteMetaData[common/templateText]{abstract}
+\end{countenv}
+%\end{abstract}
+
 
 \begin{IEEEkeywords}
 Keyword 1, Keyword 2, \dots, Keyword N.
@@ -66,104 +68,62 @@ Keyword 1, Keyword 2, \dots, Keyword N.
 
 \section{Introduction}
 \label{sec_introduction}
-Start with a scope down. General sentence with basic (often old) citation, such as Moore's Law~\cite{moores_law}.
-Continue your first paragraph, focusing down on a more narrow field, such as the motivation for low power digital design.
 
-With your second paragraph, you need to funnel down a bit more, starting to point the reader to the specific problem you're trying to solve.
-Don't forget to cite some of the seminal works in the field and most important references that prove your point.
 
-By the third paragraph, you have to specifically state the problem that your work will try to solve. 
-Describe the problem and why it is hard and/or important to fix it.
-
-You may want to now go into the \sota. 
-Make sure to briefly describe each of the important works in the field, usually followed by some insight as to what is not solved by this work or what it focuses on that is different than what your solution will focus on.
-Be careful not to criticize the prior-art too harshly -- one of the authors may be your reviewer!
-But make sure to state or at least hint what is different and/or worse than what you are going to present.
-
-Next paragraph should start with ``\textit{In this work,}''. 
-Now you need to describe what you are about to present/propose. 
-In a few sentence, state the most important features of your work and how it improves upon the \sota.
-Finish with some important results!
+\ExecuteMetaData[common/templateText]{intro}
 
 \paragraph*{ Contributions} 
-\blue{The specific contributions of this work can be summarized as follows:
+The specific contributions of this work can be summarized as follows:
 \begin{enumerate}
-    \item The first major contribution. Sorry that this has already been clearly written out in the Introduction, but many reviewers are too lazy to actually read it and want to see it listed here as well.
-    \item The second major contribution.
-    \item The third major contribution.
+    \ExecuteMetaData[common/templateText]{contributions}
 \end{enumerate}
-}    
+    
 
-\blue{
 The rest of this paper is structured as follows:
-\secref{sec_background} provides the background for the proposed work.
-The proposed solution is presented and described in \secref{sec_proposed_solution}.
-Results are presented in \secref{sec_results}.
+    \ExecuteMetaData[common/templateText]{sections}
 And \secref{sec_conclusions} concludes the paper.
-}
+
 
 
 \section{Background}
 \label{sec_background}
-%\lipsum[1-2]
-The second section could optionally be a background or \sota section. 
-It can go deeper into the existing solutions, citing the most important papers in the field.
-This section may also present some of the theoretical background, basic equations, basic phenomena, etc.
+
+    \ExecuteMetaData[common/templateText]{background}
 
 \section{Proposed Solution}
 \label{sec_proposed_solution}
 
-\lipsum[1-2]
+    \ExecuteMetaData[common/templateText]{proposed}
 
 \section{Results}
 \label{sec_results}
+    \ExecuteMetaData[common/templateText]{results}
 
-\subsection{Figures}
-We use the graphicx package for inserting figures. Here are some guidelines:
-\begin{itemize}
-    \item Figures should all be vectorized (e.g., pdf).
-    \item You can crop the figures with the trip commands.
-    \item If you cannot pass \texttt{pdf\_express}, use the ``\texttt{latexmkrc}'' file, which will embed all the fonts.
-    For more, refer to: \href{https://www.overleaf.com/learn/latex/Articles/How_to_use_latexmkrc_with_Overleaf}{\blue{How to use latexmkrc with Overleaf}}
-\end{itemize}
+\section{Conclusions}
+\label{sec_conclusions}
+     \ExecuteMetaData[common/templateText]{conclusions}
+
+\section{Template Usage Instructions}
+\subsection{Figures} \label{sec_figures}
+    \ExecuteMetaData[common/templateText]{figures}
+
 
 \begin{figure}[t] % [b]-> bottom, [t]->top, [H]->Here! ([h!] should do a better job), {figure*}->float
      \centering
      \includegraphics[width=0.9\columnwidth]{example_plot}
-     \caption{My caption}
-     \label{fig:MyLabel}
+     \caption{This is the caption of the vectorized figure}
+     \label{fig_MyLabel}
   \end{figure}
 
-\subsection{Making figures in MATLAB}
-\label{sec_matlab_figures}
-To make quality plots in \textbf{Matlab}, use the template below (provided in \texttt{Figures/matlab\_figure.m}):
-
-\inputminted[frame=lines, framesep=2mm, baselinestretch=1.0,
-                bgcolor=white, fontsize=\scriptsize]
-                {matlab}{Figures/matlab_figure.m}
-
-\subsection{Making figures in Python}
-\label{sec_python_figures}
-To make quality plots in \textbf{Python}, use the template below (provided in \texttt{Figures/python\_figure.py}):
-
-\inputminted[frame=lines, framesep=2mm, baselinestretch=1.0,
-                bgcolor=white, fontsize=\scriptsize]
-                {python}{Figures/python_figure.py}
-
-
-
-
-\lipsum[1-2]
-
-\section{Conclusions}
-\label{sec_conclusions}
-\lipsum[1]
 
 \section*{Acknowledgements}
-This work was kindly supported by...
+This work was kindly supported by... 
+
+
 
 %\section*{References}
 \bibliographystyle{IEEEtran}
 \bibliography{bibliography/abbreviations,bibliography/general_biblography,bibliography/teman_bibliography}
+
 
 \end{document}

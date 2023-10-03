@@ -11,6 +11,9 @@
 % For adding a reply to reviewers
 \input{common/reply_macros}
 
+
+
+
 \newclipboard{output-IEEE_Journal} % Clipboard name must start with "output-" for Overleaf
 
 
@@ -40,10 +43,11 @@
 
 \maketitle
 
-\begin{abstract}
-This is a template for IEEE conferences.
-It includes a brief description of some input files useful to write articles for conferences or journals.
-\end{abstract}
+\begin{countenv}{abstract}
+    \begin{abstract}
+        \ExecuteMetaData[common/templateText]{abstract}
+    \end{abstract}
+\end{countenv}
 
 \begin{IEEEkeywords}
 Keyword 1, Keyword 2, \dots, Keyword N.
@@ -101,7 +105,7 @@ And \secref{sec_conclusions} concludes the paper.
   \end{figure}
 
 \subsection{Reply to Reviewers}\label{sec_reply}
-    \ExecuteMetaData[common/templateText]{resply}
+    \ExecuteMetaData[common/templateText]{reply}
 
 
 \section*{Acknowledgements}

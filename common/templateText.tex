@@ -1,13 +1,21 @@
 % This file contains text to be pasted inside the templates
 
+% This tells you what to write in the Abstract
+%<*abstract>
+\color{teal}
+    This is a template for IEEE manuscripts. It includes a brief description of some input files useful to write articles for conferences or journals. In this space, you will want to write your abstract. The abstract should be an ``executive summary'' of your paper in about 5--6 sentences.  Follow the flow of your paper. First sentence or two should be introductory and motivation. Then a couple of sentences about the proposed solution. Finish with a conclusive sentence stating a few important results (NUMBERS!) from your paper. \blue{A good suggestion is to write your abstract at the end, after finishing the rest of the paper!}
+\color{black}
+%</abstract>
+
 % This tells you what to write in the Introduction
 %<*intro>
 \color{teal}
     \indent Start with a scope down. General sentence with basic (often old) citation, such as Moore's Law~\cite{moores_law}. Continue your first paragraph, focusing down on a more narrow field, such as the motivation for low power digital design. \\
     \indent With your second paragraph, you need to funnel down a bit more, starting to point the reader to the specific problem you're trying to solve. Don't forget to cite some of the seminal works in the field and most important references that prove your point. \\
-    \indent By the third paragraph, you have to specifically state the problem that your work will try to solve. Describe the problem and why it is hard and/or important to fix it. \\
+    \indent By the third paragraph, you have to specifically state the problem that your work will try to solve. Describe the problem and why it is hard and/or important to fix it. 
+    It is not a bad idea to add a general figure here -- something that could appear on the first page and provide an overview of the big picture application that you are dealing with. Not mandatory, but nice to have some visualization early on in your paper.\\
     \indent You may want to now go into the \sota. Make sure to briefly describe each of the important works in the field, usually followed by some insight as to what is not solved by this work or what it focuses on that is different than what your solution will focus on. Be careful not to criticize the prior-art too harshly -- one of the authors may be your reviewer! But make sure to state or at least hint what is different and/or worse than what you are going to present. \\
-    \indent Next paragraph should start with ``\textit{In this work,}''. Now you need to describe what you are about to present/propose. In a few sentence, state the most important features of your work and how it improves upon the \sota. Finish with some important results! \\
+    \indent Next paragraph should start with \textcolor{black}{``\textit{In this work,}''}. Now you need to describe what you are about to present/propose. In a few sentence, state the most important features of your work and how it improves upon the \sota. Finish with some important results! \\
 \color{black}
 %</intro>
 
@@ -32,6 +40,12 @@
 %<*background>
 \color{teal}
     The second section could optionally be a background or \sota section. It can go deeper into the existing solutions, citing the most important papers in the field. This section may also present some of the theoretical background, basic equations, basic phenomena, etc. \\
+    \indent When writing an equation, remember that equations are part of the sentence. What that means is that the equation is usually introduced with a colon and ends with either a period (if its the end of a sentence) or a comma, if the sentence continues (for example, to define the various variables and symbols used). As an example, Ohm's law is defined:
+    \begin{equation}
+        V=I\cdot R,
+        \label{eq_ohm}
+    \end{equation}
+    where $V$ is the voltage, $I$ is the current and $R$ is the resistance. To refer to the comment in the text, just use the equation number with the ``eqref'' macro, e.g., ``as shown in \eqref{eq_ohm}. Only add ``Eq.'' when starting a sentence with a reference to the equation.
 \color{black}
 %</background>
 
@@ -41,6 +55,7 @@
 %<*proposed>
 \color{teal}
     This could be the proposed solution section. It should introduce the concept, the design, some basic proof that it works. \\
+    Use well-drawn figures to help describe your solution. For example, use schematics to describe a circuit or a flow chart to describe a methodology/flow. Make sure that everything in your figure is defined and described in the text. Use the caption to help understand and follow the figure, but be careful replacing text in the body with text in the caption. NEVER add a figure without referencing it in the text. Illustrations should be made with an appropriate software (e.g., Visio, Inkscape, PowerPoint) and exported as a vector file (usually PDF, but svg and others are also okay). Make sure that all lines are thick enough, all text is big enough, and everything is readable and useful. Try to float your figures as close as possible to the text that first refers to the figure. Unless you have a very good reason not to, figures should be positioned at the top of the column/page. For more about figures, see \secref{sec_figures}.
 \color{black}
 %</proposed>
 
@@ -49,7 +64,8 @@
 % This tells you what to write in the Results section
 %<*results>
 \color{teal}
-    Present your results in this section. Use figures to prove your point. Refer to the \figref{sec_figures} section for how to include figures. Compare your results with other \sota work. Preferably add a comparison table with several works.
+    Present your results in this section. Use figures to prove your point. Make sure your figures are up to standard and plotted with MATLAB or Python. If you create them with Excel, you will have to work hard to make them look ``professional'' -- the default Excel stylizing is very amateur-looking!\\
+    \indent Refer to the \figref{sec_figures} section for how to include figures. Compare your results with other \sota work. Preferably add a comparison table with several works. It is suggested not to try to use LaTeX tables, but rather to create your tables in Word or PowerPoint and include them as a graphic; otherwise, you will waste precious time trying to format and update them. Remember to update reference numbers in graphic tables after making any modifications that may have changed the bibliography numbering.
 \color{black}
 %</results>
 
