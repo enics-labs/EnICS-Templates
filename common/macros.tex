@@ -34,7 +34,7 @@
 \usepackage{environ}
 \newcounter{charcount}
 \newcounter{charlim}
-\setcounter{charlim}{500}
+\setcounter{charlim}{10}
 \NewEnviron{countenv}[2][]{%
   \setcounter{charcount}{0}%
   \expandafter\countem\BODY\relax\EOE
@@ -42,9 +42,9 @@
   \ifnum\value{charcount}<\value{charlim}\relax
       \begin{#2}\BODY\end{#2}
   \else
-      \begin{#2}#1 \BODY \\ 
+      \begin{#2}#1 \BODY  
          \color{red}\thecharcount{} letters in the #2 exceeds
-         \thecharlim{} character limit. \\
+         \thecharlim{} character limit. 
          Use the ``charlim'' parameter to change the character limit. \color{black}
        \end{#2} 
   \fi
