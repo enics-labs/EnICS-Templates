@@ -1,0 +1,22 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%55
+% Use this template to extract pages from a certain PDF
+% For example, if you need to extract the bibliography separate from the entire
+% proposal, you can use this to save just the proposal.
+% 
+% Change the name of the file to create the name of the output file
+
+\documentclass[a4paper,11pt]{article}
+\usepackage{pdfpages}
+
+% State the name of your full PDF file here
+%    Note that this is not saved by overleaf. 
+%    You will need to upload it to the relevant path
+\def \thecompiledpdf {myfile.pdf}
+
+% Define which pages you want to extract from the full PDF
+\def \whichpages {1-15}
+
+
+\begin{document}
+    \includepdf[pages={\whichpages}]{\thecompiledpdf }
+\end{document}

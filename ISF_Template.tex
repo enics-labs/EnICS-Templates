@@ -1,0 +1,167 @@
+%File format - Doc or PDF only
+%
+%Sections (all in one file):
+%Research program - up to 10 A4 pages
+%Figures - up to 5 A4 pages
+%Bibliography - up to 5 A4 pages
+%In the bibliography included in the research plan file, do not mark * for the articles that are more relevant to the application. A separate bibliography file including * should be uploaded in the attached file section (please see our guidelines for submission)
+%
+%All parts should be typed in standard font size (Times new Roman or Arial size 11),
+%with a line spacing 1.5.
+\documentclass[a4paper,11pt]{article}
+
+\usepackage[lmargin=2.0cm, rmargin=2.0cm,tmargin=2.0cm,bmargin=2.0cm]{geometry}
+%\geometry{a4paper, margin=1in}
+
+
+\usepackage{common/basic_packages} % Required for inserting images
+\input{common/macros}
+\input{common/units}
+\input{common/general_glossary}
+\input{EnICS/enics_glossary}
+\input{EnICS/vlsi_glossary}
+% For adding a reply to reviewers
+\input{common/reply_macros}
+
+
+%Please insert in the header of the file
+%the application no. & the first PI's name, aligned to the right.
+\usepackage{fancyhdr}
+%\usepackage[dvipsnames]{xcolor}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Application No. XXX/XX \\
+PI Name: XXX XXXX}
+\pagenumbering{gobble} % Remove page numbering
+%\lhead{}
+%\rfoot{}
+%Please insert in the first row of the file, aligned to the left, the title:
+%
+%Detailed description of the research program
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   Some Space Saving Stuff              %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Remove/change the spaces in the itemize
+\usepackage{enumitem}
+%\setlist{nolistsep}
+\setlist[1]{itemsep=-3pt,topsep=3pt}
+
+% Change spacing around equations
+%\setlength{\abovedisplayskip}{-10pt}
+%\setlength{\belowdisplayskip}{-10pt}
+
+% Make bold text narrower (by default, it's very wide)
+%\renewcommand\bfdefault{b}% rather than bx
+\usepackage[font=normal]{caption}
+
+\def \thetitle {EnICS ISF Proposal Template}
+
+\title{\thetitle}
+\author{}
+\date{}
+
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Scientific Abstract
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\onehalfspacing
+
+\noindent\textsf{\underline{Scientific Abstract}:}
+
+\section*{\centering Write the title here }
+
+The scientific abstract of the proposal
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Proposal
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\onehalfspacing
+
+\Large\textsf{\\\underline{Detailed description of the research program}\\}
+\normalsize
+
+\section*{\vspace{-5px}\centering\LARGE   Write the title here}
+%\vspace{5mm}
+
+%Research program - up to 10 A4 pages
+\section{Scientific Background}
+\label{sec:scientific_background}
+
+% -----------------------------------------------------------------------------
+\subsection{Background and Introduction}\label{sec:stateofart:intro}
+% -----------------------------------------------------------------------------
+\blue{2.5 pages}
+
+Some intro stuff
+\\
+
+
+Throughout my research career, I have focused on 
+\\
+
+\noindent\textit{\textbf{Summary}}: 
+In this four year research, I propose to
+
+\section{Research objectives and expected significance}
+\label{sec:objectives}
+\blue{1 page}
+
+The main objective of this research is to
+\\
+
+\noindent Specifically, the proposed research has the following detailed objectives:
+\begin{itemize}
+    \item To develop 
+\end{itemize}
+
+\section{Detailed description of the proposed research}
+\blue{4.5 pages}
+
+\subsection{Working hypothesis}
+\label{sec:hypothesis}
+
+\subsubsection{Something }
+
+To summarize, 
+
+\subsection{Research design and methods}
+\label{sec:methods}
+\blue{1 page}
+
+The proposed research objectives will be achieved by
+
+In particular, this research will be carried out according to the following phases:
+\begin{itemize}
+    \item \underline{Phase 1}: The initial stage of this research
+    \item \underline{Phase 2}: The second stage of this research
+\end{itemize}
+
+\subsection{Preliminary Results}
+\label{sec:preliminary_results}
+\blue{half a page}
+
+The proposed research is based on the research I have carried out in recent years focusing on 
+
+
+\subsection{Equipment and Laboratory Setup for Proposed Research}
+\label{sec:equipment}
+\blue{ half a page}
+
+
+\newpage
+
+%\section*{Bibliography}
+\singlespacing
+
+%\printbibliography[heading=none]
+\bibliographystyle{ieeetr}
+\bibliography{include/abbreviations_long,include/emphasize,include/myarticles,include/myproceedings,include/mypatents,include/bibliography}
+
+
+\end{document}

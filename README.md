@@ -32,3 +32,12 @@ Also note that you will not be able to pull recent changes from the repo, since 
 Therefore, if you are starting a new project and want the latest version of the templates, delete the "EnICS Template" project from your Overleaf dashboard and import it again before making a copy.
 
 Please email adam.teman@biu.ac.il with any comments or suggestions and/or if you want to become a collaborator!
+
+
+# What Types of Templates are Included?
+1) *IEEE_Journal.tex*:  A template for creating Journal papers according to the IEEE Transactions guidelines.
+2) *IEEE_Conference.tex: A template for creating conference papers according to many IEEE Conferences.
+3) *Research_Proposal.tex*: A template for writing MSc or PhD Research Proposals at BIU.
+4) *ISF_Template.tex*: A basic template for starting to write an ISF Regular Program proposal.
+5) *ExtractPagesFromPDF*: A template to cut certain pages out of a longer PDF. For example, if you need to extract only the bibliography from a full proposal or only the reply to reviewers letter from a revised manuscript.
+6) *latexmkrc*: A script for ensuring that your PDF passes IEEE Camera Ready compliance.
