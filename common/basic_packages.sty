@@ -1,5 +1,19 @@
 \ProvidesPackage{common/basic_packages}
 
+\usepackage{etoolbox}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%    Variables per conference/journal
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ACM MICRO
+\newif\ifmicro
+\microtrue
+%\microfalse
+
+
+
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %    General 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -8,7 +22,13 @@
 \xspaceaddexceptions{$\times$}
 \usepackage{glossaries}
 \usepackage{color}
-\usepackage[hidelinks]{hyperref}
+\ifmicro
+    \usepackage[hyphens]{url}
+    % Always include hyperref last
+    \usepackage[bookmarks=true,breaklinks=true,letterpaper=true,colorlinks,citecolor=blue,linkcolor=blue,urlcolor=blue]{hyperref}
+\else
+    \usepackage[hidelinks]{hyperref}
+\fi
 
 % Enable Copy-Pasting for Reply to reviewers
 \usepackage{clipboard}
@@ -20,7 +40,7 @@
 \usepackage{lipsum}
 
 % Change Margins and stuff
-\usepackage{geometry}
+%\usepackage{geometry}
 %\usepackage{sectsty}
 \usepackage{titlesec}
 
@@ -59,9 +79,12 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  Bibliography
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\usepackage{cite}
+\ifmicro
+    \usepackage[sort,nocompress]{cite}
+\else
+    \usepackage{cite}
+\fi 
 
-%\usepackage{etoolbox}
 %\patchcmd{\thebibliography}{\section*{\refname}}{}{}{}
 \let\OLDthebibliography\thebibliography
 \renewcommand\thebibliography[1]{
@@ -110,3 +133,19 @@
 
 \usepackage{listings}
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Specific for Micro
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifmicro
+    \usepackage{mathptmx} % This is Times font
+    \usepackage{fancyhdr}
+    \usepackage[normalem]{ulem}
+    \usepackage[final]{microtype}
+    \usepackage[keeplastbox]{common/flushend}
+    
+    % Ensure letter paper
+    \pdfpagewidth=8.5in
+    \pdfpageheight=11in
+    \pagenumbering{arabic}
+\fi
