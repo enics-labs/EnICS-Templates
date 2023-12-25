@@ -10,7 +10,10 @@
     %\microtrue
     \microfalse
 
-
+% For Research Proposal, uncomment proposaltrue
+\newif\ifproposal
+    \proposaltrue
+    %\proposalfalse
 
 
 
@@ -41,13 +44,28 @@
 \usepackage{lipsum}
 
 % Change Margins and stuff
-%\usepackage{geometry}
+
+
+ 
 %\usepackage{sectsty}
 \usepackage{titlesec}
 
 % Provide things like 1.5 line spacing
 \usepackage{setspace}
 
+\ifproposal
+    \usepackage{geometry}
+    \geometry{
+         a4paper,
+         total={170mm,257mm},
+         left=25mm,
+         right=25mm,
+         top=25mm,
+     }
+    % Set 1.5 line spacing
+    \onehalfspacing
+
+\fi
 
 % Insert external pdf pages
 \usepackage[final]{pdfpages}
