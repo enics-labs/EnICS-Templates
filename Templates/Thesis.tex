@@ -1,4 +1,6 @@
-\documentclass[a4paper,12pt]{book}
+\documentclass[a4paper,12pt,oneside]{book}
+
+% See BIU Requrments at https://graduate-school.biu.ac.il/node/1793
 
 \input{common/configuration}
     % For Thesis specific configurations
@@ -12,32 +14,29 @@
 \input{EnICS/vlsi_glossary}
 
 
-\onehalfspacing
-
 \title{Optionally enter a title. Not actually used in the template.}
 \author{Your name (also optional)}
 \date{Date (also optional)}
 
 \begin{document}
-\includepdf[fitpaper,pages=-,pagecommand={\thispagestyle{plain}}]{EnICS/hebrew_front_page}
-\clearpage
+\pagestyle{fancy}
 
-% \begin{titlepage}
-% \maketitle
-% \end{titlepage}
+\includepdf[fitpaper,pages=-,pagecommand={\thispagestyle{plain}}]{EnICS/front_page_english_phd_thesis}
 
-\includepdf[fitpaper,pages=-,pagecommand={\thispagestyle{plain}}]{EnICS/hebrew_abstract}
-\clearpage
+\chapter*{Acknowledgments}
+    \ExecuteMetaData[Templates/templateText]{acknowledgments}
 
 \chapter*{Abstract}
-    \ExecuteMetaData[common/templateText]{abstractRP}
+    \ExecuteMetaData[Templates/templateText]{abstractThesis}
 %\end{abstract}
+
+
+\tableofcontents
 
 
 \listoffigures
 
 
-\tableofcontents
 
 
 %\chapter{Introduction}\label{chap_intro}
@@ -53,21 +52,32 @@ This is the introduction chapter.
 This is the background chapter.
 
 
-\chapter{Research Objective and Methodology}
-\section{Objectives}
-    \label{sec_objectives}
-    \ExecuteMetaData[common/templateText]{objectives}
-
-\section{Methodology}
-    \label{sec_methodology}
-    \ExecuteMetaData[common/templateText]{methodology}
+\chapter{Thesis Content}
+From this chapter and on, you should present the content of your thesis. 
+Note that it is often nice to include each chapter as a separate .tex file, using the \textbackslash include\{filename\} option.
+You can reduce the compile time of your paper by adding \textbackslash includeonly\{filename\} in the options. 
+This will only output the content of the selected file, but will retain the full file's numbering and everything.
 
 
 
 
-\chapter{Preliminary Results}
+\chapter{Summary and Conclusions}
+\label{sec_conclusions}
+
+Here you should conclude your work and don't forget to again emphasize your achievements (e.g., publications). 
 
 \bibliographystyle{IEEEtran}
 \bibliography{bibliography/abbreviations,bibliography/general_biblography}
+
+%------HEBREW ABSTRACT---------%
+
+\includepdf[fitpaper,pages=-,pagecommand={\thispagestyle{plain}}]{EnICS/abstract_hebrew}
+\clearpage
+
+
+\includepdf[fitpaper,pages=-,pagecommand={\thispagestyle{plain}}]{EnICS/front_page_hebrew_phd}
+\clearpage
+
+
 
 \end{document}

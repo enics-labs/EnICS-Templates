@@ -12,27 +12,24 @@
 \input{EnICS/vlsi_glossary}
 
 
-\onehalfspacing
-
 \title{Optionally enter a title. Not actually used in the template.}
 \author{Your name (also optional)}
 \date{Date (also optional)}
 
 \begin{document}
-\includepdf[fitpaper,pages=-,pagecommand={\thispagestyle{plain}}]{EnICS/hebrew_front_page}
+% \includepdf[fitpaper,pages=-,pagecommand={\thispagestyle{plain}}]{EnICS/front_page_hebrew_msc_proposal}
+\includepdf[fitpaper,pages=-,pagecommand={\thispagestyle{plain}}]{EnICS/front_page_hebrew_phd_proposal}
 \clearpage
 
 % \begin{titlepage}
 % \maketitle
 % \end{titlepage}
 
-\includepdf[fitpaper,pages=-,pagecommand={\thispagestyle{plain}}]{EnICS/hebrew_abstract}
+\section*{Abstract}
+    \ExecuteMetaData[Templates/templateText]{abstractRP}
 \clearpage
 
-\section*{Abstract}
-    \ExecuteMetaData[common/templateText]{abstractRP}
-%\end{abstract}
-
+\includepdf[fitpaper,pages=-,pagecommand={\thispagestyle{plain}}]{EnICS/abstract_hebrew}
 \clearpage
 
 \listoffigures
@@ -61,11 +58,11 @@ This is the background chapter.
 \section{Research Objective and Methodology}
 \subsection{Objectives}
     \label{sec_objectives}
-    \ExecuteMetaData[common/templateText]{objectives}
+    \ExecuteMetaData[Templates/templateText]{objectives}
 
 \subsection{Methodology}
     \label{sec_methodology}
-    \ExecuteMetaData[common/templateText]{methodology}
+    \ExecuteMetaData[Templates/templateText]{methodology}
 
 \clearpage
 
