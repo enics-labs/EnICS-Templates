@@ -1,0 +1,73 @@
+\documentclass[a4paper,12pt]{book}
+
+\input{common/configuration}
+    % For Thesis specific configurations
+    \thesistrue
+
+\usepackage{common/basic_packages} % Required for inserting images
+\input{common/macros}
+\input{common/units}
+\input{common/general_glossary}
+\input{EnICS/enics_glossary}
+\input{EnICS/vlsi_glossary}
+
+
+\onehalfspacing
+
+\title{Optionally enter a title. Not actually used in the template.}
+\author{Your name (also optional)}
+\date{Date (also optional)}
+
+\begin{document}
+\includepdf[fitpaper,pages=-,pagecommand={\thispagestyle{plain}}]{EnICS/hebrew_front_page}
+\clearpage
+
+% \begin{titlepage}
+% \maketitle
+% \end{titlepage}
+
+\includepdf[fitpaper,pages=-,pagecommand={\thispagestyle{plain}}]{EnICS/hebrew_abstract}
+\clearpage
+
+\chapter*{Abstract}
+    \ExecuteMetaData[common/templateText]{abstractRP}
+%\end{abstract}
+
+
+\listoffigures
+
+
+\tableofcontents
+
+
+%\chapter{Introduction}\label{chap_intro}
+\chapter{Introduction}
+\label{sec_intro}
+
+This is the introduction chapter.
+
+
+\chapter{Background}
+\label{sec_background}
+
+This is the background chapter.
+
+
+\chapter{Research Objective and Methodology}
+\section{Objectives}
+    \label{sec_objectives}
+    \ExecuteMetaData[common/templateText]{objectives}
+
+\section{Methodology}
+    \label{sec_methodology}
+    \ExecuteMetaData[common/templateText]{methodology}
+
+
+
+
+\chapter{Preliminary Results}
+
+\bibliographystyle{IEEEtran}
+\bibliography{bibliography/abbreviations,bibliography/general_biblography}
+
+\end{document}

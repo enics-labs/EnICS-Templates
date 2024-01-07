@@ -1,7 +1,8 @@
-\documentclass[journal]{IEEEtran}
-\IEEEoverridecommandlockouts
-% The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
+\documentclass[conference]{IEEEtran}
 
+\input{common/configuration}
+    % For IEEE Conference specific configurations
+    \ieeeconferencetrue
 
 \usepackage{common/basic_packages} % Required for inserting images
 \input{common/macros}
@@ -9,46 +10,59 @@
 \input{common/general_glossary}
 \input{EnICS/enics_glossary}
 \input{EnICS/vlsi_glossary}
-% For adding a reply to reviewers
-\input{common/reply_macros}
 
 
 
 
-\newclipboard{output-IEEE_Journal} % Clipboard name must start with "output-" for Overleaf
+% Identify funding in the first footnote. If that is unneeded, please comment it out.
+\IEEEoverridecommandlockouts
+
+\title{EnICS IEEE Conference Template}
 
 
-\title{\Copy{PaperTitle}{EnICS IEEE Journal Template}}
-
-
-% Authors names in a single row 
+% Option 1: up to three authors --> Authors names in separate columns
 % ------------------------------------------------------------------- %
 \author{
     \IEEEauthorblockN{
-        Author~1\orcidicon{0000-0000-0000-0000}, \Mieee
-        Author~2,
-        Author~3,
-        and Author~4
+        Author~1\orcidicon{0000-0000-0000-0000}, \StMieee \\
+        \IEEEauthorblockA{EnICS Labs, Faculty of Engineering, \\ Bar Ilan University, \\ Ramat Gan 5290002, Israel \\
+        Email: author1@biu.ac.il}
     }
-    \thanks{Manuscript received XXX; revised XXX. 
-    This work was supported by XXX Grant number YYYY.}
-    \thanks{All authors are with the \enicsAffiliation (e-mail: \{author1, author2, author3\}@biu.ac.il.}
-
+    \and
+    \IEEEauthorblockN{
+        Author~2\orcidicon{0000-0000-0000-0000}, \Mieee \\
+        \IEEEauthorblockA{EnICS Labs, Faculty of Engineering, \\ Bar Ilan University, \\ Ramat Gan 5290002, Israel \\
+        Email: author2@biu.ac.il}
+    }
+    
 }
+
+% Option 2: more than three authors --> Authors names in a single row 
+% ------------------------------------------------------------------- %
+% \author{
+%     \IEEEauthorblockN{
+%         Author~1\IEEEauthorrefmark{1}\orcidicon{0000-0000-0000-0000}, \Mieee
+%         Author~2 \IEEEauthorrefmark{2},
+%         Author~3 \IEEEauthorrefmark{3},
+%         and Author~4 \IEEEauthorrefmark{3}
+%     }
+%     \IEEEauthorblockA{\IEEEauthorrefmark{1}\enicsAffiliation}
+%     \IEEEauthorblockA{\IEEEauthorrefmark{2}Affiliation 2}
+%     \IEEEauthorblockA{\IEEEauthorrefmark{3}Affiliation 3}
+%     Email: author1@biu.ac.il
+% }
 
 
 \begin{document}
 
-
-
-
 \maketitle
 
+%\begin{abstract}
 \begin{countenv}{abstract}
-    \begin{abstract}
         \ExecuteMetaData[common/templateText]{abstract}
-    \end{abstract}
 \end{countenv}
+%\end{abstract}
+
 
 \begin{IEEEkeywords}
 Keyword 1, Keyword 2, \dots, Keyword N.
@@ -62,7 +76,7 @@ Keyword 1, Keyword 2, \dots, Keyword N.
 
 \ExecuteMetaData[common/templateText]{intro}
 
-\paragraph*{Contributions} 
+\paragraph*{ Contributions} 
 The specific contributions of this work can be summarized as follows:
 \begin{enumerate}
     \ExecuteMetaData[common/templateText]{contributions}
@@ -105,33 +119,15 @@ And \secref{sec_conclusions} concludes the paper.
      \label{fig_MyLabel}
   \end{figure}
 
-\subsection{Reply to Reviewers}\label{sec_reply}
-    \ExecuteMetaData[common/templateText]{reply}
-
 
 \section*{Acknowledgements}
 This work was kindly supported by... 
 
 
 
-
-
-
 %\section*{References}
 \bibliographystyle{IEEEtran}
 \bibliography{bibliography/abbreviations,bibliography/general_biblography,bibliography/teman_bibliography}
-
-% For final submission, add Bios here according to the template
-    % Author 1: Adam Teman
-    \ExecuteMetaData[Bios/BiosText]{AdamTeman}
-
-\vfill
-
-
-
-\newpage
-\vfill
-\subfile{Reply_To_Reviewers} % Go to A2R to see text
 
 
 \end{document}

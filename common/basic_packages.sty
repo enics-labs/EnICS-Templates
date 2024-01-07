@@ -1,31 +1,17 @@
 \ProvidesPackage{common/basic_packages}
 
-\usepackage{etoolbox}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%    Variables per conference/journal
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% For ACM MICRO submission, uncomment microtrue
-\newif\ifmicro
-    %\microtrue
-    \microfalse
-
-% For Research Proposal, uncomment proposaltrue
-\newif\ifproposal
-    \proposaltrue
-    %\proposalfalse
-
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %    General 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{etoolbox}
 \usepackage{xspace}
 \xspaceaddexceptions{-}
 \xspaceaddexceptions{$\times$}
 \usepackage{glossaries}
 \usepackage{comment}
 \usepackage{color}
+
 \ifmicro
     \usepackage[hyphens]{url}
     % Always include hyperref last
