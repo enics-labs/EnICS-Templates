@@ -29,23 +29,36 @@
 % Enable loren ipsum text
 \usepackage{lipsum}
 
-% Change Margins and stuff
-
-
- 
-%\usepackage{sectsty}
-\usepackage{titlesec}
-
-% Provide things like 1.5 line spacing
-\usepackage{setspace}
-
-
 
 % Insert external pdf pages
 \usepackage[final]{pdfpages}
 
 % To enable Hebrew
 %\usepackage[utf8]{inputenc}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Spacing and Margins
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Provide things like 1.5 line spacing
+\usepackage{setspace}
+
+\usepackage{titlesec}
+%%%%% USAGE:  
+%%%%%   \titlespacing{command}{left spacing}{before spacing}{after spacing}[right]
+%%%%%      the spacing is written {Xpt plus Ypt minus Zpt} 
+%%%%%      where X is the spacing we want, 
+%%%%%      Y is how much extra we’ll let LaTeX add and Z is how much less we’ll let it go.
+% \titlespacing\section{0pt}{3pt plus 3pt minus 1pt}{3pt plus 3pt minus 1pt}
+% \titlespacing\subsection{0pt}{3pt plus 3pt minus 1pt}{3pt plus 3pt minus 1pt}
+% \titlespacing\subsubsection{0pt}{3pt plus 3pt minus 1pt}{3pt plus 3pt minus 1pt}
+
+%\usepackage{sectsty}
+
+
+
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  Figures
