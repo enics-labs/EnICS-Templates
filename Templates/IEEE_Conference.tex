@@ -1,25 +1,31 @@
 \documentclass[conference]{IEEEtran}
 
-\input{common/configuration}
+\input{packages/configuration}
     % For IEEE Conference specific configurations
     \ieeeconferencetrue
 
-\usepackage{common/basic_packages} % Required for inserting images
-\input{common/macros}
-\input{common/units}
-\input{common/general_glossary}
-\input{EnICS/enics_glossary}
-\input{EnICS/vlsi_glossary}
-
-
-
+\usepackage{packages/basic_packages} 
+\input{packages/macros}
+\input{newcommands/units}
+\input{newcommands/general_glossary}
+\input{newcommands/enics_glossary}
+\input{newcommands/vlsi_glossary}
+% This is where you should define paper-specific newcommands
+\input{newcommands/this_glossary}
 
 % Identify funding in the first footnote. If that is unneeded, please comment it out.
 \IEEEoverridecommandlockouts
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                TITLE                %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \title{EnICS IEEE Conference Template}
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%              AUTHORS                %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Option 1: up to three authors --> Authors names in separate columns
 % ------------------------------------------------------------------- %
 \author{
@@ -53,28 +59,42 @@
 % }
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%           DOCUMENT BEGINS           %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
-
 \maketitle
 
+
+%----------ABSTRACT-------------------%
+%-------------------------------------%
 %\begin{abstract}
 \begin{countenv}{abstract}
         \ExecuteMetaData[Templates/templateText]{abstract}
 \end{countenv}
 %\end{abstract}
 
-
 \begin{IEEEkeywords}
 Keyword 1, Keyword 2, \dots, Keyword N.
 \end{IEEEkeywords}
 
 
-
+%----------INTRODUCTION---------------%
+%-------------------------------------%
 \section{Introduction}
 \label{sec_introduction}
-
-
-\ExecuteMetaData[Templates/templateText]{intro}
+\red{\noindent\textbf{\textsc{Important Notes Before We Start}}:
+    \begin{itemize}
+        \item The \textbf{EnICS Templates} project is general covering many different types of templates. 
+              You only need this one, so \textbf{copy} this file into the root directory and erase the \texttt{main.tex} file and all the template files you do not need (actually, the entire \texttt{Templates} folder).
+        \item If it wasn't clear, \textbf{erase} the \texttt{\textbackslash ExecuteMetaData} commands. 
+              These are just to put some explanations for you (defined in the \texttt{templateText.tex} file) 
+              and you should fill in your own text instead.
+        \item Put your paper-specific acronyms and newcommands inside the \texttt{this\_glossary.tex} file.
+        \item Put your paper-specific references inside the \texttt{this\_bibliography.bib} file.
+    \end{itemize}
+}
+    \ExecuteMetaData[Templates/templateText]{intro}
 
 \paragraph*{ Contributions} 
 The specific contributions of this work can be summarized as follows:
@@ -82,13 +102,13 @@ The specific contributions of this work can be summarized as follows:
     \ExecuteMetaData[Templates/templateText]{contributions}
 \end{enumerate}
     
-
 The rest of this paper is structured as follows:
     \ExecuteMetaData[Templates/templateText]{sections}
 And \secref{sec_conclusions} concludes the paper.
 
 
-
+%----------BACKGROUND-----------------%
+%-------------------------------------%
 \section{Background}
 \label{sec_background}
 
@@ -103,10 +123,16 @@ And \secref{sec_conclusions} concludes the paper.
 \label{sec_results}
     \ExecuteMetaData[Templates/templateText]{results}
 
+%----------CONCLUSIONS----------------%
+%-------------------------------------%
 \section{Conclusions}
 \label{sec_conclusions}
      \ExecuteMetaData[Templates/templateText]{conclusions}
 
+
+
+%---OTHER INSTRUCTIONS TO ERASE-------%
+%-------------------------------------%
 \section{Template Usage Instructions}
 \subsection{Figures} \label{sec_figures}
     \ExecuteMetaData[Templates/templateText]{figures}
@@ -119,15 +145,16 @@ And \secref{sec_conclusions} concludes the paper.
      \label{fig_MyLabel}
   \end{figure}
 
-
+%------ACKNOWLEDGEMENTS---------------%
+%-------------------------------------%
 \section*{Acknowledgements}
-This work was kindly supported by... 
+\blue{This work was kindly supported by...}
 
 
 
-%\section*{References}
-\bibliographystyle{IEEEtran}
-\bibliography{bibliography/abbreviations,bibliography/general_biblography,bibliography/teman_bibliography}
-
+%----------BIBLIOGRAPHY---------------%
+%-------------------------------------%
+\input{bibliography/bibliography}
+\red{Note that you should add your paper-specific citations into the \texttt{this\_bibliography.bib} file.}
 
 \end{document}

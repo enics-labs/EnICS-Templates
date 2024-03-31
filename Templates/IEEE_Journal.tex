@@ -1,31 +1,40 @@
 \documentclass[journal]{IEEEtran}
 
-\input{common/configuration}
+\input{packages/configuration}
     % For IEEE Journal specific configurations
     \ieeejournaltrue
+    % If providing author biographies - 
+    \biographiestrue
     % If adding a reply to reviewers - 
     \replytoreviewerstrue
 
 
 
-\usepackage{common/basic_packages} % Required for inserting images
-\input{common/macros}
-\input{common/units}
-\input{common/general_glossary}
-\input{EnICS/enics_glossary}
-\input{EnICS/vlsi_glossary}
+\usepackage{packages/basic_packages} % Required for inserting images
+\input{packages/macros}
+\input{newcommands/units}
+\input{newcommands/general_glossary}
+\input{newcommands/enics_glossary}
+\input{newcommands/vlsi_glossary}
+% This is where you should define paper-specific newcommands
+\input{newcommands/this_glossary}
+
 % For adding a reply to reviewers
-\input{common/reply_macros}
-
-
-
-
+\input{packages/reply_macros}
+% Reply to reviewers uses the "clipboard" package to copy/paste between the manuscript and reply letter.
 \newclipboard{output-IEEE_Journal} % Clipboard name must start with "output-" for Overleaf
 
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                TITLE                %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \title{\Copy{PaperTitle}{EnICS IEEE Journal Template}}
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%              AUTHORS                %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Authors names in a single row 
 % ------------------------------------------------------------------- %
 \author{
@@ -40,34 +49,48 @@
     \thanks{All authors are with the \enicsAffiliation (e-mail: \{author1, author2, author3\}@biu.ac.il.}
 
 }
-
 % To identify funding in the first footnote. If that is unneeded, please comment it out.
 \IEEEoverridecommandlockouts
 
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%           DOCUMENT BEGINS           %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
-
-
-
-
 \maketitle
 
+%----------ABSTRACT-------------------%
+%-------------------------------------%
+%\begin{abstract}
 \begin{countenv}{abstract}
-    \begin{abstract}
         \ExecuteMetaData[Templates/templateText]{abstract}
-    \end{abstract}
+        \cite{amit2017idsramTVLSI}
 \end{countenv}
+%\end{abstract}
 
 \begin{IEEEkeywords}
 Keyword 1, Keyword 2, \dots, Keyword N.
 \end{IEEEkeywords}
 
 
-
+%----------INTRODUCTION---------------%
+%-------------------------------------%
 \section{Introduction}
 \label{sec_introduction}
-
-
-\ExecuteMetaData[Templates/templateText]{intro}
+\red{\noindent\textbf{\textsc{Important Notes Before We Start}}:
+    \begin{itemize}
+        \item The \textbf{EnICS Templates} project is general covering many different types of templates. 
+              You only need this one, so \textbf{copy} this file into the root directory and erase the \texttt{main.tex} file and all the template files you do not need (actually, the entire \texttt{Templates} folder).
+        \item If it wasn't clear, \textbf{erase} the \texttt{\textbackslash ExecuteMetaData} commands. 
+              These are just to put some explanations for you (defined in the \texttt{templateText.tex} file) 
+              and you should fill in your own text instead.
+        \item Put your paper-specific acronyms and newcommands inside the \texttt{this\_glossary.tex} file.
+        \item Put your paper-specific references inside the \texttt{this\_bibliography.bib} file.
+    \end{itemize}
+}
+    \ExecuteMetaData[Templates/templateText]{intro}
 
 \paragraph*{Contributions} 
 The specific contributions of this work can be summarized as follows:
@@ -75,13 +98,13 @@ The specific contributions of this work can be summarized as follows:
     \ExecuteMetaData[Templates/templateText]{contributions}
 \end{enumerate}
     
-
 The rest of this paper is structured as follows:
     \ExecuteMetaData[Templates/templateText]{sections}
 And \secref{sec_conclusions} concludes the paper.
 
 
-
+%----------BACKGROUND-----------------%
+%-------------------------------------%
 \section{Background}
 \label{sec_background}
 
@@ -96,10 +119,14 @@ And \secref{sec_conclusions} concludes the paper.
 \label{sec_results}
     \ExecuteMetaData[Templates/templateText]{results}
 
+%----------CONCLUSIONS----------------%
+%-------------------------------------%
 \section{Conclusions}
 \label{sec_conclusions}
      \ExecuteMetaData[Templates/templateText]{conclusions}
 
+%---OTHER INSTRUCTIONS TO ERASE-------%
+%-------------------------------------%
 \section{Template Usage Instructions}
 \subsection{Figures} \label{sec_figures}
     \ExecuteMetaData[Templates/templateText]{figures}
@@ -115,30 +142,36 @@ And \secref{sec_conclusions} concludes the paper.
 \subsection{Reply to Reviewers}\label{sec_reply}
     \ExecuteMetaData[Templates/templateText]{reply}
 
-
+%------ACKNOWLEDGEMENTS---------------%
+%-------------------------------------%
 \section*{Acknowledgements}
-This work was kindly supported by... 
+\blue{This work was kindly supported by...} \red{Note that this is not necessarily needed, as it can be included in the \texttt{\textbackslash Thanks} sections.}
 
 
 
 
+%----------BIBLIOGRAPHY---------------%
+%-------------------------------------%
+\input{bibliography/bibliography}
 
 
-%\section*{References}
-\bibliographystyle{IEEEtran}
-\bibliography{bibliography/abbreviations,bibliography/general_biblography,bibliography/teman_bibliography}
-
+%------------BIOGRAPHIES--------------%
+%-------------------------------------%
+\ifbiographies
 % For final submission, add Bios here according to the template
     % Author 1: Adam Teman
     \ExecuteMetaData[Bios/BiosText]{AdamTeman}
+    \vfill
+\fi
 
-\vfill
 
 
-
-\newpage
-\vfill
-\subfile{Templates/Reply_To_Reviewers} % Go to A2R to see text
-
+%---------REPLY TO REVIEWERS----------%
+%-------------------------------------%
+\ifreplytoreviewers
+    \newpage
+    \vfill
+    \subfile{Templates/Reply_To_Reviewers} % Go to A2R to see text
+\fi
 
 \end{document}

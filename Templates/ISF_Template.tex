@@ -10,68 +10,34 @@
 %with a line spacing 1.5.
 \documentclass[a4paper,11pt]{article}
 
-\input{common/configuration}
+\input{packages/configuration}
     % For ISF specific configurations
     \isftrue
 
-\usepackage[lmargin=2.0cm, rmargin=2.0cm,tmargin=2.0cm,bmargin=2.0cm]{geometry}
-%\geometry{a4paper, margin=1in}
+\usepackage{packages/basic_packages} % Required for inserting images
+\input{packages/macros}
+\input{newcommands/units}
+\input{newcommands/general_glossary}
+\input{newcommands/enics_glossary}
+\input{newcommands/vlsi_glossary}
+\input{newcommands/this_glossary}
 
 
-\usepackage{common/basic_packages} % Required for inserting images
-\input{common/macros}
-\input{common/units}
-\input{common/general_glossary}
-\input{EnICS/enics_glossary}
-\input{EnICS/vlsi_glossary}
-% For adding a reply to reviewers
-\input{common/reply_macros}
-
-
-%Please insert in the header of the file
-%the application no. & the first PI's name, aligned to the right.
-\usepackage{fancyhdr}
-%\usepackage[dvipsnames]{xcolor}
-\pagestyle{fancy}
-\fancyhf{}
+% Insert in the header of the file the application no. & the first PI's name, aligned to the right.
 \rhead{Application No. XXX/XX \\
-PI Name: XXX XXXX}
-\pagenumbering{gobble} % Remove page numbering
-%\lhead{}
-%\rfoot{}
-%Please insert in the first row of the file, aligned to the left, the title:
-%
-%Detailed description of the research program
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%   Some Space Saving Stuff              %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Remove/change the spaces in the itemize
-\usepackage{enumitem}
-%\setlist{nolistsep}
-\setlist[1]{itemsep=-3pt,topsep=3pt}
-
-% Change spacing around equations
-%\setlength{\abovedisplayskip}{-10pt}
-%\setlength{\belowdisplayskip}{-10pt}
-
-% Make bold text narrower (by default, it's very wide)
-%\renewcommand\bfdefault{b}% rather than bx
-\usepackage[font=normal]{caption}
-
+            PI Name: XXX XXXX}
 \def \thetitle {EnICS ISF Proposal Template}
 
 \title{\thetitle}
 \author{}
 \date{}
 
-
 \begin{document}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  Scientific Abstract
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\onehalfspacing
+
 
 \noindent\textsf{\underline{Scientific Abstract}:}
 
@@ -85,7 +51,6 @@ The scientific abstract of the proposal
 %  Proposal
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\onehalfspacing
 
 \Large\textsf{\\\underline{Detailed description of the research program}\\}
 \normalsize
@@ -158,14 +123,11 @@ The proposed research is based on the research I have carried out in recent year
 \blue{ half a page}
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Bibliography
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newpage
-
-%\section*{Bibliography}
 \singlespacing
-
-%\printbibliography[heading=none]
-\bibliographystyle{ieeetr}
-\bibliography{include/abbreviations_long,include/emphasize,include/myarticles,include/myproceedings,include/mypatents,include/bibliography}
-
+\input{bibliography/bibliography}
 
 \end{document}

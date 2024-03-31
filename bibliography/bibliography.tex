@@ -1,0 +1,26 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%    This file configures your bibliography
+%        Just a bit cleaner than having a long list of bib 
+%          files in your main document
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Start by defining the bibliography style
+%    Some commonly used styles:
+%       IEEEtran    - for most IEEE Transactions and Conference Proceedings
+\ifmicro
+    \bibliographystyle{IEEEtranS}
+\else
+    \bibliographystyle{IEEEtran}
+\fi
+
+
+% Now provide a list of bibliography files to include within the \bibliography command
+%   These files are stored in the "bibliography" folder
+%   There is an "abbreviations.bib" file which includes long and short names for common journals and confernces
+%   There should be a file for papers published by each of the EnICS Staff members
+%   There is a "general_bibliography" file for things we tend to cite a lot (e.g., ITRS)
+%   Put your paper-specific citations in the "this_bibliography.bib" file
+\bibliography{bibliography/abbreviations,
+              bibliography/general_biblography,
+              bibliography/teman_bibliography,
+              bibliography/this_bibliography}

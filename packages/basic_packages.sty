@@ -157,6 +157,32 @@
 \fi
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Specific for ISF Proposal
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifisf
+    \usepackage[lmargin=2.0cm, rmargin=2.0cm,tmargin=2.0cm,bmargin=2.0cm]{geometry}
+    \usepackage{fancyhdr}
+    \pagestyle{fancy}
+    \fancyhf{}
+    \pagenumbering{gobble} % Remove page numbering
+    
+    %      Some Space Saving Stuff           %
+    %----------------------------------------%
+    % Remove/change the spaces in the itemize
+    \usepackage{enumitem}
+    %\setlist{nolistsep}
+    \setlist[1]{itemsep=-3pt,topsep=3pt}
+    % Change spacing around equations
+    %\setlength{\abovedisplayskip}{-10pt}
+    %\setlength{\belowdisplayskip}{-10pt}
+        % Make bold text narrower (by default, it's very wide)
+    %\renewcommand\bfdefault{b}% rather than bx
+    \usepackage[font=normal]{caption}
+    \onehalfspacing
+\fi
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Specific for Thesis
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifthesis
@@ -186,7 +212,7 @@
     \usepackage{fancyhdr}
     \usepackage[normalem]{ulem}
     \usepackage[final]{microtype}
-    \usepackage[keeplastbox]{common/flushend}
+    \usepackage[keeplastbox]{Templates/ExtraPackages/flushend}
     
     % Ensure letter paper
     \pdfpagewidth=8.5in

@@ -1,45 +1,63 @@
 \documentclass[a4paper,12pt]{article}
 
-\input{common/configuration}
+\input{packages/configuration}
     % For Research Proposal specific configurations
     \proposaltrue
 
-\usepackage{common/basic_packages} % Required for inserting images
-\input{common/macros}
-\input{common/units}
-\input{common/general_glossary}
-\input{EnICS/enics_glossary}
-\input{EnICS/vlsi_glossary}
+\usepackage{packages/basic_packages} % Required for inserting images
+\input{packages/macros}
+\input{newcommands/units}
+\input{newcommands/general_glossary}
+\input{newcommands/enics_glossary}
+\input{newcommands/vlsi_glossary}
+% This is where you should define paper-specific newcommands
+\input{newcommands/this_glossary}
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                TITLE                %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \title{Optionally enter a title. Not actually used in the template.}
 \author{Your name (also optional)}
 \date{Date (also optional)}
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%           DOCUMENT BEGINS           %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
-% \includepdf[fitpaper,pages=-,pagecommand={\thispagestyle{plain}}]{EnICS/front_page_hebrew_msc_proposal}
-\includepdf[fitpaper,pages=-,pagecommand={\thispagestyle{plain}}]{EnICS/front_page_hebrew_phd_proposal}
+
+%-----Hebrew Front Page------------%
+%----------------------------------%
+    % \includepdf[fitpaper,pages=-,pagecommand={\thispagestyle{plain}}]{Templates/AuxiliaryPages/front_page_hebrew_msc_proposal_example}
+    \includepdf[fitpaper,pages=-,pagecommand={\thispagestyle{plain}}]{Templates/AuxiliaryPages/front_page_hebrew_phd_proposal_example}
 \clearpage
 
-% \begin{titlepage}
-% \maketitle
-% \end{titlepage}
 
+%----------ABSTRACT-------------------%
+%-------------------------------------%
 \section*{Abstract}
     \ExecuteMetaData[Templates/templateText]{abstractRP}
 \clearpage
 
-\includepdf[fitpaper,pages=-,pagecommand={\thispagestyle{plain}}]{EnICS/abstract_hebrew}
+%-----Hebrew Abstract--------------%
+%----------------------------------%
+    \includepdf[fitpaper,pages=-,pagecommand={\thispagestyle{plain}}]{Templates/AuxiliaryPages/abstract_hebrew_example}
 \clearpage
 
-\listoffigures
-
+%-----Table of Contents------------%
+%----------------------------------%
+    \tableofcontents
 \clearpage
 
-\tableofcontents
-
+%-----List of Figures--------------%
+%----------------------------------%
+    \listoffigures
 \clearpage
 
+
+
+%----------INTRODUCTION---------------%
+%-------------------------------------%
 %\chapter{Introduction}\label{chap_intro}
 \section{Introduction}
 \label{sec_intro}
@@ -48,6 +66,8 @@ This is the introduction chapter.
 
 \clearpage
 
+%----------BACKGROUND-----------------%
+%-------------------------------------%
 \section{Background}
 \label{sec_background}
 
@@ -55,6 +75,8 @@ This is the background chapter.
 
 \clearpage
 
+%-------RESEARCH OBJECTIVES-----------%
+%-------------------------------------%
 \section{Research Objective and Methodology}
 \subsection{Objectives}
     \label{sec_objectives}
@@ -66,12 +88,13 @@ This is the background chapter.
 
 \clearpage
 
-
-
+%-------PRELIMINARY RESULTS-----------%
+%-------------------------------------%
 \section{Preliminary Results}
 \clearpage
 
-\bibliographystyle{IEEEtran}
-\bibliography{bibliography/abbreviations,bibliography/general_biblography}
+%----------BIBLIOGRAPHY---------------%
+%-------------------------------------%
+\input{bibliography/bibliography}
 
 \end{document}
