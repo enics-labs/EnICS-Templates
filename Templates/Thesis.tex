@@ -1,6 +1,8 @@
 \documentclass[a4paper,12pt,oneside]{book}
 
-% See BIU Requirements at https://graduate-school.biu.ac.il/node/1793
+% See BIU Requirements at:
+%    MSc Thesis:   https://graduate-school.biu.ac.il/node/1773
+%    PhD Thesis:   https://graduate-school.biu.ac.il/node/1793
 
 \input{packages/configuration}
     % For Thesis specific configurations
@@ -15,7 +17,6 @@
 % This is where you should define paper-specific newcommands
 \input{newcommands/this_glossary}
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                TITLE                %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -29,26 +30,31 @@
 %           DOCUMENT BEGINS           %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
-\pagestyle{fancy}
-
-
-%----------Front Page--------------%
+\frontmatter
+\pagestyle{empty}
+%-----Front Page in English--------%
 %----------------------------------%
-\includepdf[fitpaper,pages=-,pagecommand={\thispagestyle{plain}}]
+% Create your front page with the .docx files 
+%    under Templates/AuxiliaryPages and save as pdf. 
+% I have provided templates for both PhD and MSc theses.
+\includepdf[fitpaper,pages=-,pagecommand={}]
         {Templates/AuxiliaryPages/front_page_english_phd_thesis_example}
+        %{Templates/AuxiliaryPages/front_page_english_msc_thesis_example}
 
 
 %----------Acknowledgments---------%
 %----------------------------------%
 \chapter*{Acknowledgments}
+    \thispagestyle{empty}
     \ExecuteMetaData[Templates/templateText]{acknowledgments}
-
 
 %----------ABSTRACT-------------------%
 %-------------------------------------%
+ \pagestyle{fancy}
+
 \chapter*{Abstract}
+    \setcounter{page}{1}
     \ExecuteMetaData[Templates/templateText]{abstractThesis}
-%\end{abstract}
 
 
 %-----Table of Contents------------%
@@ -63,13 +69,13 @@
 
 
 
-
+\mainmatter
 %----------INTRODUCTION---------------%
 %-------------------------------------%
 \chapter{Introduction}
 \label{sec_intro}
 
-This is the introduction chapter.
+This is the introduction chapter\cite{moores_law}.
 
 
 %----------BACKGROUND-----------------%
@@ -103,12 +109,22 @@ This will only output the content of the selected file, but will retain the full
 
 %------HEBREW ABSTRACT---------%
 %------------------------------%
-\includepdf[fitpaper,pages=-,pagecommand={\thispagestyle{plain}}]{Templates/AuxiliaryPages/abstract_hebrew_example}
+% Create your Hebrew abstract with the .docx files 
+%    under Templates/AuxiliaryPages and save as pdf. 
+\backmatter
+\pagestyle{empty}
+\includepdf[fitpaper,pages=-,pagecommand={}]
+            {Templates/AuxiliaryPages/abstract_hebrew_example}
 \clearpage
 
 %------HEBREW FRONT PAGE-------%
 %------------------------------%
-\includepdf[fitpaper,pages=-,pagecommand={\thispagestyle{plain}}]{Templates/AuxiliaryPages/front_page_hebrew_phd_example}
+% Create your Hebrew front page with the .docx files 
+%    under Templates/AuxiliaryPages and save as pdf. 
+% I have provided templates for both PhD and MSc theses.
+\includepdf[fitpaper,pages=-,pagecommand={}]
+            {Templates/AuxiliaryPages/front_page_hebrew_phd_thesis_example}
+            %{Templates/AuxiliaryPages/front_page_hebrew_msc_thesis_example}
 \clearpage
 
 

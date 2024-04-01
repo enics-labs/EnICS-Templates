@@ -28,8 +28,13 @@
 
 %-----Hebrew Front Page------------%
 %----------------------------------%
-    % \includepdf[fitpaper,pages=-,pagecommand={\thispagestyle{plain}}]{Templates/AuxiliaryPages/front_page_hebrew_msc_proposal_example}
-    \includepdf[fitpaper,pages=-,pagecommand={\thispagestyle{plain}}]{Templates/AuxiliaryPages/front_page_hebrew_phd_proposal_example}
+% Create your front page with the .docx files 
+%    under Templates/AuxiliaryPages and save as pdf. 
+% I have provided templates for both PhD and MSc theses.
+   \thispagestyle{empty}
+   \includepdf[fitpaper,pages=-,pagecommand={}]
+            {Templates/AuxiliaryPages/front_page_hebrew_phd_proposal_example}
+            %{Templates/AuxiliaryPages/front_page_hebrew_msc_proposal_example}
 \clearpage
 
 
