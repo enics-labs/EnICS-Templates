@@ -1,4 +1,4 @@
-\documentclass[a4paper,12pt,oneside]{book}
+\documentclass[a4paper,12pt,twoside]{book}
 
 % See BIU Requirements at:
 %    MSc Thesis:   https://graduate-school.biu.ac.il/node/1773
@@ -48,14 +48,27 @@
     \thispagestyle{empty}
     \ExecuteMetaData[Templates/templateText]{acknowledgments}
 
+%----------Define Headers-------------%
+%-------------------------------------%
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+% Define headers for two-side layout
+% Left-hand (even) pages
+\fancyhead[LE]{\nouppercase{\leftmark}}  % Chapter name on the left side (even pages)
+% \fancyhead[RE]{\thepage}  % Page number on the right side (even pages)
+% Right-hand (odd) pages
+\fancyhead[RO]{\nouppercase{\rightmark}}  % Section or subsection name on the right side (odd pages)
+% \fancyhead[LO]{\thepage}  % Page number on the left side (odd pages)
+
+% Add horizontal line beneath the header
+\renewcommand{\headrulewidth}{0.4pt}  % This creates a line with 0.4pt thickness
+
+
 %----------ABSTRACT-------------------%
 %-------------------------------------%
- \pagestyle{fancy}
-
 \chapter*{Abstract}
     \setcounter{page}{1}
     \ExecuteMetaData[Templates/templateText]{abstractThesis}
-
 
 %-----Table of Contents------------%
 %----------------------------------%
@@ -76,6 +89,7 @@
 \label{sec_intro}
 
 This is the introduction chapter\cite{moores_law}.
+
 
 
 %----------BACKGROUND-----------------%

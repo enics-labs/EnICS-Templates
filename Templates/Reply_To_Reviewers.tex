@@ -19,41 +19,60 @@ We are uploading (a) our point-by-point response to the comments (below) (respon
 
 %===========================================
 \reviewersection 
-Paste the general comments of the handling editor here (if given)
+    Paste the general comments of the handling editor here (if given) \\
+    \red{Note: the \texttt{\textbackslash reviewersection} command is used for a  response to the general (opening) comments of each reviewer.}
 
 \replySingle{
-We thank the editor for the time spent in reviewing our work and for its general appreciation...
+    We thank the editor for the time spent in reviewing our work and for its general appreciation... \\
+    \red{Note: the \texttt{\textbackslash replySingle} command is for writing a reply \textbf{without} adding the ``\textbf{Authors' Action}'' section.}
 }
 
 % === Concern
 \begin{point}
-     Here Reviewer concern... 
+     The first comment from Reviewer 1... \\
+     \red{Copy each comment from the review letter (often sent in an email) and paste into a new \texttt{point} block.}
 \end{point}
 
 \replyFull{
-We thank the Reviewer for this comment...
+    We thank the Reviewer for this comment... Indeed, \blue{the reviewer is always right!} \\
+    \red{Note: the \texttt{\textbackslash replyFull} command is for writing a reply \textbf{followed by} the ``\textbf{Authors' Action}'' section. Use this if you took any actions, such as adding/modifying text, adding/modifying a figure, etc.}
 }{
 \begin{itemize}
-    \item \secref{sec:Sec2}, Par. 1: \Paste{SecIPar1}
+    \item \blue{Use a separate \texttt{\textbackslash item} bullet for each modification in the manuscript.}
+    
+    \item The following text was added to \secref{sec:Sec2}, Par. 1: \\
+    \red{Note: Use the \texttt{quote} environment to quote new/modified text from the manuscript. Use the \texttt{clipboard} package to \texttt{\textbackslash Copy} and \texttt{\textbackslash Paste} text from the manuscript into the reply letter. Put quotation marks around the copied text.}
+    \begin{quote}
+        ``\Paste{SecIPar1}''
+    \end{quote}
+  
+     \item Based on the comment, \figref{fig_MyLabel} was updated: \\
+    \red{Note: Instantiate the figure here. If the figure is appropriate for comments from several reviewers, instantiate it several times in the reply letter (though only once per reviewer). Use the \texttt{h!} position to place the figure in-line with the reply, if possible. Comment out the \texttt{\textbackslash label}, so it's not dually defined.} \\
+    \red{Note 2: Use the \texttt{\textbackslash setcounter} command to make the figure numbering right. It should be one less than the number in the manuscript, so if, for example, this is Fig. 6, you should set the counter to 5 and when you instantiate the figure, it will increment by one.}
+    \setcounter{figure}{5}
+    
+    \begin{figure}[h!] % [b]-> bottom, [t]->top, [H]->Here! ([h!] should do a better job), {figure*}->float
+         \centering
+         \includegraphics[width=0.5\columnwidth, trim = 0.5cm 0.2cm 0.3cm 0.3cm, clip]{example_plot}
+         \caption{\red{Instantiate the new/modified figure here. You could ``Copy-Paste'' the \LaTeX code, but you will want to use a \texttt{H!} position and to comment out the label and play with the size, so better to just copy and paste the code.}}
+         \label{fig_MyLabel}
+    \end{figure}
 \end{itemize}
 }
 
 % === Concern
 \begin{point}
-     Here Reviewer concern...
+     Here is Reviewer 1's second concern...
 \end{point}
 
-\replyFull{
-We thank the Reviewer for this comment...
-}{
-\begin{itemize}
-    \item \secref{sec:conclusion}: \Paste{Conclusions}
-\end{itemize}
+\replySingle{
+    We thank the Reviewer for this comment... \\
+    \red{Note: In this case, we didn't make any modifications to the manuscript, so we used \texttt{\textbackslash replySingle} instead of \texttt{\textbackslash replyFull}}
 }
 
 %===========================================
 \reviewersection 
-Here Reviewer general comment (if given) 
+\blue{This started the review of the second reviewer. Put Reviewer 2's general comments here (if given)} 
 
 
 

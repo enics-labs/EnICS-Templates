@@ -11,6 +11,7 @@
 \usepackage{glossaries}
 \usepackage{comment}
 \usepackage{color}
+\usepackage{tikz}
 
 \ifmicro
     \usepackage[hyphens]{url}
@@ -37,23 +38,6 @@
 %\usepackage[utf8]{inputenc}
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%  Spacing and Margins
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Provide things like 1.5 line spacing
-\usepackage{setspace}
-
-\usepackage{titlesec}
-%%%%% USAGE:  
-%%%%%   \titlespacing{command}{left spacing}{before spacing}{after spacing}[right]
-%%%%%      the spacing is written {Xpt plus Ypt minus Zpt} 
-%%%%%      where X is the spacing we want, 
-%%%%%      Y is how much extra we’ll let LaTeX add and Z is how much less we’ll let it go.
-% \titlespacing\section{0pt}{3pt plus 3pt minus 1pt}{3pt plus 3pt minus 1pt}
-% \titlespacing\subsection{0pt}{3pt plus 3pt minus 1pt}{3pt plus 3pt minus 1pt}
-% \titlespacing\subsubsection{0pt}{3pt plus 3pt minus 1pt}{3pt plus 3pt minus 1pt}
-
-%\usepackage{sectsty}
 
 
 
@@ -71,16 +55,61 @@
 %\usepackage[font={scriptsize}]{caption}
 %\usepackage[font=normal]{caption}
 
-% Control figure/table captions
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Spacing and Margins
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Provide things like 1.5 line spacing
+\usepackage{setspace}
+
+% Spacing around Title/Authors:
+% -----------------------------
+% For IEEETran documents:
+%   To reduce spacing after title block (below authors):
+%      \IEEEoverridecommandlockouts
+%      \IEEEaftertitletext{\vspace{-10px}}
+
+% Spacing around Section Headers (Section, Subsection):
+% -----------------------------------------------------
+\usepackage{titlesec}
+%%%%% USAGE:  
+%%%%%   \titlespacing{command}{left spacing}{before spacing}{after spacing}[right]
+%%%%%      the spacing is written {Xpt plus Ypt minus Zpt} 
+%%%%%      where X is the spacing we want, 
+%%%%%      Y is how much extra we’ll let LaTeX add and Z is how much less we’ll let it go.
+% \titlespacing\section{0pt}{3pt plus 3pt minus 1pt}{3pt plus 3pt minus 1pt}
+% \titlespacing\subsection{0pt}{3pt plus 3pt minus 1pt}{3pt plus 3pt minus 1pt}
+% \titlespacing\subsubsection{0pt}{3pt plus 3pt minus 1pt}{3pt plus 3pt minus 1pt}
+
+% Spacing around Figure Captions (Section, Subsection):
+% -----------------------------------------------------
+% The CAPTION package screws up some IEEETran defaults, so better use the built in lengths:
+%   % space left between floats
+%      \setlength{\floatsep}{3pt}
+%   % space between last top float or first bottom float and the text
+%      \setlength{\textfloatsep}{3pt}
+%   % space above caption
+%      \setlength{\abovecaptionskip}{-3pt plus 3pt minus 2pt}
+%   % space below caption
+%      \setlength{\belowcaptionskip}{0pt}
+%   % Change Subfigure vertical spacing around subcaptions
+%      \setlength{\subfigtopskip}{0pt}
+%      \setlength{\subfigcapskip}{-2pt}
+%      \setlength{\subfigbottomskip}{2pt}
+
+% Alternatively use the CAPTION package, which has many more options, but can change unwanted things
 % \usepackage{caption}
 	% Change spacing between captions and figure
- %	\captionsetup{skip=1pt}
-	% Change caption Font
-	%\captionsetup{font={small,it}}
-	
-	%\captionsetup{belowskip=0pt}
-	%\captionsetup{aboveskip=0pt}
-\usepackage{tikz}
+    %	\captionsetup{skip=2pt}
+	%   \captionsetup{belowskip=-15pt}
+	%   \captionsetup{aboveskip=2pt}
+    % Change caption Font
+	%   \captionsetup{font={small,it}}
+
+
+%\usepackage{sectsty}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  Bibliography
