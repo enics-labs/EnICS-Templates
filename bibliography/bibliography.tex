@@ -7,10 +7,14 @@
 % Start by defining the bibliography style
 %    Some commonly used styles:
 %       IEEEtran    - for most IEEE Transactions and Conference Proceedings
-\ifmicro
-    \bibliographystyle{IEEEtranS}
-\else
-    \bibliographystyle{IEEEtran}
+\ifacmjournal
+    \bibliographystyle{ACM-Reference-Format}
+\else 
+    \ifmicro
+        \bibliographystyle{IEEEtranS}
+    \else
+        \bibliographystyle{IEEEtran}
+    \fi
 \fi
 
 

@@ -1,0 +1,189 @@
+\documentclass[a4paper,12pt,twoside,openany]{book}
+
+% See BIU Requirements at:
+%    PhD Thesis:   https://graduate-school.biu.ac.il/node/1793
+
+\input{packages/configuration}
+    % For Thesis specific configurations
+    \thesistrue
+
+\usepackage{packages/basic_packages} % Required for inserting images
+\input{packages/macros}
+\input{newcommands/units}
+\input{newcommands/general_glossary}
+\input{newcommands/enics_glossary}
+\input{newcommands/vlsi_glossary}
+% This is where you should define paper-specific newcommands
+\input{newcommands/this_glossary}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                TITLE                %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{Optionally enter a title. Not actually used in the template.}
+\author{Your name (also optional)}
+\date{Date (also optional)}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%           DOCUMENT BEGINS           %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\frontmatter
+\pagestyle{empty}
+%-----Front Page in English--------%
+%----------------------------------%
+% Create your front page with the .docx files 
+%    under Templates/AuxiliaryPages and save as pdf. 
+%    This includes: 
+%          1. TWO EQUIVALENT title pages (one for hardcover, one for inner cover)
+%          2. Supervisor name page
+\clearpage
+\includepdf[fitpaper,pages=-,pagecommand={}]
+        {Templates/AuxiliaryPages/front_page_english_phd_thesis_example}
+
+%----------Acknowledgments---------%
+%----------------------------------%
+\chapter*{Acknowledgments}
+    \thispagestyle{empty} % Removes page numbering according to guidelines
+    \ExecuteMetaData[Templates/templateText]{acknowledgments} 
+    
+
+%-----Table of Contents------------%
+%----------------------------------%
+    \renewcommand{\contentsname}{Table of Contents}
+    \tableofcontents
+    \thispagestyle{empty} % Removes page numbering according to guidelines
+\clearpage
+
+%-----List of Figures--------------%
+%----------------------------------%
+    \listoffigures
+    \thispagestyle{empty} % Removes page numbering according to guidelines
+\clearpage
+
+%-----List of Tables--------------%
+%----------------------------------%
+    \listoftables
+    \thispagestyle{empty} % Removes page numbering according to guidelines
+\clearpage
+
+
+%-----List of Acronyms-------------%
+%----------------------------------%
+    \printglossary[type=\acronymtype]
+    \thispagestyle{empty} % Removes page numbering according to guidelines
+ \clearpage
+
+%----------Define Headers-------------%
+%-------------------------------------%
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+
+% Define headers for two-side layout
+% ----------------------------------
+% Left-hand (even) pages
+%   \fancyhead[LE]{\nouppercase{\leftmark}}  % Chapter name on the left side (even pages)
+%   \fancyhead[RE]{\thepage}  % Page number on the right side (even pages)
+\fancyhead[LE, LO]{\scriptsize \truncate{0.47 \textwidth} \leftmark}
+\fancyhead[RE, RO]{\scriptsize \truncate{0.47 \textwidth} \rightmark}
+
+% Right-hand (odd) pages
+%   \fancyhead[RO]{\nouppercase{\rightmark}}  % Section or subsection name on the right side (odd pages)
+%   \fancyhead[LO]{\thepage}  % Page number on the left side (odd pages)
+
+% Add horizontal line beneath the header
+\renewcommand{\headrulewidth}{0.4pt}  % This creates a line with 0.4pt thickness
+
+\fancyfoot[C]{\thepage}
+
+%----------ABSTRACT-------------------%
+%-------------------------------------%
+\chapter*{Abstract}
+    \setcounter{page}{1}
+    \ExecuteMetaData[Templates/templateText]{abstractThesis}
+
+
+
+
+
+\mainmatter
+%----------INTRODUCTION---------------%
+%-------------------------------------%
+\chapter{Introduction}
+\label{sec_intro}
+
+This is the introduction chapter~\cite{moores_law}.
+Here is an \gls{example} of how to define an acronym.
+
+
+
+%----------BACKGROUND-----------------%
+%-------------------------------------%
+\chapter{Background}
+\label{sec_background}
+
+This is the background chapter. 
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\linewidth]{Figures/example_plot.pdf}
+    \caption{Here is an example figure}
+    \label{fig:myfigure}
+\end{figure}
+
+%----------THESIS CONTENT-------------%
+%-------------------------------------%
+\chapter{Thesis Content}
+\blue{From this chapter and on, you should present the content of your thesis. 
+Note that it is often nice to include each chapter as a separate .tex file, using the \textbackslash include\{filename\} option.
+You can reduce the compile time of your paper by adding \textbackslash includeonly\{filename\} in the options. 
+This will only output the content of the selected file, but will retain the full file's numbering and everything.}  
+
+\begin{table}[h!]
+    \centering
+    \caption{Here is an example table.}
+    \label{tbl:mytable}
+    \begin{tabular}{c|c}
+
+         something & something \\
+         \hline
+         something & something
+    \end{tabular}
+\end{table}
+
+
+%----------SUMMARY--------------------%
+%-------------------------------------%
+\chapter{Summary and Conclusions}
+\label{sec_conclusions}
+
+\blue{Here you should conclude your work and don't forget to again emphasize your achievements (e.g., publications). }
+
+
+%----------BIBLIOGRAPHY---------------%
+%-------------------------------------%
+\input{bibliography/bibliography}
+
+%------HEBREW ABSTRACT---------%
+%------------------------------%
+% Create your Hebrew abstract with the .docx files 
+%    under Templates/AuxiliaryPages and save as pdf. 
+\backmatter
+\pagestyle{empty}
+\includepdf[fitpaper,pages=-,pagecommand={}]
+            {Templates/AuxiliaryPages/abstract_hebrew_example}
+\clearpage
+
+%------HEBREW FRONT PAGE-------%
+%------------------------------%
+% Create your Hebrew front page with the .docx files 
+%    under Templates/AuxiliaryPages and save as pdf. 
+% I have provided templates for both PhD and MSc theses.
+\includepdf[fitpaper,pages=-,pagecommand={}]
+            {Templates/AuxiliaryPages/front_page_hebrew_phd_thesis_example}
+\clearpage
+
+
+\end{document}
