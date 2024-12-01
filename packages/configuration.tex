@@ -1,4 +1,10 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%    Don't warn me about loading packages
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{silence}
+\WarningFilter{latex}{You have requested package `packages/basic_packages',}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %    Variables per conference/journal
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % For Research Proposal template specific configurations
@@ -12,6 +18,10 @@
 % For IEEE Journal template specific configurations
 \newif\ifieeejournal
     \ieeejournalfalse
+% For ACM Journal template specific configurations
+%     based on the template found here: https://www.acm.org/publications/authors/submissions
+\newif\ifacmjournal
+    \acmjournalfalse
 % For adding author biographies
 \newif\ifbiographies
     \biographiesfalse

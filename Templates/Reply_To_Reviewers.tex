@@ -1,4 +1,9 @@
-\documentclass[./IEEE_Journal.tex]{subfiles}
+\ifieeejournal
+    \documentclass[./IEEE_Journal.tex]{subfiles}
+\fi 
+\ifacmjournal
+    \documentclass[./ACM_Journal.tex]{subfiles}
+\fi 
 
 \begin{document}
 \pagenumbering{gobble} % Hide the page numbering of the subfile
