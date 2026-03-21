@@ -2,11 +2,18 @@
 Template for creating Overleaf project
 
 
-To start an Overleaf project based on this template, you have two options:
-1) (preferred) Adding the project to your github.com account.
-2) (alternative option) Cloning the project from https://github.com/enics-labs/EnICS-Templates and uploading it to your Overleaf account.
+To start an Overleaf project based on this template, you have three options:
+1) (easiest) Make a copy of the project
+2) (preferred) Adding the project to your github.com account.
+3) (alternative option) Cloning the project from https://github.com/enics-labs/EnICS-Templates and uploading it to your Overleaf account.
 
 For option 1, you will need to follow these steps:
+1) Go to the project at [https://www.overleaf.com/read/wnrqnpmsdtyq#665a48](https://www.overleaf.com/read/wnrqnpmsdtyq#665a48)
+2) In Overleaf, go to "Menu"-->"Copy Project"
+3) Give the project a new name (preferably with a meaning)
+4) Start working on the new project!
+
+For option 2, you will need to follow these steps:
 
 ## Preliminaries:
 1) You need to have a github.com account 
@@ -39,12 +46,14 @@ Please email adam.teman@biu.ac.il with any comments or suggestions and/or if you
 There are templates for different types of submissions under the Templates folder
 ** What Types of Templates are Included? **
 1. *IEEE_Journal.tex*:  A template for creating Journal papers according to the IEEE Transactions guidelines.
-1. *IEEE_Conference.tex: A template for creating conference papers according to many IEEE Conferences.
-1. *ACM_Conference.tex: A template for creating conference papers according to ACM formatting (made particularly for IEEE Micro).
-1. *Thesis.tex*: A template for writing MSc or PhD Theses at BIU.
-1. *Research_Proposal.tex*: A template for writing MSc or PhD Research Proposals at BIU.
-1. *ISF_Template.tex*: A basic template for starting to write an ISF Regular Program proposal.
-1. *Reply_To_Reviwers.tex*: A template for creating a rebuttal letter. To be used along with the *IEEE_Journal* template, when submitting a revision.
+2. *IEEE_Conference.tex: A template for creating conference papers according to many IEEE Conferences.
+3. *ACM_Journal.tex: A template for creating Journal papers according to ACM formatting.
+4. *ACM_Conference.tex: A template for creating conference papers according to ACM formatting (made particularly for IEEE Micro).
+5. *MSC_Thesis.tex*: A template for writing MSc Theses at BIU.
+6. *PhD_Thesis.tex*: A template for writing PhD Theses at BIU.
+7. *Research_Proposal.tex*: A template for writing MSc or PhD Research Proposals at BIU.
+8. *ISF_Template.tex*: A basic template for starting to write an ISF Regular Program proposal.
+9. *Reply_To_Reviwers.tex*: A template for creating a rebuttal letter. To be used along with the *IEEE_Journal* template, when submitting a revision.
 
 ## Starting your own project
 1. As explained before, first **Copy the Project** to a new project, by using *Menu-->Copy Project*
@@ -57,27 +66,27 @@ There are templates for different types of submissions under the Templates folde
 The Template repository has several folders with files for your usage. You can modify all these files and if you have suggestions to add for everyone, please tell a developer (e.g., Prof. Adam Teman) about it:
 1. **Templates**: Where you'll find all the template files, discussed above. In addition this folder includes:
     a. Word files for creating PDFs to be included in research proposals and theses (front matter and abstracts)
-    a. **templateText.tex**: A file for decoupling the text in the template files from the files themselves (to make the template files cleaner).
-1. **common**: This has files needed by pretty much everyone (not EnICS specific)
+    b. **templateText.tex**: A file for decoupling the text in the template files from the files themselves (to make the template files cleaner).
+2. **common**: This has files needed by pretty much everyone (not EnICS specific)
     a. **configuration.tex**: This is a file that defines LaTeX variables for each template to enable specific configurations. All variables are **false** by default and each template turns on the configuration relevant to it.
-    a. **basic_packages.sty**: This is the class that loads the packages you will need to compile your file. Certain packages are conditionally loaded based on the template configuration.
-    a. **general_glossary.tex**: All kinds of acronyms that are not VLSI specific.
-    a. **units.tex**: Shorthand for writing out units (with the siunitx package) and symbols.
-    a. **macros.tex**: Small macros that are very useful.
-    a. **reply_macros**: Macros to be used with the *Reply_To_Reviewers* template.
-    a. Other files that are needed by specific templates: **sig-alternate.cls** and **flushend.sty** (used by the *ACM_Conference* template).
-1. **EnICS**: Files that are specific to EnICS and not for a non-BIU user
+    b. **basic_packages.sty**: This is the class that loads the packages you will need to compile your file. Certain packages are conditionally loaded based on the template configuration.
+    c. **general_glossary.tex**: All kinds of acronyms that are not VLSI specific.
+    d. **units.tex**: Shorthand for writing out units (with the siunitx package) and symbols.
+    e. **macros.tex**: Small macros that are very useful.
+    f. **reply_macros**: Macros to be used with the *Reply_To_Reviewers* template.
+    g. Other files that are needed by specific templates: **sig-alternate.cls** and **flushend.sty** (used by the *ACM_Conference* template).
+3. **EnICS**: Files that are specific to EnICS and not for a non-BIU user
     a. **enics_glossary.tex**: Shorthand for things that are useful for EnICS users.
-    a. **vlsi_glossary.tex**: Common acronyms found in the fields of Chip Design.
-    a. Template pages for front page matter and Hebrew abstracts for inclusion in proposals and theses.
-1. **Figures**: The folder to store your figures in. In addition, this folder includes:
+    b. **vlsi_glossary.tex**: Common acronyms found in the fields of Chip Design.
+    c. Template pages for front page matter and Hebrew abstracts for inclusion in proposals and theses.
+4. **Figures**: The folder to store your figures in. In addition, this folder includes:
     a. **matlab_figure.m**: A template script for creating nice figures in Matlab.
-    a. **python_figure.m**: A template script for creating nice figures in Python.
-1. **bibliography**: A folder for storing *bibtex* files for the project and well formatted EnICS publication bibliographical entries. In addition, this folder contains:
+    b. **python_figure.m**: A template script for creating nice figures in Python.
+5. **bibliography**: A folder for storing *bibtex* files for the project and well formatted EnICS publication bibliographical entries. In addition, this folder contains:
     a. **abbreviations.bib**: Bibtex variables for describing popular conferences and journals, including shortened versions and versions with the impact factor stated.
     b. **this_bibliography.bib**: Bibtex file for adding new bibliographic entries, specific to this project.
-1. **Bios**: A folder for creating biographical text and pictures for inclusion in Journal publications
-1. **Utilities**: A folder that includes useful tools and Utilities (you will need to move these to the root directory for them to work):
+6. **Bios**: A folder for creating biographical text and pictures for inclusion in Journal publications
+7. **Utilities**: A folder that includes useful tools and Utilities (you will need to move these to the root directory for them to work):
     a. **ExtractPagesFromPDF.tex**: A template to cut certain pages out of a longer PDF. For example, if you need to extract only the bibliography from a full proposal or only the reply to reviewers letter from a revised manuscript.
     b. **latexmkrc**: A script for ensuring that your PDF passes IEEE Camera Ready compliance.    
 
