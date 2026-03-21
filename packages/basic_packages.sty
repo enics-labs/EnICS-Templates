@@ -1,14 +1,35 @@
 \ProvidesPackage{common/basic_packages}
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%    General 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\usepackage{etoolbox}
-\usepackage{xspace}
-\xspaceaddexceptions{-}
-\xspaceaddexceptions{$\times$}
+     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+     %    Mandatory "everyday" packages      % 
+     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+% The comment package creates the {comment} environment
+% -----------------------------------------------------
+\usepackage{comment}
+% The color package lets us change font colors
+% --------------------------------------------
+\usepackage{color}
+% The tikz package provides many tools for drawing in LaTeX
+% ---------------------------------------------------------
+\usepackage{tikz}
+% Enable loren ipsum text
+% -----------------------
+\usepackage{lipsum}
+% Fancy underlining
+% -----------------------
+\usepackage[normalem]{ulem}
+% To enable Hebrew
+% ----------------
+%\usepackage[utf8]{inputenc}
+
+     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+     %    General pacakges heavily used in this framework     % 
+     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% The glossaries package allows building acronyms and an index
+% --------------------------------------------------------------
 \ifthesis
     \usepackage[acronym]{glossaries}
     % This is also required in order to genarate Acronyms list
@@ -16,64 +37,39 @@
 \else
     \usepackage{glossaries}
 \fi
-\usepackage{comment}
-\usepackage{color}
-\usepackage{tikz}
 
-\ifmicro
-    \usepackage[hyphens]{url}
-    % Always include hyperref last
-    \usepackage[bookmarks=true,breaklinks=true,letterpaper=true,colorlinks,citecolor=blue,linkcolor=blue,urlcolor=blue]{hyperref}
-\else 
-    \ifacmjournal
-        % Do nothing
-    \else
-        \usepackage[hidelinks]{hyperref}
-    \fi
-\fi
-
-% Enable Copy-Pasting for Reply to reviewers
-\usepackage{clipboard}
-
-% Lets me copy a tagged section from an external file
-\usepackage{catchfilebetweentags}
-
-% Enable loren ipsum text
-\usepackage{lipsum}
+% The xspace package adds a space unless followed by punctuation
+% --------------------------------------------------------------
+\usepackage{xspace}
+    \xspaceaddexceptions{-}
+    \xspaceaddexceptions{$\times$}
 
 
-% Insert external pdf pages
-\usepackage[final]{pdfpages}
-
-% To enable Hebrew
-%\usepackage[utf8]{inputenc}
-
-
-
-
-
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%  Figures
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\usepackage{graphicx}        % standard LaTeX graphics tool
-                             % when including figure files
-\graphicspath{{./Figures/}}
-\usepackage{subfigure}
-%\usepackage{wrapfig} % Wraps text round images
-%\usepackage[font={scriptsize}]{caption}
-%\usepackage[font=normal]{caption}
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%  Spacing and Margins
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Provide things like 1.5 line spacing
+     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+     %  Spacing and Margins
+     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% The SETSPACE package provide things like 1.5 line spacing
+% ---------------------------------------------------------
 \usepackage{setspace}
 
+
+% The GEOMETRY pakage sets up page margins
+% ----------------------------------------
+\ifproposal
+    \usepackage{geometry}
+    \geometry{a4paper,left=25mm, right=25mm, top=25mm,}
+    \onehalfspacing
+\fi
+\ifthesis
+    \usepackage[inner=2.5cm,outer=2.5cm,bottom=2.5cm]{geometry}
+    \onehalfspacing
+\fi
+\ifisf
+    \usepackage[lmargin=2.0cm, rmargin=2.0cm,tmargin=2.0cm,bmargin=2.0cm]{geometry}
+    \onehalfspacing
+\fi
+
+   
 % Spacing around Title/Authors:
 % -----------------------------
 % For IEEETran documents:
@@ -108,23 +104,87 @@
 %      \setlength{\subfigtopskip}{0pt}
 %      \setlength{\subfigcapskip}{-2pt}
 %      \setlength{\subfigbottomskip}{2pt}
+%   % Change spacing around equations
+%      \setlength{\abovedisplayskip}{-10pt}
+%      \setlength{\belowdisplayskip}{-10pt}
+   
+% Change the spaces in the itemize
+%---------------------------------
+% \usepackage{enumitem}
+    % \setlist{nolistsep}
+    % \setlist[1]{itemsep=-3pt,topsep=3pt}
 
-% Alternatively use the CAPTION package, which has many more options, but can change unwanted things
+
+     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+     %        Figures, Tables, Algorithms          %
+     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%----------------------------
+%         Figures           %         
+%----------------------------
+% The graphicx package is the standard LaTeX graphics tool (though it's outdated)
+% -------------------------------------------------------------------------------
+\usepackage{graphicx}
+% The subfigure package allows providing graphicx with subfigures
+% ---------------------------------------------------------------
+\usepackage{subfigure}
+% The wrapfig package allows figures to be wrapped within text
+% ---------------------------------------------------------------
+% \usepackage{wrapfig} 
+% The graphicspath option tells LaTeX the path to look for figures
+% ---------------------------------------------------------------
+    \graphicspath{{./Figures/}}
+
+% The CAPTION package, has many options for figure captions, 
+% but can change unwanted things, so prefer the TITLESEC package
+% --------------------------------------------------------------
 % \usepackage{caption}
 	% Change spacing between captions and figure
+    % ------------------------------------------
     %	\captionsetup{skip=2pt}
 	%   \captionsetup{belowskip=-15pt}
 	%   \captionsetup{aboveskip=2pt}
     % Change caption Font
+    % -------------------
 	%   \captionsetup{font={small,it}}
+    \ifisf
+        \usepackage[font=normal]{caption}
+    \fi
+
+%----------------------------
+%         Tables            %         
+%----------------------------
+% \usepackage{adjustbox}
+% The MULTIROW package enables table cells that span multiple rows 
+% ----------------------------------------------------------------
+\usepackage{multirow}
+% The ARRAY package enhances tables
+% ---------------------------------
+\usepackage{array}
+    % This defines "P" for centering a sized column
+    % ---------------------------------------------
+    \newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+    % this adds some spacing between table rows
+    % ---------------------------------------------
+    % \renewcommand{\arraystretch}{1.2} 
+% The booktabs package enables advanced table formatting
+% ------------------------------------------------------
+\usepackage{booktabs}
+    % This enables adding space in table rows, e.g., \ra{1.2}
+    \newcommand{\ra}[1]{\renewcommand{\arraystretch}{#1}} 
+
+%----------------------------
+%        Algorithms         %
+%----------------------------
+% The ALGORITHM and ALGORITHMICX packages enable writing algorithms
+% -----------------------------------------------------------------
+\usepackage{algorithm}
+\usepackage{algorithmicx}
 
 
-%\usepackage{sectsty}
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%  Bibliography
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+     %           Bibliography            %
+     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifacmjournal
     % Do Nothing
 \else 
@@ -135,128 +195,104 @@
     \fi
 \fi 
 
-%\patchcmd{\thebibliography}{\section*{\refname}}{}{}{}
-\let\OLDthebibliography\thebibliography
-\renewcommand\thebibliography[1]{
-	\OLDthebibliography{#1}
-	\setlength{\parskip}{0pt}
-	\setlength{\itemsep}{0pt}
-}
-\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
-    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
     
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Math and symbols
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\ifacmjournal   %smasymb and amsfont cause a clash with the acmart class...
-    % Do Nothing
+     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+     %        Math and symbols          %
+     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% The AMSMATH and AMSSYB packages are the basic packages for math
+% ---------------------------------------------------------------
+\ifacmjournal   
+    % Do Nothing - amssymb and amsfont cause a clash with the acmart class...
 \else
     \usepackage{amsmath,amssymb,latexsym}
     \usepackage{amsfonts}
+    \usepackage{mathtools}
 \fi
+
+% The UPGREEK pakage provides fonts for non-italic Greek letters
+% ---------------------------------------------------------------
 \usepackage{upgreek}
-\usepackage{mathtools}
+
+% The NICEFRAC pakage provides better inline fractions
+% ----------------------------------------------------
 \usepackage{nicefrac}
-%\usepackage[detect-weight=true, binary-units=true]{siunitx} % This generates errors in IEEE Access template
+
+% The SIUNITX package provides standardized unit symbols
+% ------------------------------------------------------
 \usepackage{siunitx}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Tables
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\usepackage{adjustbox}
-\usepackage{multirow}
-\usepackage{array}
-   % This defines "P" for centering a sized column
-   \newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
-% this adds some spacing between table rows
-%\renewcommand{\arraystretch}{1.2} 
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Algorithms
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\usepackage{algorithm}
-\usepackage{algorithmicx}
-%\usepackage{algcompatible}
-%\usepackage[noend]{algpseudocode}
-
-% For formatting code
-\usepackage{minted}
-\setminted[python]{breaklines, framesep=2mm, fontsize=\footnotesize, numbersep=5pt}
-\setminted[matlab]{breaklines, framesep=2mm, fontsize=\footnotesize, numbersep=5pt}
-
+     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+     %        Code Formatting           %
+     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% The LISTINGS package is for formatting source code
+% --------------------------------------------------
 \usepackage{listings}
 
+% The MINTED package provides code highlighting
+% ---------------------------------------------
+\usepackage{minted}
+    \setminted[python]{breaklines, framesep=2mm, fontsize=\footnotesize, numbersep=5pt}
+    \setminted[matlab]{breaklines, framesep=2mm, fontsize=\footnotesize, numbersep=5pt}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Specific for Research Proposal
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\ifproposal
-    \usepackage{geometry}
-    \geometry{
-         a4paper,
-         total={170mm,257mm},
-         left=25mm,
-         right=25mm,
-         top=25mm,
-     }
-    % Set 1.5 line spacing
-    \onehalfspacing
-\fi
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Specific for ISF Proposal
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+     %        Header and Footer         %
+     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% The FANCYHDR package controls headers and footers
 \ifisf
-    \usepackage[lmargin=2.0cm, rmargin=2.0cm,tmargin=2.0cm,bmargin=2.0cm]{geometry}
     \usepackage{fancyhdr}
-    \pagestyle{fancy}
-    \fancyhf{}
-    \pagenumbering{gobble} % Remove page numbering
-    
-    %      Some Space Saving Stuff           %
-    %----------------------------------------%
-    % Remove/change the spaces in the itemize
-    \usepackage{enumitem}
-    %\setlist{nolistsep}
-    \setlist[1]{itemsep=-3pt,topsep=3pt}
-    % Change spacing around equations
-    %\setlength{\abovedisplayskip}{-10pt}
-    %\setlength{\belowdisplayskip}{-10pt}
-        % Make bold text narrower (by default, it's very wide)
-    %\renewcommand\bfdefault{b}% rather than bx
-    \usepackage[font=normal]{caption}
-    \onehalfspacing
+        \pagestyle{fancy}
+        \fancyhf{}
+        \pagenumbering{gobble} % Remove page numbering
 \fi
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Specific for Thesis
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifthesis
-    \usepackage[inner=2.5cm,outer=2.5cm,bottom=2.5cm]{geometry}
-    % Set 1.5 line spacing
-    \onehalfspacing
+    \usepackage{fancyhdr}
+        \setlength{\headheight}{15pt}
+        \fancyhf{}
+        \renewcommand{\headrulewidth}{0pt} % prevents header underline
+        \fancyhead[LE, LO]{\scriptsize \truncate{0.47 \textwidth} \leftmark}
+        \fancyhead[RE, RO]{\scriptsize \truncate{0.47 \textwidth} \rightmark}
+        \fancyfoot[C]{\thepage}
 
+    % The SECTSTY package controls the section style
+    % ----------------------------------------------
         \WarningFilter{latex}{Command \underbar has changed.}
         \WarningFilter{latex}{Command \underline has changed.}
     \usepackage{sectsty}
-        
-
-    \usepackage{fancyhdr}
-    \setlength{\headheight}{15pt}
-    \usepackage[fit, breakall]{truncate}
-    \fancyhf{}
-    \renewcommand{\headrulewidth}{0pt} % prevents header underline
-    \fancyhead[LE, LO]{\scriptsize \truncate{0.47 \textwidth} \leftmark}
-    \fancyhead[RE, RO]{\scriptsize \truncate{0.47 \textwidth} \rightmark}
-    \fancyfoot[C]{\thepage}
-    \usepackage[T1]{fontenc}
+        % This gets rid of some stupid warning due to the sectsty package
+        \usepackage[T1]{fontenc}
 
     % For fontsize options see see https://latex-tutorial.com/changing-font-size/
     \chapternumberfont{\LARGE} 
     \chaptertitlefont{\LARGE}  
+
+    % Without the TRUNCATE package, the PhD Thesis template breaks...
+    \usepackage[fit, breakall]{truncate}
+
+    \usepackage[page,toc,titletoc,title]{appendix}
 \fi
+
+     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+     %       Specific Packages used in these Templates        %  
+     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+     
+% The clipboard package enables Copy-Pasting for Reply to reviewers
+% --------------------------------------------------------------
+\usepackage{clipboard}
+% The catchfilebetweentags package lets me copy a tagged section from an external file
+% ------------------------------------------------------------------------------------
+    \WarningFilter{etex}{Extended allocation already in use.}
+\usepackage{catchfilebetweentags}
+% Insert external pdf pages
+% -------------------------
+\usepackage[final]{pdfpages}
+
+
+    
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Specific for Micro
@@ -273,3 +309,28 @@
     \pdfpageheight=11in
     \pagenumbering{arabic}
 \fi
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Other packages that could be useful
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\usepackage{etoolbox}
+
+
+\ifmicro
+    \usepackage[hyphens]{url}
+    % Always include hyperref last
+    \usepackage[bookmarks=true,breaklinks=true,letterpaper=true,colorlinks,citecolor=blue,linkcolor=blue,urlcolor=blue]{hyperref}
+\else 
+    \ifacmjournal
+        % Do nothing
+    \else
+        \usepackage[hidelinks]{hyperref}
+    \fi
+\fi
+
+
+
+% \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+%     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
