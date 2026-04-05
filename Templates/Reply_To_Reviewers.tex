@@ -20,7 +20,7 @@
 % General intro text goes here
 We are grateful to the Editor for having managed the review of our manuscript. We also want to thank the reviewers for their critical assessment of our work, and for the useful comments that help us to improve the quality of the manuscript.
 In the following we address their concerns point by point. 
-We are uploading (a) our point-by-point response to the comments (below) (response to reviewers), (b) an updated manuscript with \hl{yellow highlighting} indicating changes, and (c) a clean updated manuscript without highlights (Main Manuscript).
+We are uploading (a) our point-by-point response to the comments (below) (response to reviewers), (b) an updated manuscript with \blue{blue text} indicating changes.
 
 %===========================================
 \reviewersection 
@@ -130,9 +130,7 @@ A brief description of the two input files follows:
 An example of this commands are presented in the A2R.tex file.
 
 
-\subsection{Use of highlighting}
-Use the ``\textbackslash hl\{\}'' to highlight some text. 
-It may be problematic if you highlight a text that presents some commands within it. To address this, it is suggested to close the command between ``\{\}'' or ``\textbackslash mbox\{\}'' 
+
 
 \subsection{Use of Copy-Paste commands}
 Within the A2R\_environment.tex file is loaded a package that allows to ``copy'' and ``paste'' pieces of text from one document to another.
@@ -149,6 +147,12 @@ In the paragraph bellow is an example of the ``copy'' command. The ``paste'' com
 
 \subsection{Automatic generation of A2R file}
 To ease some work, \href{https://github.com/EstebanJGC/Latex_Templates_Macros.git}{\red{here}}  you can find a python script (named \textit{generateA2R.py}) that partially generates the A2R file for $n$ reviewers, each one with a given number of concerns. 
+
+\subsection{Use of highlighting}
+It is common to highlight changes in \blue{blue text}. What you should do is add the \textbackslash Copy command before the text and then add your  \textbackslash blue command inside it. Then you can just use \textbackslash Paste in your reply document and the copied text will be blue. 
+
+You can use the ``\textbackslash hl\{\}'' to highlight some text. 
+It may be problematic if you highlight a text that presents some commands within it. To address this, it is suggested to close the command between ``\{\}'' or ``\textbackslash mbox\{\}'' 
 
 \lipsum[50].
 
