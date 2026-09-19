@@ -18,10 +18,13 @@ jobs:
         run: apt-get update -qq && apt-get install -y -qq python3-pygments
       - name: Build all templates
         run: BUILD_DIR="$PWD/build" bash Utilities/build_all.sh -n
-      - name: Keep the PDFs
+      - name: Keep the PDFs and logs
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: template-pdfs
-          path: build/*/main.pdf
+          name: template-pdfs-and-logs
+          path: |
+            build/*/main.pdf
+            build/*/main.log
+            build/*/build.out
           if-no-files-found: ignore

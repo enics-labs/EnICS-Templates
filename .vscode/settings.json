@@ -1,0 +1,94 @@
+// LaTeX Workshop settings for the EnICS Templates framework.
+// These are workspace settings: they override your personal VS Code settings
+// while this project is open, and they travel with the project, so every
+// student gets a working build out of the box.
+{
+    // ---------------------------------------------------------------------
+    // Tools. The -shell-escape flag is MANDATORY: the framework uses the
+    // "minted" package for code listings, and minted refuses to run without
+    // it ("minted v3+ executable is not installed, ... or is not permitted
+    // with restricted shell escape"). This is the usual reason a build that
+    // works on Overleaf fails in VS Code.
+    // ---------------------------------------------------------------------
+    "latex-workshop.latex.tools": [
+        {
+            "name": "pdflatex",
+            "command": "pdflatex",
+            "args": [
+                "-shell-escape",
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "%DOC%"
+            ],
+            // Lets you build a file from Templates/ directly, even though its
+            // \input{packages/...} paths are written relative to the project root.
+            // "." MUST come first so scratch files (comment.cut) resolve locally.
+            // Never use a recursive "//" path here: it finds stale scratch files
+            // elsewhere in the project and silently pulls wrong text into the PDF.
+            "env": {
+                "TEXINPUTS": ".;%WORKSPACE_FOLDER%;",
+                "BIBINPUTS": ".;%WORKSPACE_FOLDER%;"
+            }
+        },
+        {
+            // Theses and research proposals need LuaLaTeX for the Hebrew
+            // front matter in AuxiliaryPages/ (see README.md).
+            "name": "lualatex",
+            "command": "lualatex",
+            "args": [
+                "-shell-escape",
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "%DOC%"
+            ],
+            "env": {
+                "TEXINPUTS": ".;%WORKSPACE_FOLDER%;",
+                "BIBINPUTS": ".;%WORKSPACE_FOLDER%;"
+            }
+        },
+        {
+            "name": "bibtex",
+            "command": "bibtex",
+            "args": ["%DOCFILE%"],
+            "env": {
+                "BIBINPUTS": ".;%WORKSPACE_FOLDER%;",
+                "BSTINPUTS": ".;%WORKSPACE_FOLDER%;"
+            }
+        },
+        {
+            // Only needed for the thesis templates, which print a list of acronyms.
+            "name": "makeglossaries",
+            "command": "makeglossaries",
+            "args": ["%DOCFILE%"]
+        }
+    ],
+
+    // ---------------------------------------------------------------------
+    // Recipes. The first one is the default (Ctrl+Alt+B). Pick another with
+    // "LaTeX Workshop: Build with recipe" from the command palette.
+    // ---------------------------------------------------------------------
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "Paper (pdflatex -> bibtex -> pdflatex x2)",
+            "tools": ["pdflatex", "bibtex", "pdflatex", "pdflatex"]
+        },
+        {
+            "name": "Thesis/Proposal (lualatex -> bibtex -> lualatex x2)",
+            "tools": ["lualatex", "bibtex", "lualatex", "lualatex"]
+        },
+        {
+            "name": "Thesis with acronym list (lualatex -> bibtex -> makeglossaries -> lualatex x2)",
+            "tools": ["lualatex", "bibtex", "makeglossaries", "lualatex", "lualatex"]
+        }
+    ],
+
+    // ---------------------------------------------------------------------
+    // Keep the build files. Deleting them after every build (autoClean
+    // "onBuilt") also deletes main.log, which is the only place the LaTeX
+    // error messages live, so a failed build leaves nothing to read.
+    // The project .gitignore keeps these files out of git anyway.
+    // ---------------------------------------------------------------------
+    "latex-workshop.latex.autoClean.run": "never"
+}

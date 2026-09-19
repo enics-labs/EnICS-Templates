@@ -8,7 +8,11 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %    Don't warn me about loading packages
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\usepackage{silence}
+% NOTE: silence is loaded in packages/basic_packages.sty instead of here.
+% On some package versions it hangs (infinite loop) when loaded together
+% with the acmart class, so it is skipped for the ACM Journal template.
+% It must load after \acmjournaltrue is set, which happens after this file
+% is \input, so it cannot be conditioned on \ifacmjournal here.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %    Template guidance switch

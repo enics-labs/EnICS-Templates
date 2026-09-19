@@ -11,6 +11,9 @@
 # proposals are also compiled with LuaLaTeX, which is what produces the Hebrew
 # front matter. Set BUILD_DIR to choose where the builds go (default: mktemp).
 #
+# Builds run in parallel, at most JOBS at a time (default: half the cores, max 4).
+# Running all of them at once starves the LuaLaTeX thesis builds and they time out.
+#
 # Requirements: latexmk, pdflatex, lualatex, bibtex, texcount, python3 + pygments (minted).
 
 set -u
@@ -38,6 +41,22 @@ SUMMARY="$BUILD/summary.txt"
 
 needs_lua() { for t in "${LUA[@]}"; do [ "$t" = "$1" ] && return 0; done; return 1; }
 
+# Run at most JOBS builds at a time. LuaLaTeX builds a font cache and is slow;
+# launching every build at once makes them contend and hit the per-build timeout.
+if [ -z "${JOBS:-}" ]; then
+    CORES=$(nproc 2>/dev/null || echo 2)
+    JOBS=$(( CORES / 2 )); [ "$JOBS" -lt 1 ] && JOBS=1; [ "$JOBS" -gt 4 ] && JOBS=4
+fi
+RUNNING=0
+launch() {
+    if [ "$RUNNING" -ge "$JOBS" ]; then
+        wait -n
+        RUNNING=$(( RUNNING - 1 ))
+    fi
+    "$@" &
+    RUNNING=$(( RUNNING + 1 ))
+}
+
 build_one() {
     local T=$1 ENGINE=$2 GUIDE=$3
     local name="$T-$ENGINE"; [ "$GUIDE" = "noguide" ] && name="$name-noguide"
@@ -63,13 +82,13 @@ build_one() {
     printf '%-32s %-5s rc=%-3s errors=%-3s undefined-refs=%-3s\n' "$name" "$status" "$rc" "$errors" "$undef" >> "$SUMMARY"
 }
 
-echo "Building in $BUILD ..."
+echo "Building in $BUILD ($JOBS at a time) ..."
 for T in "${TEMPLATES[@]}"; do
-    build_one "$T" pdflatex guide &
-    needs_lua "$T" && build_one "$T" lualatex guide &
+    launch build_one "$T" pdflatex guide
+    if needs_lua "$T"; then launch build_one "$T" lualatex guide; fi
     if [ $NOGUIDE -eq 1 ]; then
-        build_one "$T" pdflatex noguide &
-        needs_lua "$T" && build_one "$T" lualatex noguide &
+        launch build_one "$T" pdflatex noguide
+        if needs_lua "$T"; then launch build_one "$T" lualatex noguide; fi
     fi
 done
 wait
@@ -78,7 +97,19 @@ echo
 sort "$SUMMARY"
 echo
 if grep -q FAIL "$SUMMARY"; then
-    echo "Some builds FAILED. Look at main.log in the build directories under: $BUILD"
+    # Print the actual errors of every failing build, so the summary is enough on its own (e.g., in CI output)
+    for name in $(grep FAIL "$SUMMARY" | awk '{print $1}'); do
+        D="$BUILD/$name"
+        echo "==================== $name: errors ===================="
+        if [ -f "$D/main.log" ]; then
+            grep -m8 -A4 '^!' "$D/main.log"
+            grep -m5 'Reference .* undefined\|Citation .* undefined\|not found' "$D/main.log"
+        fi
+        echo "--- last lines of latexmk output:"
+        tail -15 "$D/build.out" 2>/dev/null
+        echo
+    done
+    echo "Some builds FAILED. Full logs are in the build directories under: $BUILD"
     exit 1
 fi
 echo "All builds passed."

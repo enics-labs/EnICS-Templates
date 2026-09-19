@@ -37,7 +37,7 @@
 \newcommand{\green}[1]{{\color{green}#1}} % write text in green
 \newcommand{\orange}[1]{{\color{orange}#1}} % write text in orange
 \newcommand{\fix}[1]{{\color{red}{#1}}} % write text in red
-\newcommand{\TBD}{{\color{red}{TBD}}} % when a val is needed
+\newcommand{\TBD}{{\color{red}{TBD}}\xspace} % when a val is needed
 \newcommand{\ita}[1]{\textit{#1}} % write text in italics
 \newcommand{\bld}[1]{\textbf{#1}} % write text in bold
 \newcommand{\etal}{\textit{et al.}\xspace}
@@ -118,7 +118,40 @@
 
 %\usepackage{tikz}
 \newcommand\encircle[1]{%
-  \tikz[baseline=(X.base)] 
+  \tikz[baseline=(X.base)]
     \node (X) [draw, shape=circle, inner sep=-1pt, minimum size=1pt, fill=black, text=white, scale=0.9] {\strut #1};%
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Border around a thesis/proposal title page
+% usage: \enicspageframe  - -  put it at the TOP of the page you want framed
+%
+% Draws a box around the current page only, matching the BIU title pages that
+% used to be produced with Word: 24pt (0.85cm) in from every edge, 0.5pt thick.
+% Used by the front matter in AuxiliaryPages/. Title pages get the border;
+% supervisor pages, the Hebrew table of contents and the abstract do not.
+%
+% \enicsframeinset changes the distance from the page edge.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newlength{\enicsframeinset}
+    \setlength{\enicsframeinset}{24pt}
+\newlength{\enicsframerule}
+    \setlength{\enicsframerule}{0.5pt}
+\newcommand{\enicspageframe}{%
+  % eso-pic is loaded by the pdfpages package; the starred form applies to this page only
+  \AddToShipoutPictureBG*{%
+    \AtPageLowerLeft{%
+      \put(0,0){%
+        \begin{tikzpicture}[overlay]
+          \draw[line width=\enicsframerule]
+              (\the\enicsframeinset, \the\enicsframeinset)
+              rectangle
+              (\the\dimexpr\paperwidth-\enicsframeinset\relax,
+               \the\dimexpr\paperheight-\enicsframeinset\relax);
+        \end{tikzpicture}%
+      }%
+    }%
+  }%
 }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

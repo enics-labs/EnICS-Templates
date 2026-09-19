@@ -3,6 +3,16 @@
 % Engine detection (\ifpdftex, \ifluatex, \ifxetex). Used for the Hebrew front matter of theses.
 \usepackage{iftex}
 
+% The silence package suppresses specific warnings (see the \WarningFilter calls below).
+% On some package versions it hangs (infinite loop) when loaded together with the acmart
+% class, so it is skipped for the ACM Journal template. Loaded here rather than in
+% packages/configuration.tex because \ifacmjournal must already be set to \acmjournaltrue
+% by the calling template (see e.g. Templates/ACM_Journal.tex) by the time this runs.
+\ifacmjournal
+\else
+    \usepackage{silence}
+\fi
+
 
      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
      %    Mandatory "everyday" packages      % 
@@ -82,7 +92,14 @@
 
 % Spacing around Section Headers (Section, Subsection):
 % -----------------------------------------------------
-\usepackage{titlesec}
+% titlesec redefines \section, \subsection, \subsubsection and \paragraph.
+% The acmart class refuses that ("An attempt to redefine \section detected.
+% Please do not do this for ACM submissions!"), so it is skipped there.
+% ACM fixes the section formatting anyway, so there is nothing to tune.
+\ifacmjournal
+\else
+    \usepackage{titlesec}
+\fi
 %%%%% USAGE:  
 %%%%%   \titlespacing{command}{left spacing}{before spacing}{after spacing}[right]
 %%%%%      the spacing is written {Xpt plus Ypt minus Zpt} 
@@ -138,7 +155,10 @@
 % \usepackage{wrapfig} 
 % The graphicspath option tells LaTeX the path to look for figures
 % ---------------------------------------------------------------
-    \graphicspath{{./Figures/}}
+%   The last two entries let a file inside Templates/ be compiled in place for a
+%   quick preview: they are searched only after the project's own folders, so a
+%   normal build from the project root is unaffected.
+    \graphicspath{{./Figures/}{./}{../Figures/}{../}}
 
 % The CAPTION package, has many options for figure captions, 
 % but can change unwanted things, so prefer the TITLESEC package
@@ -293,7 +313,11 @@
 \usepackage{clipboard}
 % The catchfilebetweentags package lets me copy a tagged section from an external file
 % ------------------------------------------------------------------------------------
+\ifacmjournal
+\else
+    % \WarningFilter requires the silence package, which is skipped for acmart (see above).
     \WarningFilter{etex}{Extended allocation already in use.}
+\fi
 \usepackage{catchfilebetweentags}
 % Insert external pdf pages
 % -------------------------

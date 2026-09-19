@@ -2,19 +2,17 @@
 % Each block is delimited by %<*tag> ... %</tag> (catchfilebetweentags package).
 % DO NOT write your manuscript in this file! Everything here disappears from your PDF
 % as soon as you set \guidefalse in your preamble.
+%
+% IMPORTANT: keep each paragraph on ONE long line. The catchfilebetweentags package
+% does not turn the end of a line into a space, so text split over several lines comes
+% out with the words run together ("the project.If you are reading this").
 
 % Important notes shown at the top of every paper template
 %<*notes>
 \red{\noindent\textbf{\textsc{Important Notes Before We Start}}:
     \begin{itemize}
-        \item This file should be your \texttt{main.tex} in the root of the project.
-              If you are reading this from inside the \texttt{Templates} folder, move it there first
-              (delete the old \texttt{main.tex}, move this file to the root and rename it \texttt{main.tex}).
-              Or just ask Claude to ``start a new EnICS manuscript''.
-        \item All of the colored guidance text (like this) is controlled by \textbf{one switch}:
-              change \texttt{\textbackslash guidetrue} to \texttt{\textbackslash guidefalse} in the preamble
-              and all of it disappears from the PDF. You can then delete the \texttt{\textbackslash guide\{...\}} lines
-              and the \texttt{guidance} blocks at your leisure, and delete the \texttt{Templates} folder altogether.
+        \item This file should be your \texttt{main.tex} in the root of the project. If you are reading this from inside the \texttt{Templates} folder, move it there first (delete the old \texttt{main.tex}, move this file to the root and rename it \texttt{main.tex}). Or just ask Claude to ``start a new EnICS manuscript''.
+        \item All of the colored guidance text (like this) is controlled by \textbf{one switch}: change \texttt{\textbackslash guidetrue} to \texttt{\textbackslash guidefalse} in the preamble and all of it disappears from the PDF. You can then delete the \texttt{\textbackslash guide\{...\}} lines and the \texttt{guidance} blocks at your leisure, and delete the \texttt{Templates} folder altogether.
         \item Put your paper-specific acronyms and newcommands inside \texttt{newcommands/this\_glossary.tex}.
         \item Put your paper-specific references inside \texttt{bibliography/this\_bibliography.bib}.
         \item This project was started from EnICS Templates version \enicstemplateversion.
@@ -41,8 +39,7 @@
 \color{teal}
     \indent Start with a scope down. General sentence with basic (often old) citation, such as Moore's Law~\cite{moores_law}. Continue your first paragraph, focusing down on a more narrow field, such as the motivation for low power digital design. \\
     \indent With your second paragraph, you need to funnel down a bit more, starting to point the reader to the specific problem you're trying to solve. Don't forget to cite some of the seminal works in the field and most important references that prove your point. \\
-    \indent By the third paragraph, you have to specifically state the problem that your work will try to solve. Describe the problem and why it is hard and/or important to fix it.
-    It is not a bad idea to add a general figure here -- something that could appear on the first page and provide an overview of the big picture application that you are dealing with. Not mandatory, but nice to have some visualization early on in your paper.\\
+    \indent By the third paragraph, you have to specifically state the problem that your work will try to solve. Describe the problem and why it is hard and/or important to fix it. It is not a bad idea to add a general figure here -- something that could appear on the first page and provide an overview of the big picture application that you are dealing with. Not mandatory, but nice to have some visualization early on in your paper.\\
     \indent You may want to now go into the \sota. Make sure to briefly describe each of the important works in the field, usually followed by some insight as to what is not solved by this work or what it focuses on that is different than what your solution will focus on. Be careful not to criticize the prior-art too harshly -- one of the authors may be your reviewer! But make sure to state or at least hint what is different and/or worse than what you are going to present. \\
     \indent Next paragraph should start with \textcolor{black}{``\textit{In this work,}''}. Now you need to describe what you are about to present/propose. In a few sentence, state the most important features of your work and how it improves upon the \sota. Finish with some important results! \\
 \color{black}
@@ -107,8 +104,7 @@
         \item Figures should all be vectorized (e.g., pdf), such as the figure provided in \figref{fig_MyLabel}.
         \item You can crop the figures with the trim commands.
         \item Sub-figures are made with the \texttt{subfig} package: \texttt{\textbackslash subfloat[caption]\{\textbackslash includegraphics\{...\}\}} inside a \texttt{figure}.
-        \item If you cannot pass \texttt{pdf\_express}, use the ``\texttt{latexmkrc}'' file, which will embed all the fonts.
-        For more, refer to: \href{https://www.overleaf.com/learn/latex/Articles/How\_to\_use\_latexmkrc\_with\_Overleaf}{\blue{How to use latexmkrc with Overleaf}} or \href{https://www.overleaf.com/learn/latex/Questions/My\_submission\_was\_rejected\_by\_the\_journal\_because\_\%22Font\_XYZ\_is\_not\_embedded\%22.\_What\_can\_I\_do\%3F}{\blue{My submission was rejected by the journal because ``Font XYZ is not embedded''}}.
+        \item If you cannot pass \texttt{pdf\_express}, use the ``\texttt{latexmkrc}'' file, which will embed all the fonts. For more, refer to: \href{https://www.overleaf.com/learn/latex/Articles/How\_to\_use\_latexmkrc\_with\_Overleaf}{\blue{How to use latexmkrc with Overleaf}} or \href{https://www.overleaf.com/learn/latex/Questions/My\_submission\_was\_rejected\_by\_the\_journal\_because\_\%22Font\_XYZ\_is\_not\_embedded\%22.\_What\_can\_I\_do\%3F}{\blue{My submission was rejected by the journal because ``Font XYZ is not embedded''}}.
     \end{itemize}
 
     \subsubsection{\red{Making pretty figures in MATLAB}} \label{sec_matlab_figures}
@@ -147,8 +143,7 @@
 % This tells you what to write in the Abstract of a research proposal
 %<*abstractRP>
 \color{teal}
-    This is a template for BIU Research Proposals. It includes a general outline for a research proposal that could be followed.
-    The Hebrew front page and the Hebrew abstract are typeset from the \texttt{.tex} files under \textbf{AuxiliaryPages} when you compile with \textbf{LuaLaTeX} (on Overleaf: Menu, Compiler, LuaLaTeX). If you must use pdfLaTeX, update the \texttt{.docx} files there instead, save them as PDF and point the \texttt{\textbackslash includepdf} commands at them.\\
+    This is a template for BIU Research Proposals. It includes a general outline for a research proposal that could be followed. The Hebrew front page and the Hebrew abstract are typeset from the \texttt{.tex} files under \textbf{AuxiliaryPages} when you compile with \textbf{LuaLaTeX} (on Overleaf: Menu, Compiler, LuaLaTeX). If you must use pdfLaTeX, update the \texttt{.docx} files there instead, save them as PDF and point the \texttt{\textbackslash includepdf} commands at them.\\
     Note that the abstract for a thesis or research proposal is much more extensive than the short abstract for an article. It should be approximately 1 page long and really be an executive summary of the proposal, including some background, presenting the problem, and explaining how you propose to address it.
 \color{black}
 %</abstractRP>
@@ -157,10 +152,8 @@
 % This tells you what to write in the Abstract of a thesis
 %<*abstractThesis>
 \color{teal}
-    This is a template for writing a Thesis. It includes a general outline for a thesis that could be followed.
-    The English and Hebrew front pages and the Hebrew abstract are typeset from the \texttt{.tex} files under \textbf{AuxiliaryPages} when you compile with \textbf{LuaLaTeX} (on Overleaf: Menu, Compiler, LuaLaTeX). Fill in the title, author, advisor and date macros at the top of \texttt{main.tex}. If you must use pdfLaTeX, update the \texttt{.docx} files there instead, save them as PDF and point the \texttt{\textbackslash includepdf} commands at them.\\
-    Note that the abstract for a thesis or research proposal is much more extensive than the short abstract for an article. It should be approximately 1 page long and really be an executive summary of the proposal, including some background, presenting the problem, and explaining how you propose to address it.
-    Don't forget to point out your achievements, such as the number of papers that you published.
+    This is a template for writing a Thesis. It includes a general outline for a thesis that could be followed. The English and Hebrew front pages and the Hebrew abstract are typeset from the \texttt{.tex} files under \textbf{AuxiliaryPages} when you compile with \textbf{LuaLaTeX} (on Overleaf: Menu, Compiler, LuaLaTeX). Fill in the title, author, advisor and date macros at the top of \texttt{main.tex}. If you must use pdfLaTeX, update the \texttt{.docx} files there instead, save them as PDF and point the \texttt{\textbackslash includepdf} commands at them.\\
+    Note that the abstract for a thesis or research proposal is much more extensive than the short abstract for an article. It should be approximately 1 page long and really be an executive summary of the proposal, including some background, presenting the problem, and explaining how you propose to address it. Don't forget to point out your achievements, such as the number of papers that you published.
 \color{black}
 %</abstractThesis>
 
@@ -173,17 +166,13 @@ The main research objective of this work is to ...
 
 %<*methodology>
 \color{teal}
-The methodology for carrying out this research is ...
-\blue{It is good advice to use a flowchart to help describe the methodology.}
+The methodology for carrying out this research is ... \blue{It is good advice to use a flowchart to help describe the methodology.}
 \color{black}
 %</methodology>
 
 % Chapter structure hint for theses
 %<*thesisContent>
-\blue{From this chapter and on, you should present the content of your thesis.
-Note that it is often nice to include each chapter as a separate .tex file, using the \textbackslash include\{filename\} option.
-You can reduce the compile time of your paper by adding \textbackslash includeonly\{filename\} in the options.
-This will only output the content of the selected file, but will retain the full file's numbering and everything.}
+\blue{From this chapter and on, you should present the content of your thesis. Note that it is often nice to include each chapter as a separate .tex file, using the \textbackslash include\{filename\} option. You can reduce the compile time of your paper by adding \textbackslash includeonly\{filename\} in the options. This will only output the content of the selected file, but will retain the full file's numbering and everything.}
 %</thesisContent>
 
 %<*thesisSummary>

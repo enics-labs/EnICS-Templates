@@ -46,6 +46,22 @@ Two rules that save everyone time:
 
 Version control (*Menu, GitHub*) and Dropbox sync (*Menu, Dropbox*) are recommended.
 
+## Writing locally in VS Code
+
+If you edit the project on your own machine with VS Code and the LaTeX Workshop extension, the settings in `.vscode/settings.json` come with the project and are already set up for you. They matter because the framework uses the `minted` package for code listings, and minted only runs when LaTeX is called with `-shell-escape`. Without it the build fails with "minted v3+ executable is not installed...", even though the exact same project compiles on Overleaf.
+
+Build with Ctrl+Alt+B. Three recipes are available from *LaTeX Workshop: Build with recipe* in the command palette:
+
+| Recipe | Use it for |
+|---|---|
+| Paper | IEEE and ACM papers, ISF proposals (pdfLaTeX) |
+| Thesis/Proposal | theses and research proposals (LuaLaTeX, needed for the Hebrew pages) |
+| Thesis with acronym list | a thesis whose list of acronyms must be up to date (also runs `makeglossaries`) |
+
+You also need a TeX distribution installed locally (MiKTeX or TeX Live) with Python and Pygments available for minted.
+
+The settings also let you open a file from `Templates/` and build it where it sits, which is handy for previewing a template before you commit to it. That works only in VS Code, because the settings add the project root to the LaTeX search path. On Overleaf, and for real writing anywhere, the template still has to become the `main.tex` in the project root as described above.
+
 ## Theses and proposals: the front matter
 
 BIU requires English and Hebrew title pages, a supervisor page and a Hebrew abstract. These are now plain LaTeX under `AuxiliaryPages/`:
