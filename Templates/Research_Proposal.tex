@@ -1,24 +1,45 @@
 \documentclass[a4paper,12pt]{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   EnICS Templates: MSc / PhD Research Proposal (Bar-Ilan University)
+%   To start writing: make this file the main.tex in the root of the project
+%   (see README.md, or ask Claude to "start a new EnICS manuscript").
+%
+%   Compile with LuaLaTeX (Overleaf: Menu --> Compiler --> LuaLaTeX) to get the
+%   Hebrew front page and the Hebrew abstract typeset directly from the .tex
+%   files under AuxiliaryPages. With pdfLaTeX, they fall back to PDFs that you
+%   create from the .docx files under AuxiliaryPages.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \input{packages/configuration}
-    % For Research Proposal specific configurations
-    \proposaltrue
+    \proposaltrue           % Research Proposal specific configurations
+    \guidetrue              % Show the template guidance text. Change to \guidefalse to hide all of it.
 
-\usepackage{packages/basic_packages} % Required for inserting images
+\usepackage{packages/basic_packages}
 \input{packages/macros}
 \input{newcommands/units}
 \input{newcommands/general_glossary}
 \input{newcommands/enics_glossary}
 \input{newcommands/vlsi_glossary}
-% This is where you should define paper-specific newcommands
+\input{newcommands/ai_glossary}
+% This is where you should define proposal-specific newcommands and acronyms
 \input{newcommands/this_glossary}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%                TITLE                %
+%          PROPOSAL DETAILS           %
+%   (used by the Hebrew front page under AuxiliaryPages)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\title{Optionally enter a title. Not actually used in the template.}
-\author{Your name (also optional)}
-\date{Date (also optional)}
+\newcommand{\proposalTitle}{Research Title}
+\newcommand{\proposalAuthor}{First Name Last Name}
+% Hebrew details (typeset only when compiling with LuaLaTeX)
+\newcommand{\proposalDegreeHebrew}{שלישי}          % שלישי for PhD, שני for MSc
+\newcommand{\proposalTitleHebrew}{כותרת המחקר בעברית}
+\newcommand{\proposalAuthorHebrew}{שם המגיש/ה}
+\newcommand{\proposalAuthorID}{תעודת זהות}
+\newcommand{\proposalAdvisorHebrew}{שם המנחה}
+
+\title{\proposalTitle}
+\author{\proposalAuthor}
+\date{}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -28,20 +49,20 @@
 
 %-----Hebrew Front Page------------%
 %----------------------------------%
-% Create your front page with the .docx files 
-%    under Templates/AuxiliaryPages and save as pdf. 
-% I have provided templates for both PhD and MSc theses.
-   \thispagestyle{empty}
-   \includepdf[fitpaper,pages=-,pagecommand={}]
-            {Templates/AuxiliaryPages/front_page_hebrew_phd_proposal_example}
-            %{Templates/AuxiliaryPages/front_page_hebrew_msc_proposal_example}
-\clearpage
+\ifluatex
+    \input{AuxiliaryPages/front_page_hebrew_proposal}
+\else
+    % pdfLaTeX fallback: create the PDF from AuxiliaryPages/front_page_hebrew_phd_proposal.docx
+    \thispagestyle{empty}
+    \includepdf[fitpaper,pages=-,pagecommand={}]{AuxiliaryPages/front_page_hebrew_phd_proposal_example}
+    \clearpage
+\fi
 
 
 %----------ABSTRACT-------------------%
 %-------------------------------------%
 \section*{Abstract}
-    \ExecuteMetaData[Templates/templateText]{abstractRP}
+    \guide{abstractRP}
 \clearpage
 
 
@@ -49,8 +70,14 @@
 
 %-----Hebrew Abstract--------------%
 %----------------------------------%
-    \includepdf[fitpaper,pages=-,pagecommand={\thispagestyle{plain}}]{Templates/AuxiliaryPages/abstract_hebrew_example}
-\clearpage
+\ifluatex
+    % Write your Hebrew abstract in AuxiliaryPages/abstract_hebrew.tex
+    \input{AuxiliaryPages/abstract_hebrew}
+\else
+    % pdfLaTeX fallback: create the PDF from AuxiliaryPages/abstract_hebrew.docx
+    \includepdf[fitpaper,pages=-,pagecommand={\thispagestyle{plain}}]{AuxiliaryPages/abstract_hebrew_example}
+    \clearpage
+\fi
 
 %-----Table of Contents------------%
 %----------------------------------%
@@ -66,11 +93,10 @@
 
 %----------INTRODUCTION---------------%
 %-------------------------------------%
-%\chapter{Introduction}\label{chap_intro}
 \section{Introduction}
 \label{sec_intro}
 
-This is the introduction chapter.
+This is the introduction section.
 
 \clearpage
 
@@ -79,7 +105,7 @@ This is the introduction chapter.
 \section{Background}
 \label{sec_background}
 
-This is the background chapter.
+This is the background section.
 
 \clearpage
 
@@ -88,11 +114,11 @@ This is the background chapter.
 \section{Research Objective and Methodology}
 \subsection{Objectives}
     \label{sec_objectives}
-    \ExecuteMetaData[Templates/templateText]{objectives}
+    \guide{objectives}
 
 \subsection{Methodology}
     \label{sec_methodology}
-    \ExecuteMetaData[Templates/templateText]{methodology}
+    \guide{methodology}
 
 \clearpage
 

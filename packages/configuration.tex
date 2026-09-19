@@ -1,12 +1,29 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%    EnICS Templates: version stamp
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Bump this when releasing a new version of the templates to GitHub.
+% Derived projects carry it, so anyone can tell which template version they started from.
+\newcommand{\enicstemplateversion}{2026.09}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %    Don't warn me about loading packages
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{silence}
-\WarningFilter{latex}{You have requested package `packages/basic_packages',}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%    Template guidance switch
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% All explanatory (colored) text in the templates is conditional on \ifguide.
+% Each template sets \guidetrue in its preamble; change it to \guidefalse
+% to remove every piece of guidance from the PDF at once.
+\newif\ifguide
+    \guidetrue
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %    Variables per conference/journal
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% All variables are false by default. Each template turns on the one(s) it needs.
+
 % For Research Proposal template specific configurations
 \newif\ifproposal
     \proposalfalse
@@ -25,7 +42,7 @@
 % For adding author biographies
 \newif\ifbiographies
     \biographiesfalse
-% For adding a reply to reviewers 
+% For adding a reply to reviewers
 \newif\ifreplytoreviewers
     \replytoreviewersfalse
 
@@ -37,12 +54,10 @@
 \newif\ifisf
     \isffalse
 
-% For template specific configurations
-% \newif\if
-%     \false
-
-% For template specific configurations
+% For ACM Conference (MICRO) template specific configurations
 \newif\ifmicro
     \microfalse
 
-
+% For template specific configurations
+% \newif\if
+%     \false

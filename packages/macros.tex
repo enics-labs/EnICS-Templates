@@ -1,3 +1,20 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Template guidance switch (see \ifguide in packages/configuration.tex)
+%  All explanatory text in the templates is written with one of:
+%     \guide{tag}                        -> pulls the tagged block from Templates/templateText.tex
+%     \guidenote{text}                   -> short inline note (typeset in red)
+%     \begin{guidance} ... \end{guidance} -> longer blocks written inline in the template
+%                                           (\begin and \end must each be on their own line)
+%  Set \guidefalse in your preamble and all of it disappears from the PDF.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\guide}[1]{\ifguide\ExecuteMetaData[Templates/templateText]{#1}\fi}
+\newcommand{\guidenote}[1]{\ifguide{\color{red}#1}\fi}
+\ifguide
+    \includecomment{guidance}
+\else
+    \excludecomment{guidance}
+\fi
+
 \renewcommand{\eqref}[1]{(\ref{#1})}
 \newcommand{\secref}[1]{\mbox{Section~\ref{#1}}}
 \newcommand{\appref}[1]{\mbox{Appendix~\ref{#1}}}
@@ -37,7 +54,7 @@
 \usepackage{environ}
 \newcounter{charcount}
 \newcounter{charlim}
-\setcounter{charlim}{10}
+\setcounter{charlim}{100000} % Default: effectively no limit. Set the venue's limit in your preamble, e.g., \setcounter{charlim}{1500}
 \NewEnviron{countenv}[2][]{%
   \setcounter{charcount}{0}%
   \expandafter\countem\BODY\relax\EOE

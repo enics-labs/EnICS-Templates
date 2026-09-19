@@ -1,7 +1,8 @@
 % Extra packages:
 \usepackage{clipboard} % To use \Copy \Paste commands
 \usepackage{subfiles} % To call the "answers to reviewers" letter at the end
-\usepackage{soul} % To highligth text
+\usepackage{soul} % To highlight text
+\usepackage{ifthen} % Used by \shortreply
 %\sethlcolor{white} %--> to get rid of the yellow hl, un-comment this
 
 % Definition of counters for reviewers and their point-by-point concerns:
@@ -17,6 +18,9 @@
 % command declarations for reviewer points and our responses
 \newcommand{\reviewersection}{\stepcounter{reviewer} \bigskip \hrule
                   \section*{\large\textbf{Reviewer} \thereviewer}}
+% For the (associate) editor's general comments, before the individual reviewers
+\newcommand{\editorsection}{\bigskip \hrule
+                  \section*{\large\textbf{Editor}}}
 
 \newenvironment{point}
    {\refstepcounter{point} \bigskip \noindent {\textbf{\underline{Reviewer~Point~\thepoint}} } ---\ }

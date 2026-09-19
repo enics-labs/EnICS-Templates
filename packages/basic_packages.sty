@@ -1,4 +1,7 @@
-\ProvidesPackage{common/basic_packages}
+\ProvidesPackage{packages/basic_packages}
+
+% Engine detection (\ifpdftex, \ifluatex, \ifxetex). Used for the Hebrew front matter of theses.
+\usepackage{iftex}
 
 
      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -8,9 +11,9 @@
 % The comment package creates the {comment} environment
 % -----------------------------------------------------
 \usepackage{comment}
-% The color package lets us change font colors
-% --------------------------------------------
-\usepackage{color}
+% The xcolor package lets us change font colors (superset of the old "color" package)
+% -----------------------------------------------------------------------------------
+\usepackage{xcolor}
 % The tikz package provides many tools for drawing in LaTeX
 % ---------------------------------------------------------
 \usepackage{tikz}
@@ -100,10 +103,8 @@
 %      \setlength{\abovecaptionskip}{-3pt plus 3pt minus 2pt}
 %   % space below caption
 %      \setlength{\belowcaptionskip}{0pt}
-%   % Change Subfigure vertical spacing around subcaptions
-%      \setlength{\subfigtopskip}{0pt}
-%      \setlength{\subfigcapskip}{-2pt}
-%      \setlength{\subfigbottomskip}{2pt}
+%   % Change sub-figure caption spacing (subfig package)
+%      \captionsetup[subfloat]{farskip=2pt,captionskip=1pt}
 %   % Change spacing around equations
 %      \setlength{\abovedisplayskip}{-10pt}
 %      \setlength{\belowdisplayskip}{-10pt}
@@ -124,9 +125,14 @@
 % The graphicx package is the standard LaTeX graphics tool (though it's outdated)
 % -------------------------------------------------------------------------------
 \usepackage{graphicx}
-% The subfigure package allows providing graphicx with subfigures
-% ---------------------------------------------------------------
-\usepackage{subfigure}
+% The subfig package provides \subfloat for sub-figures (replaces the obsolete "subfigure" package)
+%   caption=false keeps the document class's own caption style (required by IEEEtran).
+%   The acmart class ships its own sub-figure support, so it is skipped there.
+% -----------------------------------------------------------------------------------------------
+\ifacmjournal
+\else
+    \usepackage[caption=false,font=footnotesize]{subfig}
+\fi
 % The wrapfig package allows figures to be wrapped within text
 % ---------------------------------------------------------------
 % \usepackage{wrapfig} 
@@ -263,7 +269,10 @@
         \WarningFilter{latex}{Command \underline has changed.}
     \usepackage{sectsty}
         % This gets rid of some stupid warning due to the sectsty package
-        \usepackage[T1]{fontenc}
+        % (pdfLaTeX only: under LuaLaTeX the fonts are Unicode already)
+        \ifpdftex
+            \usepackage[T1]{fontenc}
+        \fi
 
     % For fontsize options see see https://latex-tutorial.com/changing-font-size/
     \chapternumberfont{\LARGE} 
@@ -302,7 +311,7 @@
     \usepackage{fancyhdr}
     \usepackage[normalem]{ulem}
     \usepackage[final]{microtype}
-    \usepackage[keeplastbox]{Templates/ExtraPackages/flushend}
+    \usepackage[keeplastbox]{packages/flushend}
     
     % Ensure letter paper
     \pdfpagewidth=8.5in
@@ -310,6 +319,22 @@
     \pagenumbering{arabic}
 \fi
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Hebrew front matter (theses and proposals)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% When the document is compiled with LuaLaTeX, the Hebrew title pages and the
+% Hebrew abstract are typeset directly from the .tex files in AuxiliaryPages/
+% (no Word files needed). Under pdfLaTeX the templates fall back to including
+% ready-made PDFs. See AuxiliaryPages/hebrew_setup.tex.
+\ifluatex
+    \ifthesis
+        \input{AuxiliaryPages/hebrew_setup}
+    \fi
+    \ifproposal
+        \input{AuxiliaryPages/hebrew_setup}
+    \fi
+\fi
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  Other packages that could be useful

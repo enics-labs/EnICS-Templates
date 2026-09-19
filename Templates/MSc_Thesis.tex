@@ -1,28 +1,48 @@
 \documentclass[a4paper,12pt,twoside]{book}
-
-% See BIU Requirements at:
-%    MSc Thesis:   https://graduate-school.biu.ac.il/node/1773
-%    PhD Thesis:   https://graduate-school.biu.ac.il/node/1793
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   EnICS Templates: MSc Thesis (Bar-Ilan University, Faculty of Engineering)
+%   To start writing: make this file the main.tex in the root of the project
+%   (see README.md, or ask Claude to "start a new EnICS manuscript").
+%
+%   Compile with LuaLaTeX (Overleaf: Menu --> Compiler --> LuaLaTeX) to get the
+%   English and Hebrew front pages and the Hebrew abstract typeset directly from
+%   the .tex files under AuxiliaryPages. With pdfLaTeX, the Hebrew pages fall
+%   back to PDFs that you create from the .docx files under AuxiliaryPages.
+%
+%   BIU Requirements: https://graduate-school.biu.ac.il/node/1773
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \input{packages/configuration}
-    % For Thesis specific configurations
-    \thesistrue
+    \thesistrue             % Thesis specific configurations
+    \guidetrue              % Show the template guidance text. Change to \guidefalse to hide all of it.
 
-\usepackage{packages/basic_packages} % Required for inserting images
+\usepackage{packages/basic_packages}
 \input{packages/macros}
 \input{newcommands/units}
 \input{newcommands/general_glossary}
 \input{newcommands/enics_glossary}
 \input{newcommands/vlsi_glossary}
-% This is where you should define paper-specific newcommands
+\input{newcommands/ai_glossary}
+% This is where you should define thesis-specific newcommands and acronyms
 \input{newcommands/this_glossary}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%                TITLE                %
+%           THESIS DETAILS            %
+%   (used by the front pages under AuxiliaryPages)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\title{Optionally enter a title. Not actually used in the template.}
-\author{Your name (also optional)}
-\date{Date (also optional)}
+\newcommand{\thesisTitle}{Thesis Title}
+\newcommand{\thesisAuthor}{First Name Last Name}
+\newcommand{\thesisAdvisor}{Prof. Advisor Name}
+\newcommand{\thesisDate}{Month Year}
+% Hebrew details (typeset only when compiling with LuaLaTeX)
+\newcommand{\thesisTitleHebrew}{כותרת העבודה}
+\newcommand{\thesisAuthorHebrew}{שם הסטודנט/ית}
+\newcommand{\thesisAdvisorHebrew}{שם המנחה}
+\newcommand{\thesisDateHebrew}{חודש עברי, תשפ"ו}
+
+\title{\thesisTitle}
+\author{\thesisAuthor}
+\date{\thesisDate}
 
 
 
@@ -32,20 +52,17 @@
 \begin{document}
 \frontmatter
 \pagestyle{empty}
-%-----Front Page in English--------%
+%-----Front Pages in English-------%
 %----------------------------------%
-% Create your front page with the .docx files 
-%    under Templates/AuxiliaryPages and save as pdf. 
-% I have provided templates for both PhD and MSc theses.
-\includepdf[fitpaper,pages=-,pagecommand={}]
-        {Templates/AuxiliaryPages/front_page_english_msc_thesis_example}
+% Title page and supervisor page, typeset from AuxiliaryPages/front_page_english_msc.tex
+\input{AuxiliaryPages/front_page_english_msc}
 
 
 %----------Acknowledgments---------%
 %----------------------------------%
 \chapter*{Acknowledgments}
     \thispagestyle{empty}
-    \ExecuteMetaData[Templates/templateText]{acknowledgments}
+    \guide{acknowledgments}
 
 %----------Define Headers-------------%
 %-------------------------------------%
@@ -67,7 +84,7 @@
 %-------------------------------------%
 \chapter*{Abstract}
     \setcounter{page}{1}
-    \ExecuteMetaData[Templates/templateText]{abstractThesis}
+    \guide{abstractThesis}
 
 %-----Table of Contents------------%
 %----------------------------------%
@@ -87,7 +104,7 @@
 \chapter{Introduction}
 \label{sec_intro}
 
-This is the introduction chapter\cite{moores_law}.
+This is the introduction chapter~\cite{moores_law}.
 
 
 
@@ -101,10 +118,7 @@ This is the background chapter.
 %----------THESIS CONTENT-------------%
 %-------------------------------------%
 \chapter{Thesis Content}
-\blue{From this chapter and on, you should present the content of your thesis. 
-Note that it is often nice to include each chapter as a separate .tex file, using the \textbackslash include\{filename\} option.
-You can reduce the compile time of your paper by adding \textbackslash includeonly\{filename\} in the options. 
-This will only output the content of the selected file, but will retain the full file's numbering and everything.}
+\guide{thesisContent}
 
 
 
@@ -113,7 +127,7 @@ This will only output the content of the selected file, but will retain the full
 \chapter{Summary and Conclusions}
 \label{sec_conclusions}
 
-\blue{Here you should conclude your work and don't forget to again emphasize your achievements (e.g., publications). }
+\guide{thesisSummary}
 
 
 %----------BIBLIOGRAPHY---------------%
@@ -122,22 +136,27 @@ This will only output the content of the selected file, but will retain the full
 
 %------HEBREW ABSTRACT---------%
 %------------------------------%
-% Create your Hebrew abstract with the .docx files 
-%    under Templates/AuxiliaryPages and save as pdf. 
 \backmatter
 \pagestyle{empty}
-\includepdf[fitpaper,pages=-,pagecommand={}]
-            {Templates/AuxiliaryPages/abstract_hebrew_example}
-\clearpage
+\ifluatex
+    % Write your Hebrew abstract in AuxiliaryPages/abstract_hebrew.tex
+    \input{AuxiliaryPages/abstract_hebrew}
+\else
+    % pdfLaTeX fallback: create the PDF from AuxiliaryPages/abstract_hebrew.docx
+    \includepdf[fitpaper,pages=-,pagecommand={}]{AuxiliaryPages/abstract_hebrew_example}
+    \clearpage
+\fi
 
-%------HEBREW FRONT PAGE-------%
+%------HEBREW FRONT PAGES------%
 %------------------------------%
-% Create your Hebrew front page with the .docx files 
-%    under Templates/AuxiliaryPages and save as pdf. 
-% I have provided templates for both PhD and MSc theses.
-\includepdf[fitpaper,pages=-,pagecommand={}]
-            {Templates/AuxiliaryPages/front_page_hebrew_msc_thesis_example}
-\clearpage
+\ifluatex
+    % Supervisor page and Hebrew title page, from AuxiliaryPages/front_page_hebrew_msc.tex
+    \input{AuxiliaryPages/front_page_hebrew_msc}
+\else
+    % pdfLaTeX fallback: create the PDF from AuxiliaryPages/front_page_hebrew_msc_thesis.docx
+    \includepdf[fitpaper,pages=-,pagecommand={}]{AuxiliaryPages/front_page_hebrew_msc_thesis_example}
+    \clearpage
+\fi
 
 
 

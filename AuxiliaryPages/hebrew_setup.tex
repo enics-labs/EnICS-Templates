@@ -1,0 +1,26 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Hebrew support for the thesis / proposal front matter (LuaLaTeX only)
+%
+%  Loaded automatically by packages/basic_packages.sty when a thesis or proposal
+%  is compiled with LuaLaTeX. On Overleaf: Menu --> Compiler --> LuaLaTeX.
+%
+%  Hebrew text is typeset with the David CLM font (part of the "culmus" package,
+%  available on Overleaf and in TeX Live / MiKTeX). Hebrew characters are detected
+%  automatically, so you can mix Hebrew and English in the same paragraph.
+%  Right-to-left paragraphs are produced inside
+%       \begin{otherlanguage}{hebrew} ... \end{otherlanguage}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{fontspec}
+\usepackage[bidi=basic, english]{babel}
+\babelprovide[import, onchar=ids fonts]{hebrew}
+% Pick the first Hebrew font that is installed
+\IfFontExistsTF{David CLM}{%
+    \babelfont[hebrew]{rm}{David CLM}%
+}{%
+    \IfFontExistsTF{Noto Serif Hebrew}{%
+        \babelfont[hebrew]{rm}{Noto Serif Hebrew}%
+    }{%
+        \babelfont[hebrew]{rm}{Arial}%
+        \PackageWarning{hebrew_setup}{David CLM not found; falling back to Arial for Hebrew}%
+    }%
+}

@@ -1,0 +1,28 @@
+% Hebrew front page for a research proposal (BIU Faculty of Engineering).
+% Fill in \proposalTitle, \proposalTitleHebrew, \proposalAuthorHebrew, \proposalAuthorID,
+% \proposalAdvisorHebrew and \proposalDegreeHebrew in main.tex.
+% Requires LuaLaTeX (see AuxiliaryPages/hebrew_setup.tex).
+\begin{otherlanguage}{hebrew}
+\thispagestyle{empty}
+\begin{center}
+    \vspace*{1cm}
+    \includegraphics[width=0.35\textwidth]{AuxiliaryPages/logos/biu_logo_hebrew_proposal}\par
+    \vspace{0.5em}
+    {\Large הפקולטה להנדסה\par}
+    \vspace{2.5cm}
+    {\fontsize{32}{40}\selectfont הצעת מחקר לתואר \proposalDegreeHebrew\par}
+    \vspace{2cm}
+\end{center}
+{\large\noindent\bfseries הנושא:\par}
+\begin{center}
+    \vspace{0.5em}
+    {\Large\bfseries \proposalTitleHebrew\par}
+    \vspace{1.5em}
+    {\Large\bfseries \proposalTitle\par}
+    \vspace{3cm}
+    {\Large שם המנחה: \proposalAdvisorHebrew\par}
+    \vspace{1.5cm}
+    {\Large \proposalAuthorHebrew \quad \proposalAuthorID\par}
+\end{center}
+\end{otherlanguage}
+\clearpage

@@ -1,94 +1,98 @@
-# EnICS-Templates
-Template for creating Overleaf project
+# EnICS Templates
 
+LaTeX starting point for everything written at EnICS Labs (Bar-Ilan University): IEEE and ACM papers, MSc and PhD theses, research proposals and ISF grant proposals. One project, one shared preamble, one house style.
 
-To start an Overleaf project based on this template, you have three options:
-1) (easiest) Make a copy of the project
-2) (preferred) Adding the project to your github.com account.
-3) (alternative option) Cloning the project from https://github.com/enics-labs/EnICS-Templates and uploading it to your Overleaf account.
+Template version: see `\enicstemplateversion` in [packages/configuration.tex](packages/configuration.tex). Changes are listed in [CHANGELOG.md](CHANGELOG.md).
 
-For option 1, you will need to follow these steps:
-1) Go to the project at [https://www.overleaf.com/read/wnrqnpmsdtyq#665a48](https://www.overleaf.com/read/wnrqnpmsdtyq#665a48)
-2) In Overleaf, go to "Menu"-->"Copy Project"
-3) Give the project a new name (preferably with a meaning)
-4) Start working on the new project!
+## Getting a copy of the template
 
-For option 2, you will need to follow these steps:
+Pick one:
 
-## Preliminaries:
-1) You need to have a github.com account 
-2) You have to have a professional overleaf account, which you are eligible for free if you are an IEEE Member.
+1. **Copy the Overleaf project (easiest).** Open [the template project](https://www.overleaf.com/read/wnrqnpmsdtyq#665a48), then *Menu, Copy Project*, and give the copy a meaningful name.
+2. **Import from GitHub (preferred if you use git).** On your Overleaf dashboard: *New Project, Import from GitHub*, pick `EnICS-Templates`, then *Menu, Copy Project* to get your own working copy. You need a GitHub account linked to Overleaf; the GitHub sync feature requires an Overleaf premium plan (free for IEEE members). Email adam.teman@biu.ac.il with your GitHub username to be added.
+3. **Clone from GitHub** (`https://github.com/enics-labs/EnICS-Templates`) and upload or push it to Overleaf yourself.
 
-## First Time Only Procedure:
-1) Send Prof. Adam Teman an email with your github username (adam.teman@biu.ac.il)
-2) You will then receive an invitation to the "EnICS Templates" project on github
-3) Login to github and accept the invitation
-4) On your Overleaf dashboard, click on *MENU-->New Project-->Import from GitHub*
-5) You will be asked to *link your github account* with your Overleaf account. Follow the instructions.
+Never work inside the template project itself. Always copy it first. If you want the latest version later, delete your imported copy and import again before copying.
 
-## Every time you want to start a new Overleaf project:
-1) On your Overleaf dashboard, click on *MENU-->New Project-->Import from GitHub*
-2) Select "EnICS Templates". You will now have a project called "EnICS Templates" in your Overleaf project list.
-3) Go into the "EnICS Templates" project and click *MENU-->Copy Project*
-4) Give your project a new name and start writing!
+## Starting your manuscript
 
-Note that you are not supposed to work directly on the EnICS Template project, which is a public repository. That is why we make a copy. 
-As a new user, you will be added as a "reader"to the project, and therefore cannot commit new changes. 
-If you become a power user, I will make you a collaborator, so you can add new features to the template.
-Also note that you will not be able to pull recent changes from the repo, since Overleaf does a "merge and commit", which requires write permissions. 
-Therefore, if you are starting a new project and want the latest version of the templates, delete the "EnICS Template" project from your Overleaf dashboard and import it again before making a copy.
+The whole body of your manuscript lives in `main.tex` in the root of the project. The Templates folder holds one ready-made `main.tex` per document type:
 
-Please email adam.teman@biu.ac.il with any comments or suggestions and/or if you want to become a collaborator!
+| Template | Use it for | Overleaf compiler |
+|---|---|---|
+| `IEEE_Journal.tex` | IEEE Transactions papers (with biographies and a reply-to-reviewers letter) | pdfLaTeX |
+| `IEEE_Conference.tex` | IEEE conference papers | pdfLaTeX |
+| `ACM_Journal.tex` | ACM journals (acmart class) | pdfLaTeX |
+| `ACM_Conference.tex` | ACM conferences, currently set up for IEEE/ACM MICRO | pdfLaTeX |
+| `MSc_Thesis.tex` | MSc thesis according to the BIU guidelines | LuaLaTeX |
+| `PhD_Thesis.tex` | PhD thesis according to the BIU guidelines | LuaLaTeX |
+| `Research_Proposal.tex` | MSc or PhD research proposal at BIU | LuaLaTeX |
+| `ISF_Template.tex` | ISF Regular Program proposal | pdfLaTeX |
 
-# How to Use the Template?
+Three steps:
 
-## Choosing a Template
-There are templates for different types of submissions under the Templates folder
-** What Types of Templates are Included? **
-1. *IEEE_Journal.tex*:  A template for creating Journal papers according to the IEEE Transactions guidelines.
-2. *IEEE_Conference.tex: A template for creating conference papers according to many IEEE Conferences.
-3. *ACM_Journal.tex: A template for creating Journal papers according to ACM formatting.
-4. *ACM_Conference.tex: A template for creating conference papers according to ACM formatting (made particularly for IEEE Micro).
-5. *MSC_Thesis.tex*: A template for writing MSc Theses at BIU.
-6. *PhD_Thesis.tex*: A template for writing PhD Theses at BIU.
-7. *Research_Proposal.tex*: A template for writing MSc or PhD Research Proposals at BIU.
-8. *ISF_Template.tex*: A basic template for starting to write an ISF Regular Program proposal.
-9. *Reply_To_Reviwers.tex*: A template for creating a rebuttal letter. To be used along with the *IEEE_Journal* template, when submitting a revision.
+1. Delete the `main.tex` that came with the project (it is only a selector used to test the templates).
+2. Drag the template you need from `Templates/` to the root of the project and rename it `main.tex`.
+3. For theses and proposals, set *Menu, Compiler* to **LuaLaTeX**. That is what typesets the Hebrew pages.
 
-## Starting your own project
-1. As explained before, first **Copy the Project** to a new project, by using *Menu-->Copy Project*
-2. Next, go to the Templates folder and move the template that you need to the root directory. You could also uncomment the relevant include command in main.tex, but I recommend moving your file to the root directory.
-3. Update the default file to compile under *Menu-->Main Document*
-4. Delete or comment out the \ExecuteMetaData commands to get rid of default text. **Do not edit your paper inside the templateText.tex file!**
-5. I recommend using github for version control (*Menu-->github*) and to use Dropbox integration for easy file management (*Menu-->Dropbox*)
+Compile. You will see the template full of colored guidance text explaining what goes where. When you are ready to write, change `\guidetrue` to `\guidefalse` in the preamble of `main.tex` and every piece of guidance disappears from the PDF at once. You can then delete the `\guide{...}` lines and `guidance` blocks whenever you like, and delete the whole `Templates` folder.
 
-# A Tour of the Template folders and files
-The Template repository has several folders with files for your usage. You can modify all these files and if you have suggestions to add for everyone, please tell a developer (e.g., Prof. Adam Teman) about it:
-1. **Templates**: Where you'll find all the template files, discussed above. In addition this folder includes:
-    a. Word files for creating PDFs to be included in research proposals and theses (front matter and abstracts)
-    b. **templateText.tex**: A file for decoupling the text in the template files from the files themselves (to make the template files cleaner).
-2. **common**: This has files needed by pretty much everyone (not EnICS specific)
-    a. **configuration.tex**: This is a file that defines LaTeX variables for each template to enable specific configurations. All variables are **false** by default and each template turns on the configuration relevant to it.
-    b. **basic_packages.sty**: This is the class that loads the packages you will need to compile your file. Certain packages are conditionally loaded based on the template configuration.
-    c. **general_glossary.tex**: All kinds of acronyms that are not VLSI specific.
-    d. **units.tex**: Shorthand for writing out units (with the siunitx package) and symbols.
-    e. **macros.tex**: Small macros that are very useful.
-    f. **reply_macros**: Macros to be used with the *Reply_To_Reviewers* template.
-    g. Other files that are needed by specific templates: **sig-alternate.cls** and **flushend.sty** (used by the *ACM_Conference* template).
-3. **EnICS**: Files that are specific to EnICS and not for a non-BIU user
-    a. **enics_glossary.tex**: Shorthand for things that are useful for EnICS users.
-    b. **vlsi_glossary.tex**: Common acronyms found in the fields of Chip Design.
-    c. Template pages for front page matter and Hebrew abstracts for inclusion in proposals and theses.
-4. **Figures**: The folder to store your figures in. In addition, this folder includes:
-    a. **matlab_figure.m**: A template script for creating nice figures in Matlab.
-    b. **python_figure.m**: A template script for creating nice figures in Python.
-5. **bibliography**: A folder for storing *bibtex* files for the project and well formatted EnICS publication bibliographical entries. In addition, this folder contains:
-    a. **abbreviations.bib**: Bibtex variables for describing popular conferences and journals, including shortened versions and versions with the impact factor stated.
-    b. **this_bibliography.bib**: Bibtex file for adding new bibliographic entries, specific to this project.
-6. **Bios**: A folder for creating biographical text and pictures for inclusion in Journal publications
-7. **Utilities**: A folder that includes useful tools and Utilities (you will need to move these to the root directory for them to work):
-    a. **ExtractPagesFromPDF.tex**: A template to cut certain pages out of a longer PDF. For example, if you need to extract only the bibliography from a full proposal or only the reply to reviewers letter from a revised manuscript.
-    b. **latexmkrc**: A script for ensuring that your PDF passes IEEE Camera Ready compliance.    
+If you use Claude Code, open the project and ask it to "start a new EnICS manuscript". It will do all of the above, ask for your title and authors, strip the guidance, remove the files you do not need and check that the project compiles. It can also apply the framework to an existing LaTeX project, add a reply-to-reviewers letter, or update an older project to the latest template version. The skill lives in `.claude/skills/enics-manuscript/`.
 
+Two rules that save everyone time:
 
+- Put your paper-specific acronyms and macros in `newcommands/this_glossary.tex`.
+- Put your paper-specific references in `bibliography/this_bibliography.bib`.
 
+Version control (*Menu, GitHub*) and Dropbox sync (*Menu, Dropbox*) are recommended.
+
+## Theses and proposals: the front matter
+
+BIU requires English and Hebrew title pages, a supervisor page and a Hebrew abstract. These are now plain LaTeX under `AuxiliaryPages/`:
+
+- Fill in the title, author, advisor and date macros at the top of `main.tex` (in English and in Hebrew).
+- Write your Hebrew abstract in `AuxiliaryPages/abstract_hebrew.tex`.
+- For a PhD, edit the Hebrew table of contents in `AuxiliaryPages/front_page_hebrew_phd.tex`.
+- Compile with LuaLaTeX. Hebrew is typeset with the David CLM font, which Overleaf has installed.
+
+If you must compile with pdfLaTeX, the Hebrew pages fall back to the `..._example.pdf` files in `AuxiliaryPages/`. Edit the matching `.docx` files, export them to PDF with the same names, and you get the old workflow.
+
+## Reply to reviewers
+
+The journal templates end with `\subfile{Reply_To_Reviewers}`, controlled by `\replytoreviewerstrue` in `main.tex`. Write the letter in `Reply_To_Reviewers.tex` using `\editorsection`, `\reviewersection`, `point`, `\replySingle` and `\replyFull`. Text you wrap with `\Copy{name}{...}` in the manuscript can be quoted in the letter with `\Paste{name}`. To get the letter as a separate PDF, temporarily select `Reply_To_Reviewers.tex` as the Overleaf main document.
+
+## A tour of the project
+
+| Folder or file | What it is |
+|---|---|
+| `main.tex` | Your manuscript (in the template project: a selector that points at one of the templates) |
+| `Templates/` | The eight templates listed above, and `templateText.tex`, which holds the guidance text they pull in with `\guide{tag}` |
+| `packages/configuration.tex` | The version stamp, the `\ifguide` switch and one `\if...` flag per document type. All flags are false by default; each template turns on its own |
+| `packages/basic_packages.sty` | Loads every package we use, some conditionally on those flags (margins, headers, Hebrew support, bibliography style, hyperref) |
+| `packages/macros.tex` | House macros: `\figref`, `\secref`, `\tblref`, `\eqref`, colored text (`\red`, `\blue`), `\needref`, `\TBD`, `\orcidicon`, the abstract character counter |
+| `packages/reply_macros.tex` | Macros for the reply-to-reviewers letter |
+| `packages/sig-alternate.cls`, `packages/flushend.sty` | Used by the ACM conference (MICRO) template only |
+| `newcommands/units.tex` | Units and symbols with siunitx (`\nm`, `\uW`, `\X`, ...) |
+| `newcommands/general_glossary.tex`, `vlsi_glossary.tex`, `ai_glossary.tex` | Acronyms (glossaries package) for general, chip-design and AI terms, with shorthand macros (`\sota`, `\soc`, `\dnn`, ...) |
+| `newcommands/enics_glossary.tex` | EnICS affiliations, IEEE membership macros, staff author macros with ORCIDs, funding sentences |
+| `newcommands/this_glossary.tex` | Your own acronyms and macros |
+| `bibliography/bibliography.tex` | Sets the bibliography style and loads all the `.bib` files below |
+| `bibliography/abbreviations.bib` | Journal and conference names as BibTeX strings (`journal=JSSC`, `booktitle=ISCAS`), with impact factors |
+| `bibliography/general_biblography.bib`, `<staff>_bibliography.bib` | Things we cite a lot, and each staff member's publications |
+| `bibliography/this_bibliography.bib` | Your own references |
+| `AuxiliaryPages/` | LaTeX front matter for theses and proposals (English and Hebrew), the BIU logos, and the legacy `.docx` files with example PDFs |
+| `Reply_To_Reviewers.tex` | The reply-to-reviewers letter (journal templates) |
+| `Bios/` | IEEE biographies and photos of EnICS staff, pulled in with `\ExecuteMetaData[Bios/BiosText]{Name}` |
+| `Figures/` | Put your figures here. Also holds `matlab_figure.m` and `python_figure.py`, templates for article-quality plots |
+| `Utilities/latexmkrc` | Copy to the root to embed all fonts (IEEE PDF eXpress compliance) |
+| `Utilities/ExtractPagesFromPDF.tex` | Extract a page range from a PDF (e.g., only the bibliography of a proposal) |
+| `Utilities/build_all.sh` | Compiles every template in a scratch copy; used by the GitHub Actions workflow and before releases |
+
+## For maintainers
+
+- Work in Overleaf; push to GitHub when a version is ready. Bump `\enicstemplateversion` in `packages/configuration.tex` and add a line to `CHANGELOG.md`.
+- Before pushing, run `bash Utilities/build_all.sh -n` locally (needs latexmk, lualatex, texcount and pygments), or rely on the GitHub Actions workflow in `.github/workflows/`, which builds all templates on every push.
+- Guidance text belongs in `Templates/templateText.tex` (as a tagged block used with `\guide{tag}`), in a `\guidenote{...}`, or inside a `guidance` environment. Never as plain text in a template.
+- Anything the templates need at compile time must live outside `Templates/`, because students delete that folder.
+
+Questions, suggestions, or want to become a collaborator? Email adam.teman@biu.ac.il.

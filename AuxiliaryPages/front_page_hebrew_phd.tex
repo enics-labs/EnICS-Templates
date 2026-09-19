@@ -1,0 +1,58 @@
+% Hebrew back matter for a PhD thesis (BIU Faculty of Engineering).
+% The thesis is read from the back in Hebrew, so the order here is:
+%   1. Hebrew table of contents (chapter titles in Hebrew; edit the list below)
+%   2. Supervisor page
+%   3. Hebrew title page for the inner cover
+%   4. Identical Hebrew title page for the hard cover (the very last page)
+% Fill in \thesisTitleHebrew, \thesisAuthorHebrew, \thesisAdvisorHebrew and \thesisDateHebrew in main.tex.
+% Requires LuaLaTeX (see AuxiliaryPages/hebrew_setup.tex).
+\newcommand{\phdHebrewTitlePage}{%
+\thispagestyle{empty}
+\begin{center}
+    \vspace*{1cm}
+    \includegraphics[width=0.35\textwidth]{AuxiliaryPages/logos/biu_logo_hebrew}\par
+    \vspace{1.5cm}
+    {\Huge \thesisTitleHebrew\par}
+    \vspace{2.5cm}
+    {\Large חיבור לשם קבלת תואר "דוקטור לפילוסופיה"\par}
+    \vspace{1cm}
+    {\Large מאת:\par}
+    \vspace{0.5em}
+    {\LARGE\bfseries \thesisAuthorHebrew\par}
+    \vspace{2.5cm}
+    {\LARGE הפקולטה להנדסה\par}
+    \vspace{2cm}
+    {\LARGE הוגש לסנט של אוניברסיטת בר-אילן\par}
+    \vfill
+    {\Large רמת גן \hfill \thesisDateHebrew\par}
+    \vspace{1cm}
+\end{center}
+\clearpage
+}
+
+\begin{otherlanguage}{hebrew}
+%---- 1. Hebrew table of contents ----%
+\thispagestyle{empty}
+\vspace*{1cm}
+{\LARGE\noindent\underline{תוכן עניינים:}\par}
+\vspace{1em}
+{\large\noindent
+    פרק א': שם של פרק א' \dotfill\ 1\\
+    פרק ב': שם של פרק ב' \dotfill\ 10\\
+    פרק ג': שם של פרק ג' \dotfill\ 20\\
+    פרק ד': שם של פרק ד' \dotfill\ 100\\
+    פרק ה': שם של פרק ה' \dotfill\ 150\par}
+\clearpage
+
+%---- 2. Supervisor page ----%
+\thispagestyle{empty}
+\vspace*{2cm}
+{\Large\noindent
+    עבודה זו נעשתה בהדרכתו/ה של \thesisAdvisorHebrew\\[0.5em]
+    מן הפקולטה להנדסה של אוניברסיטת בר-אילן\par}
+\clearpage
+
+%---- 3 and 4. Title pages ----%
+\phdHebrewTitlePage
+\phdHebrewTitlePage
+\end{otherlanguage}

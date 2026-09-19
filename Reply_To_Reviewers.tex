@@ -1,0 +1,152 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   EnICS Templates: Reply to Reviewers letter (journal revisions)
+%
+%   This file is a "subfile" of main.tex (the IEEE_Journal or ACM_Journal template):
+%     * With \replytoreviewerstrue in main.tex, the letter is appended to the manuscript PDF.
+%     * It can also be compiled on its own (after compiling main.tex once) to get a
+%       standalone letter, e.g., by temporarily selecting it as the Overleaf main document.
+%   Text that you \Copy{name}{...} in the manuscript can be \Paste{name}'d here.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[main.tex]{subfiles}
+\openclipboard{output-main} % Only used when this file is compiled on its own
+
+\begin{document}
+\pagenumbering{gobble} % Hide the page numbering of the subfile
+\onecolumn
+%================== HEADER =========================%
+\vspace{2mm}
+\noindent \textbf{Original Manuscript ID:} TCAS-II-YYYYY-2023  \\
+\textbf{Original Article Title:} \Paste{PaperTitle}  \\
+\vspace{2mm}
+\\\textbf{To:} IEEE TCAS-II Editor and Reviewers \\
+\textbf{Re:} Response to reviewers \\
+%====================================================%
+
+% General intro text goes here
+We are grateful to the Editor for having managed the review of our manuscript. We also want to thank the reviewers for their critical assessment of our work, and for the useful comments that help us to improve the quality of the manuscript.
+In the following we address their concerns point by point.
+We are uploading (a) our point-by-point response to the comments (below) (response to reviewers), (b) an updated manuscript with \blue{blue text} indicating changes.
+
+%===========================================
+\editorsection
+    Paste the general comments of the handling editor here (if given) \\
+    \guidenote{Note: the \texttt{\textbackslash editorsection} command opens the response to the editor's comments, and \texttt{\textbackslash reviewersection} opens the response to each reviewer (numbered automatically).}
+
+\replySingle{
+    We thank the editor for the time spent in reviewing our work and for its general appreciation... \\
+    \guidenote{Note: the \texttt{\textbackslash replySingle} command is for writing a reply \textbf{without} adding the ``\textbf{Authors' Action}'' section.}
+}
+
+%===========================================
+\reviewersection
+    Paste the general (opening) comments of Reviewer 1 here (if given) \\
+
+% === Concern
+\begin{point}
+     The first comment from Reviewer 1... \\
+     \guidenote{Copy each comment from the review letter (often sent in an email) and paste into a new \texttt{point} block.}
+\end{point}
+
+\replyFull{
+    We thank the Reviewer for this comment... Indeed, \blue{the reviewer is always right!} \\
+    \guidenote{Note: the \texttt{\textbackslash replyFull} command is for writing a reply \textbf{followed by} the ``\textbf{Authors' Action}'' section. Use this if you took any actions, such as adding/modifying text, adding/modifying a figure, etc.}
+}{
+\begin{itemize}
+    \item \blue{Use a separate \texttt{\textbackslash item} bullet for each modification in the manuscript.}
+
+    \item The following text was added to \secref{sec_proposed_solution}, Par. 1: \\
+    \guidenote{Note: Use the \texttt{quote} environment to quote new/modified text from the manuscript. Use the \texttt{clipboard} package to \texttt{\textbackslash Copy} and \texttt{\textbackslash Paste} text from the manuscript into the reply letter. Put quotation marks around the copied text.}
+    \begin{quote}
+        ``\Paste{SecIPar1}''
+    \end{quote}
+
+     \item Based on the comment, Fig.~6 was updated: \\
+    \guidenote{Note: Instantiate the figure here. If the figure is appropriate for comments from several reviewers, instantiate it several times in the reply letter (though only once per reviewer). Use the \texttt{h!} position to place the figure in-line with the reply, if possible. Comment out the \texttt{\textbackslash label}, so it's not dually defined.} \\
+    \guidenote{Note 2: Use the \texttt{\textbackslash setcounter} command to make the figure numbering right. It should be one less than the number in the manuscript, so if, for example, this is Fig. 6, you should set the counter to 5 and when you instantiate the figure, it will increment by one.}
+    \setcounter{figure}{5}
+
+    \begin{figure}[h!] % [b]-> bottom, [t]->top, [H]->Here! ([h!] should do a better job), {figure*}->float
+         \centering
+         \includegraphics[width=0.5\columnwidth, trim = 0.5cm 0.2cm 0.3cm 0.3cm, clip]{example_plot}
+         \caption{\guidenote{Instantiate the new/modified figure here. You could ``Copy-Paste'' the \LaTeX code, but you will want to use a \texttt{H!} position and to comment out the label and play with the size, so better to just copy and paste the code.}}
+         %\label{fig_MyLabel}
+    \end{figure}
+\end{itemize}
+}
+
+% === Concern
+\begin{point}
+     Here is Reviewer 1's second concern...
+\end{point}
+
+\replySingle{
+    We thank the Reviewer for this comment... \\
+    \guidenote{Note: In this case, we didn't make any modifications to the manuscript, so we used \texttt{\textbackslash replySingle} instead of \texttt{\textbackslash replyFull}}
+}
+
+%===========================================
+\reviewersection
+\blue{This starts the review of the second reviewer. Put Reviewer 2's general comments here (if given)}
+
+
+
+%============ WORD COUNT (guidance only) ============%
+\begin{guidance}
+%\newpage
+\vspace{2cm} \hrule \vspace{0.2cm} \hrule \vspace{0.5cm}
+
+\color{magenta}
+
+%TC:ignore
+Words and characters in the response letter is detailed below.
+The text (as the text in this new page) placed within the comment flags ``TC:ignore'' and ``TC:endignore'' are not counted.
+Note that this word/character count does not include the text copied from the main manuscript.
+
+\begin{itemize}
+    \item Response letter word count: \quickwordcount{Reply_To_Reviewers}
+    \item Response letter character count: \quickcharcount{Reply_To_Reviewers}
+\end{itemize}
+
+\par{Detail count follows:}
+% \detailtexcount{Reply_To_Reviewers}
+% \detailtexcount{main}
+%TC:endignore
+
+\color{black}
+
+\twocolumn
+
+
+\section{Response Letter Overview}\label{sec:overview}
+The response letter uses the macros in \texttt{packages/reply\_macros.tex}, which is loaded by the journal templates. This file is appended to the manuscript with \textbackslash subfile\{Reply\_To\_Reviewers\} when \textbackslash replytoreviewerstrue is set in \texttt{main.tex}.
+
+\subsection{Commands}
+\begin{enumerate}
+    \item \textbackslash editorsection: It generates the Editor block/section
+    \item \textbackslash reviewersection: It generates a Reviewer block/section
+    \item \textbackslash replySingle\{\#1\}: This command receives one input (\#1). This input is the reply to the reviewer. By default the answer is written in blue.
+    \item \textbackslash replyFull\{\#1\}\{\#2\}: This command receives two inputs (\#1 and \#2). The former input is the reply to the reviewer, while the latter is the changes that we did to the manuscript. By default the answers are written in blue.
+\end{enumerate}
+
+
+\subsection{Use of Copy-Paste commands}
+The \texttt{clipboard} package allows to ``copy'' and ``paste'' pieces of text from one document to another.
+\textbf{It is suggested to use the ``copy'' command within the main manuscript and ``paste'' such a text in the changes block of the reply letter.}
+In this way, it will save time and avoid possible human errors.
+A brief description of the Copy-Paste commands follows:
+\begin{itemize}
+    \item \textbackslash Copy\{\#1\}\{\#2\}: It receives two inputs (\#1 and \#2). The former input is the name of the copied text. The latter is the text we want to copy.
+    \item \textbackslash Paste\{\#1\}: It receives one input (\#1). It is the name of the text we want to paste. The name has to match the name used with the ``Copy'' command.
+\end{itemize}
+
+\subsection{Automatic generation of the reply file}
+To ease some work, \href{https://github.com/EstebanJGC/Latex_Templates_Macros.git}{\red{here}} you can find a python script (named \textit{generateA2R.py}) that partially generates the reply file for $n$ reviewers, each one with a given number of concerns. Or just ask Claude to ``add a reply to reviewers'' and paste the review comments.
+
+\subsection{Use of highlighting}
+It is common to highlight changes in \blue{blue text}. What you should do is add the \textbackslash Copy command before the text and then add your \textbackslash blue command inside it. Then you can just use \textbackslash Paste in your reply document and the copied text will be blue.
+
+You can use the ``\textbackslash hl\{\}'' to highlight some text.
+It may be problematic if you highlight a text that presents some commands within it. To address this, it is suggested to close the command between ``\{\}'' or ``\textbackslash mbox\{\}''
+\end{guidance}
+
+\end{document}

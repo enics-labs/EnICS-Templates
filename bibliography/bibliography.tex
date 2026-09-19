@@ -1,6 +1,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %    This file configures your bibliography
-%        Just a bit cleaner than having a long list of bib 
+%        Just a bit cleaner than having a long list of bib
 %          files in your main document
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -9,7 +9,7 @@
 %       IEEEtran    - for most IEEE Transactions and Conference Proceedings
 \ifacmjournal
     \bibliographystyle{ACM-Reference-Format}
-\else 
+\else
     \ifmicro
         \bibliographystyle{IEEEtranS}
     \else
@@ -18,13 +18,33 @@
 \fi
 
 
+% A fresh manuscript with no citations yet produces an empty bibliography. The standard
+% classes only warn about that, but IEEEtran stops with "perhaps a missing \item".
+% Make every class just warn, so a freshly started paper always compiles.
+% (Skipped for old-style classes such as sig-alternate that define no \endthebibliography.)
+\makeatletter
+\@ifundefined{endthebibliography}{}{%
+    \let\enics@endthebibliography\endthebibliography
+    \def\endthebibliography{%
+        \def\@noitemerr{\@latex@warning{Empty thebibliography environment (no citations yet)}}%
+        \enics@endthebibliography}%
+}
+\makeatother
+
 % Now provide a list of bibliography files to include within the \bibliography command
-%   These files are stored in the "bibliography" folder
-%   There is an "abbreviations.bib" file which includes long and short names for common journals and confernces
-%   There should be a file for papers published by each of the EnICS Staff members
-%   There is a "general_bibliography" file for things we tend to cite a lot (e.g., ITRS)
-%   Put your paper-specific citations in the "this_bibliography.bib" file
+%   These files are stored in the "bibliography" folder:
+%     abbreviations.bib     - long and short names for common journals and conferences
+%                             (use them as booktitle=ISCAS, journal=JSSC)
+%     general_biblography   - things we tend to cite a lot (e.g., ITRS, textbooks, Moore's law)
+%     <staff>_bibliography  - papers published by each of the EnICS staff members
+%     this_bibliography.bib - put your paper-specific citations here!
+%   BibTeX only prints the entries you actually cite, so loading all of them costs nothing.
 \bibliography{bibliography/abbreviations,
               bibliography/general_biblography,
               bibliography/teman_bibliography,
+              bibliography/fish_bibliography,
+              bibliography/shor_bibliography,
+              bibliography/itamar_bibliography,
+              bibliography/osnat_bibliography,
+              bibliography/yavits_bibliography,
               bibliography/this_bibliography}

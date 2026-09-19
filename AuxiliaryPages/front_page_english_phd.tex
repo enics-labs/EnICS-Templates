@@ -1,0 +1,40 @@
+% English front matter for a PhD thesis (BIU Faculty of Engineering):
+%   1. Title page for the hard cover
+%   2. Identical title page for the inner cover
+%   3. Supervisor page
+% Fill in \thesisTitle, \thesisAuthor, \thesisAdvisor and \thesisDate in main.tex.
+% Works with any engine (pdfLaTeX or LuaLaTeX).
+% (A plain page rather than the titlepage environment, so that the two copies
+%  follow each other directly without a blank page in between.)
+\newcommand{\phdEnglishTitlePage}{%
+\thispagestyle{empty}
+\begin{center}
+    \vspace*{1cm}
+    \includegraphics[width=0.5\textwidth]{AuxiliaryPages/logos/biu_faculty_logo_english}\par
+    \vspace{2.5cm}
+    {\Huge \thesisTitle\par}
+    \vspace{2.5cm}
+    {\Large \thesisAuthor\par}
+    \vspace{0.5em}
+    {\Large Faculty of Engineering\par}
+    \vspace{1.5cm}
+    {\Large Ph.D. Thesis\par}
+    \vspace{2cm}
+    {\Large Submitted to the Senate of Bar-Ilan University\par}
+    \vfill
+    {\Large Ramat-Gan, Israel \hfill \thesisDate\par}
+    \vspace{1cm}
+\end{center}
+\clearpage
+}
+\phdEnglishTitlePage
+\phdEnglishTitlePage
+
+\thispagestyle{empty}
+\vspace*{2cm}
+{\Large\noindent
+    This work was carried out under the supervision of\\[0.5em]
+    \thesisAdvisor\\[1.5em]
+    Faculty of Engineering\\[1em]
+    Bar-Ilan University\par}
+\clearpage
